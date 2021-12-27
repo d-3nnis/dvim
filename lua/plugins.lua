@@ -80,6 +80,20 @@ return packer.startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
+  use "numToStr/Comment.nvim" -- Easily comment stuff
+
+    use {
+        'kyazdani42/nvim-tree.lua',
+        requires = {
+            'kyazdani42/nvim-web-devicons', -- optional, for file icon
+        },
+        config = function()
+            require('plugins.nvimtree').setup()
+        end
+    }
+
+    use 'nvim-lualine/lualine.nvim'
+
   use {
     'folke/which-key.nvim',
     config = function()
@@ -106,7 +120,6 @@ return packer.startup(function(use)
   use {
     'neovim/nvim-lspconfig',
     'williamboman/nvim-lsp-installer',
-    'tamago324/nlsp-settings.nvim'
   }
 
   use {
@@ -120,15 +133,18 @@ return packer.startup(function(use)
     end
   }
 
+    use 'lewis6991/impatient.nvim'
+    use "lukas-reineke/indent-blankline.nvim"
+
+    use 'goolord/alpha-nvim'
+    use "antoinemadec/FixCursorHold.nvim" -- This is needed to fix lsp doc highlight
+
   use {
-    'kyazdani42/nvim-tree.lua',
-    requires = {
-      'kyazdani42/nvim-web-devicons', -- optional, for file icon
-    },
-    config = function() 
-        require('plugins/nvimtree').setup()
-    end
+      'nvim-treesitter/nvim-treesitter',
+      run = ":TSUpdate",
   }
+
+  use 'JoosepAlviste/nvim-ts-context-commentstring'
 
   --[[
   use {
@@ -143,11 +159,11 @@ return packer.startup(function(use)
   use "saadparwaiz1/cmp_luasnip" -- snippet completions
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
-  
+
   -- Colourschemes
-  use 'lunarvim/colorschemes'
+  -- use 'lunarvim/colorschemes'
   use 'romgrk/doom-one.vim'
-  
+
   if PACKER_BOOTSTRAP then
       require('packer').sync()
   end

@@ -4,18 +4,25 @@ let g:mapleader = "\<Space>"
 " local mapreader?
 lua require('user.options')
 lua require('user.keymaps')
+
 lua require('plugins')
 lua require('user.colourscheme')
 lua require('plugins.cmp')
 lua require('plugins.lsp')
 lua require('plugins.telescope')
-
+lua require('plugins.treesitter')
+lua require('plugins.comment')
+lua require('plugins.nvimtree').after_setup()
+lua require('plugins.lualine')
+lua require('plugins.project')
+lua require('plugins.impatient')
+lua require('plugins.indentline')
+lua require('plugins.alpha')
 lua require('plugins/whichkey')
 lua require('plugins/barbar')
 "lua require('plugins/coq')
 
 
-set timeoutlen=400
 set linebreak
 
 " Vim settings
