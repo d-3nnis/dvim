@@ -31,6 +31,14 @@ lsp_installer.on_server_ready(function(server)
          opts = vim.tbl_deep_extend("force", ccls_opts, opts)
      end
 
+     if server.name == "ltex" then
+         opts = opts
+     end
+
+    if server.name == "rust_analyzer" then
+        opts = opts
+    end
+
 	-- This setup() function is exactly the same as lspconfig's setup function.
 	-- Refer to https://github.com/neovim/nvim-lspconfig/blob/master/doc/server_configurations.md
 	server:setup(opts)

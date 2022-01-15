@@ -95,7 +95,9 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
 
   use {
-    'folke/which-key.nvim',
+    --'folke/which-key.nvim',
+    "zeertzjq/which-key.nvim",
+    branch = "patch-1",
     config = function()
       require("which-key").setup {
       }

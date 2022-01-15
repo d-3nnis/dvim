@@ -1,5 +1,5 @@
 -- :help options
-
+local opt = vim.opt
 vim.opt.cmdheight = 2
 vim.opt.clipboard = "unnamedplus"
 vim.opt.fileencoding = "utf-8"
@@ -11,3 +11,12 @@ vim.opt.timeoutlen = 100                       -- time to wait for a mapped sequ
 vim.opt.undofile = true                         -- enable persistent undo
 vim.opt.updatetime = 300
 vim.opt.termguicolors = true
+
+opt.smartcase = true
+opt.smartindent = true
+opt.title = true 
+opt.expandtab = true
+opt.cursorline = true
+opt.scrolloff = 8
+opt.sidescrolloff = 8
+

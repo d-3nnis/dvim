@@ -1,25 +1,26 @@
 local which_key = require("which-key")
 
 which_key.register({
-  ["w"] = { "<cmd>w!<CR>", "Save" },
-  ["q"] = { "<cmd>q!<CR>", "Quit" },
-  ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
-  s = {
-      name = "Telescope",
-      t = {"<cmd>Telescope live_grep<cr>", "Grep files"},
-      f = {"<cmd>Telescope find_files<cr>", "Find file"},
-      r = {"<cmd>Telescope oldfiles<cr>", "Recent files"},
-  },
-  e = {
-      name = "Tree explorer",
-      e = {"<cmd>NvimTreeOpen<cr>", "Open Explorer Pane"},
-      c = {"<cmd>NvimTreeClose<cr>", "Close Explorer Pane"},
-  },
+    ["w"] = { "<cmd>w!<CR>", "Save" },
+    ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+    s = {
+        name = "Telescope",
+        t = {"<cmd>Telescope live_grep<cr>", "Grep files"},
+        f = {"<cmd>Telescope find_files<cr>", "Find file"},
+        r = {"<cmd>Telescope oldfiles<cr>", "Recent files"},
+    },
+    e = {
+        name = "Tree explorer",
+        e = {"<cmd>NvimTreeOpen<cr>", "Open Explorer Pane"},
+        c = {"<cmd>NvimTreeClose<cr>", "Close Explorer Pane"},
+        r = {"<cmd>NvimTreeRefresh<cr>", "Refresh Explorer Pane"},
+    },
     l = {
     name = "LSP",
     a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
     d = {
-      "<cmd>Telescope lsp_document_diagnostics<cr>",
+      "<cmd>Telescope diagnostic bufnr=0<cr>",
       "Document Diagnostics",
     },
     w = {

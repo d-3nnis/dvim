@@ -3,4 +3,5 @@ if not status_ok then
   return
 end
 
-impatient.enable_profile()
+-- screw this
+--impatient.enable_profile()
