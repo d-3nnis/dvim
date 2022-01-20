@@ -6,6 +6,7 @@ lua require('user.options')
 lua require('user.keymaps')
 
 lua require('plugins')
+lua require('plugins.rust_tools')
 lua require('user.colourscheme')
 lua require('plugins.cmp')
 lua require('plugins.lsp')
@@ -18,20 +19,14 @@ lua require('plugins.project')
 lua require('plugins.impatient')
 lua require('plugins.indentline')
 lua require('plugins.alpha')
-lua require('plugins/whichkey')
-lua require('plugins/barbar')
+lua require('plugins.whichkey')
+lua require('plugins.barbar')
 "lua require('plugins/coq')
 
 
 set linebreak
 
 " Vim settings
-"nnoremap j gj
-"nnoremap k gk
-set textwidth=80
-" 4 spaces for a tab
-set tabstop=4 softtabstop=0 expandtab shiftwidth=4 smarttab
-
 " do something smart in lua? like in https://jeffkreeftmeijer.com/vim-number/
 set number relativenumber
 

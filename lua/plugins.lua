@@ -162,6 +162,13 @@ return packer.startup(function(use)
   use "hrsh7th/cmp-nvim-lsp"
   use "hrsh7th/cmp-nvim-lua"
 
+  use {
+    'simrat39/rust-tools.nvim',
+    config = function ()
+        require('rust-tools').setup({})
+    end
+  }
+
   -- Colourschemes
   -- use 'lunarvim/colorschemes'
   use 'romgrk/doom-one.vim'

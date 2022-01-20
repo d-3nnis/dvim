@@ -34,3 +34,6 @@ keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 
 keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+
+-- comments
+keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>', opts)

@@ -3,7 +3,8 @@ local which_key = require("which-key")
 which_key.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    ["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+    --["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
+    ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", "Comment" },
     s = {
         name = "Telescope",
         t = {"<cmd>Telescope live_grep<cr>", "Grep files"},
@@ -46,7 +47,11 @@ which_key.register({
       "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
       "Workspace Symbols",
     },
-  },
+    },
+    r = {
+        name = "Rust",
+        h = { "<cmd>lua require('rust-tools.inlay_hints').toggle_inlay_hints()<cr>", "Toggle Inlay Hints" },
+    },
   -- add one for window
   -- add one for barbar
   -- easy access
@@ -61,7 +66,7 @@ which_key.register({
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 })
-
+--[[
 which_key.register({
   ["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
 }
@@ -73,4 +78,4 @@ which_key.register({
   noremap = true, -- use `noremap` when creating keymaps
   nowait = true, -- use `nowait` when creating keymaps
 })
-
+--]]

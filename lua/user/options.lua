@@ -13,10 +13,16 @@ vim.opt.updatetime = 300
 vim.opt.termguicolors = true
 
 opt.smartcase = true
-opt.smartindent = true
-opt.title = true 
+--opt.autoindent = true
+--opt.smartindent = true
+opt.tabstop = 4
+opt.softtabstop = 0
+opt.expandtab = true
+opt.shiftwidth = 0
+opt.smarttab = true
+opt.title = true
 opt.expandtab = true
 opt.cursorline = true
 opt.scrolloff = 8
 opt.sidescrolloff = 8
-
+opt.textwidth = 80
