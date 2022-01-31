@@ -72,7 +72,7 @@ return packer.startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    requires = { {'nvim-lua/plenary.nvim'} }
+    requires = { {'nvim-lua/plenary.nvim'}, {"BurntSushi/ripgrep"}}
   }
 
   use {
@@ -95,9 +95,7 @@ return packer.startup(function(use)
     use 'nvim-lualine/lualine.nvim'
 
   use {
-    --'folke/which-key.nvim',
-    "zeertzjq/which-key.nvim",
-    branch = "patch-1",
+    'folke/which-key.nvim',
     config = function()
       require("which-key").setup {
       }
