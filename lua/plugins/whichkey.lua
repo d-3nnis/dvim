@@ -55,6 +55,10 @@ which_key.register({
         name = "Rust",
         h = { "<cmd>lua require('rust-tools.inlay_hints').toggle_inlay_hints()<cr>", "Toggle Inlay Hints" },
     },
+    o = {
+        name = "Misc",
+        q = { "gq", "Reformat line widths" }
+    },
   -- add one for window
   -- add one for barbar
   -- easy access

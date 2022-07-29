@@ -26,14 +26,31 @@ keymap("n", "<C-Down>", ":resize -2<CR>", opts)
 keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
+keymap("n", "<C-gq>", "<CMD>gqq<CR>", opts)
+
 -- Navigate buffers
 -- keymap("n", "<S-l>", ":bnext<CR>", opts)
 -- keymap("n", "<S-h>", ":bprevious<CR>", opts)
 
 -- There's more in keymaps.lua from neovim from scratch, 02-keymaps branch
 
-
-keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "<c-t>", "<cmd>Telescope live_grep<cr>", opts)
+-- keymap("n", "tt", "<cmd>Telescope live_grep<cr>", opts)
 
 -- comments
 keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>', opts)
+-- keymap('n', '<C-_>', 'gcc', opts)
+-- keymap('v', '<C-_>', 'gc', opts)
+-- keymap('<C-_>', 'gcc', opts)
+-- keymap('v', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_blockwise()<CR>', opts)
+
+-- keymap('t', '<C-t>', '<CMD>ToggleTerm dir=' .. '~' .. ' direction=float<CR>',opts)
+function toggleterm(direction)
+    local curdir = vim.fn.getcwd()
+    return '<CMD>ToggleTerm size=40 dir=' .. curdir .. ' direction=' .. direction .. '<CR>'
+end
+
+keymap('n', '<C-t>f', toggleterm('float'), opts)
+keymap('n', '<C-t>s', toggleterm('horizontal'), opts)
+keymap('n', '<C-t>v', toggleterm('vertical'), opts)
+

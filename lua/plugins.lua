@@ -167,6 +167,37 @@ return packer.startup(function(use)
     end
   }
 
+    use {
+        "nvim-neorg/neorg",
+        after = "nvim-treesitter", -- You may want to specify Telescope here as well
+        config = function()
+            require('neorg').setup {
+                    load = {
+        ["core.defaults"] = {},
+        ["core.gtd.base"] = {},
+        ["core.gtd.ui"] = {},
+        ["core.gtd.helpers"] = {},
+        ["core.gtd.queries"] = {},
+        ["core.norg.dirman"] = {
+            config = {
+                workspaces = {
+                    work = "~/notes/work",
+                    home = "~/notes/home",
+                }
+            }
+        }
+    }
+            }
+        end
+    }
+
+    use {
+        "akinsho/toggleterm.nvim",
+        config = function()
+            
+        end
+    }
+
   -- Colourschemes
   -- use 'lunarvim/colorschemes'
   use 'romgrk/doom-one.vim'

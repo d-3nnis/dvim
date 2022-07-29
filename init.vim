@@ -1,7 +1,7 @@
 "lua require('bootstrap/packer')
 nnoremap <Space> <Nop>
 let g:mapleader = "\<Space>"
-" local mapreader?
+let g:maplocalleader = ";"
 lua require('user.options')
 lua require('user.keymaps')
 
@@ -21,8 +21,7 @@ lua require('plugins.indentline')
 lua require('plugins.alpha')
 lua require('plugins.whichkey')
 lua require('plugins.barbar')
-"lua require('plugins/coq')
-
+lua require('plugins.toggleterm')
 
 set linebreak
 
