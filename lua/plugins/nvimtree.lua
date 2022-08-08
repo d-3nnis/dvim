@@ -1,8 +1,6 @@
 local M = {}
 
-function M.after_setup()
-    
-
+function M.setup()
     local status_ok, nvim_tree = pcall(require, "nvim-tree")
     if not status_ok then
       return
@@ -116,34 +114,22 @@ default = "",
     }
 end
 
-function M.setup()
-    local tree_view = require "nvim-tree.view"
-    local open = tree_view.open
+local nvim_tree_events = require('nvim-tree.events')
+local bufferline_state = require('bufferline.state')
 
-    tree_view.open = function()
-        M.on_open()
-        open()
-    end
-    vim.cmd "au WinClosed * lua require('plugins/nvimtree').on_close()"
-    require("nvim-tree").setup {
-        update_focused_file = {
-            enable = true,
-            update_cwd = true,
-            ignore_list = {},
-        }
-    }
+local function get_tree_size()
+  return vim.api.nvim_win_get_width(0)
 end
+nvim_tree_events.on_tree_open(function()
+  bufferline_state.set_offset(get_tree_size())
+end)
 
-function M.on_open()
-    require'bufferline.state'.set_offset(30, 'FileTree')
-end
+nvim_tree_events.on_tree_resize(function()
+  bufferline_state.set_offset(get_tree_size())
+end)
 
-function M.on_close()
-  local buf = tonumber(vim.fn.expand "<abuf>")
-  local ft = vim.api.nvim_buf_get_option(buf, "filetype")
-  if ft == "NvimTree" and package.loaded["bufferline.state"] then
-    require("bufferline.state").set_offset(0)
-  end
-end
+nvim_tree_events.on_tree_close(function()
+  bufferline_state.set_offset(0)
+end)
 
 return M

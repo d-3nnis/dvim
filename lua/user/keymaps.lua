@@ -46,8 +46,8 @@ keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<
 
 -- keymap('t', '<C-t>', '<CMD>ToggleTerm dir=' .. '~' .. ' direction=float<CR>',opts)
 function toggleterm(direction)
-    local curdir = vim.fn.getcwd()
-    return '<CMD>ToggleTerm size=40 dir=' .. curdir .. ' direction=' .. direction .. '<CR>'
+    --local curdir = vim.fn.getcwd()
+    return '<CMD>ToggleTerm size=40 dir=git_dir direction=' .. direction .. '<CR>'
 end
 
 keymap('n', '<C-t>f', toggleterm('float'), opts)

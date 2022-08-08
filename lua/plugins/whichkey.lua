@@ -13,6 +13,8 @@ which_key.register({
         t = {"<cmd>Telescope live_grep<cr>", "Grep files"},
         f = {"<cmd>Telescope find_files<cr>", "Find file"},
         r = {"<cmd>Telescope oldfiles<cr>", "Recent files"},
+        k = {"<cmd>Telescope keymaps<cr>", "Keymaps list"},
+        h = {"<cmd>Telescope colorscheme<cr>", "List of themes"},
     },
     e = {
         name = "Tree explorer",
@@ -62,6 +64,12 @@ which_key.register({
   -- add one for window
   -- add one for barbar
   -- easy access
+    b = {
+        name = "Buffers",
+        l = { "<Cmd>BufferOrderByLanguage<CR>", "Order Buffers by Language" },
+        p = {"<cmd>BufferPin<cr>", "Pin Buffer"},
+        c = {"<cmd>BufferClose<cr>", "Close Buffer"},
+    },
   ["c"] = {"<cmd>BufferClose<cr>", "Close Buffer"},
   ["f"] = {"<cmd>Telescope find_files<cr>", "Find file"},
   ["h"] = {"<cmd>nohls<cr>", "Hide search highlight"},

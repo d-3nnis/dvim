@@ -110,7 +110,18 @@ return packer.startup(function(use)
 
   use {
     'romgrk/barbar.nvim',
-    requires = {'kyazdani42/nvim-web-devicons'}
+    requires = {'kyazdani42/nvim-web-devicons'},
+    config = function()
+        require'bufferline'.setup {
+          auto_hide = false,
+          icons = true,
+          icon_separator_active = '▎',
+          icon_separator_inactive = '▎',
+          icon_close_tab = '',
+          icon_close_tab_modified = '●',
+          icon_pinned = '車',
+        }
+    end
   }
 
     -- snippets
@@ -143,6 +154,7 @@ return packer.startup(function(use)
       'nvim-treesitter/nvim-treesitter',
       run = ":TSUpdate",
   }
+  use 'nvim-treesitter/nvim-treesitter-context'
 
   use 'JoosepAlviste/nvim-ts-context-commentstring'
 
@@ -201,6 +213,10 @@ return packer.startup(function(use)
   -- Colourschemes
   -- use 'lunarvim/colorschemes'
   use 'romgrk/doom-one.vim'
+  use {
+    'sonph/onehalf',
+    rtp = "vim",
+  }
 
   if PACKER_BOOTSTRAP then
       require('packer').sync()
