@@ -3,7 +3,11 @@ if not status_ok then
   return
 end
 
-tt.setup{}
+tt.setup {
+    float_opts = {
+        border = 'curved'
+    }
+}
 
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}

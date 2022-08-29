@@ -47,10 +47,19 @@ keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<
 -- keymap('t', '<C-t>', '<CMD>ToggleTerm dir=' .. '~' .. ' direction=float<CR>',opts)
 function toggleterm(direction)
     --local curdir = vim.fn.getcwd()
-    return '<CMD>ToggleTerm size=40 dir=git_dir direction=' .. direction .. '<CR>'
+    local size = 0
+    if direction == 'horizontal' then
+        size = 15
+    elseif direction == 'vertical' then
+        size = vim.o.columns * 0.4
+    end
+    return '<CMD>ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction .. '<CR>'
 end
 
 keymap('n', '<C-t>f', toggleterm('float'), opts)
 keymap('n', '<C-t>s', toggleterm('horizontal'), opts)
 keymap('n', '<C-t>v', toggleterm('vertical'), opts)
 
+-- combine these two
+keymap('n', '<A-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)
+keymap('i', '<A-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)

@@ -26,11 +26,11 @@ project.setup({
 	patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
 
 	---@ Show hidden files in telescope when searching for files in a project
-	show_hidden = false,
+	show_hidden = true,
 
 	---@usage When set to false, you will get a message when project.nvim changes your directory.
 	-- When set to false, you will get a message when project.nvim changes your directory.
-	silent_chdir = true,
+	silent_chdir = false,
 
 	---@usage list of lsp client names to ignore when using **lsp** detection. eg: { "efm", ... }
 	ignore_lsp = {},
