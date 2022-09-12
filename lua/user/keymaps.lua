@@ -45,7 +45,7 @@ keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<
 -- keymap('v', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_blockwise()<CR>', opts)
 
 -- keymap('t', '<C-t>', '<CMD>ToggleTerm dir=' .. '~' .. ' direction=float<CR>',opts)
-function toggleterm(direction)
+local function toggleterm(direction)
     --local curdir = vim.fn.getcwd()
     local size = 0
     if direction == 'horizontal' then

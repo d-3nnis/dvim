@@ -3,6 +3,8 @@ if not status_ok then
     return
 end
 
+local gs = package.loaded.gitsigns
+
 which_key.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
@@ -35,7 +37,6 @@ which_key.register({
         },
         f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
-        I = { "<cmd>LspInstallInfo<cr>", "Installer Info" },
         j = {
             "<cmd>lua vim.diagnostic.goto_next()<CR>",
             "Next Diagnostic",
@@ -53,10 +54,6 @@ which_key.register({
             "Workspace Symbols",
         },
     },
-    r = {
-        name = "Rust",
-        h = { "<cmd>lua require('rust-tools.inlay_hints').toggle_inlay_hints()<cr>", "Toggle Inlay Hints" },
-    },
     o = {
         name = "Misc",
         q = { "gq", "Reformat line widths" }
@@ -70,6 +67,23 @@ which_key.register({
         p = { "<cmd>BufferPin<cr>", "Pin Buffer" },
         c = { "<cmd>BufferClose<cr>", "Close Buffer" },
     },
+    j = {
+        name = "Gitsigns",
+        e = { function() gs.preview_hunk() end, "Preview Hunk" },
+        b = { function() gs.blame_line{full=true} end, "Blame Line" }
+        --map('n', '', function() gs.blame_line { full = true } end)
+        --map('n', 'bp', gs.preview_hunk)
+        --map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
+        --map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
+        --map('n', '<leader>hS', gs.stage_buffer)
+        --map('n', '<leader>hu', gs.undo_stage_hunk)
+        --map('n', '<leader>hR', gs.reset_buffer)
+        ----map('n', '<leader>tb', gs.toggle_current_line_blame)
+        --map('n', '<leader>hd', gs.diffthis)
+        --map('n', '<leader>hD', function() gs.diffthis('~') end)
+        --map('n', '<leader>td', gs.toggle_deleted)
+
+    },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
     ["h"] = { "<cmd>nohls<cr>", "Hide search highlight" },
@@ -81,16 +95,4 @@ which_key.register({
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
 })
---[[
-which_key.register({
-  ["/"] = { "<ESC><CMD>lua require('Comment.api').gc(vim.fn.visualmode())<CR>", "Comment" },
-}
-, {
-  mode = "v", -- VISUAL mode
-  prefix = "<leader>",
-  buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-  silent = true, -- use `silent` when creating keymaps
-  noremap = true, -- use `noremap` when creating keymaps
-  nowait = true, -- use `nowait` when creating keymaps
-})
---]]
+
