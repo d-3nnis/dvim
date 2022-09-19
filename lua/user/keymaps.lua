@@ -4,7 +4,6 @@ local opts = { noremap = true, silent = true }
 
 -- Shorten function name
 local keymap = vim.api.nvim_set_keymap
-
 -- Modes
 --   normal_mode = "n",
 --   insert_mode = "i",
@@ -38,7 +37,7 @@ keymap("n", "<C-gq>", "<CMD>gqq<CR>", opts)
 -- keymap("n", "tt", "<cmd>Telescope live_grep<cr>", opts)
 
 -- comments
-keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle_current_linewise()<CR>', opts)
+keymap('n', '<C-_>', '<CMD>lua require("Comment.api").toggle.linewise.current()<CR>', opts)
 -- keymap('n', '<C-_>', 'gcc', opts)
 -- keymap('v', '<C-_>', 'gc', opts)
 -- keymap('<C-_>', 'gcc', opts)
@@ -61,5 +60,18 @@ keymap('n', '<C-t>s', toggleterm('horizontal'), opts)
 keymap('n', '<C-t>v', toggleterm('vertical'), opts)
 
 -- combine these two
-keymap('n', '<A-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)
-keymap('i', '<A-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)
+keymap('n', '<C-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)
+keymap('i', '<C-s>', '<CMD>ClangdSwitchSourceHeader<CR>', opts)
+
+
+function toggle_background()
+  if vim.opt.background:get() == 'dark' then
+    vim.opt.background = 'light'
+  else
+    vim.opt.background = 'dark'
+  end
+  print("Background is now: " .. vim.opt.background:get())
+end
+
+keymap('n', 'tb', ':lua toggle_background()<CR>', opts)
+

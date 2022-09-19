@@ -43,7 +43,7 @@ packer.init {
     display              = {
         non_interactive = false, -- If true, disable display windows for all operations
         open_fn         = function()
-            return require('packer.util').float { border = "rounded" }
+            return require('packer.util').float { border = "solid" }
         end,
         open_cmd        = '65vnew \\[packer\\]', -- An optional command to open a window for packer's display
         working_sym     = '⟳', -- The symbol for a plugin being installed/updated
@@ -130,29 +130,18 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    use {
-        "williamboman/mason.nvim",
-        config = function()
-            require("mason").setup{
-                ui = {
-                    border = 'solid'
-                }
-            }
-        end
-    }
-
     use { 
+        "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
-        after = "mason.nvim",
-        requires = {"mason.nvim"},
-        config = function()
-            require("mason-lspconfig").setup()
-        end
-    }
-
-    use { "neovim/nvim-lspconfig",
-        after = "mason-lspconfig.nvim",
-        requires = {"mason-lspconfig.nvim"},
+        "neovim/nvim-lspconfig",
+        --after = "mason.nvim",
+        --requires = {"mason.nvim"},
+        --[[ config = function()
+            require("mason-lspconfig").setup({
+                ensure_installed = { "clang", "sumneko_lua", "rust_analyzer", "pyright" },
+                automatic_installation = true,
+            })
+        end ]]
     }
 
     use {
@@ -224,12 +213,49 @@ return packer.startup(function(use)
     --}
 
     -- Colourschemes
-    -- use 'lunarvim/colorschemes'
-    use 'romgrk/doom-one.vim'
+    --use 'romgrk/doom-one.vim'
     use {
         'sonph/onehalf',
         rtp = "vim",
     }
+
+    use({
+        'NTBBloodbath/doom-one.nvim',
+        setup = function()
+            -- Add color to cursor
+            vim.g.doom_one_cursor_coloring = false
+            -- Set :terminal colors
+            vim.g.doom_one_terminal_colors = true
+            -- Enable italic comments
+            vim.g.doom_one_italic_comments = true
+            -- Enable TS support
+            vim.g.doom_one_enable_treesitter = true
+            -- Color whole diagnostic text or only underline
+            vim.g.doom_one_diagnostics_text_color = false
+            -- Enable transparent background
+            vim.g.doom_one_transparent_background = false
+
+            -- Pumblend transparency
+            vim.g.doom_one_pumblend_enable = false
+            vim.g.doom_one_pumblend_transparency = 20
+
+            -- Plugins integration
+            vim.g.doom_one_plugin_neorg = true
+            vim.g.doom_one_plugin_barbar = true
+            vim.g.doom_one_plugin_telescope = true
+            vim.g.doom_one_plugin_neogit = false
+            vim.g.doom_one_plugin_nvim_tree = true
+            vim.g.doom_one_plugin_dashboard = false
+            vim.g.doom_one_plugin_startify = false
+            vim.g.doom_one_plugin_whichkey = true
+            vim.g.doom_one_plugin_indent_blankline = true
+            vim.g.doom_one_plugin_vim_illuminate = false
+            vim.g.doom_one_plugin_lspsaga = false
+        end,
+        config = function()
+            vim.cmd("colorscheme doom-one")
+        end,
+    })
 
     if PACKER_BOOTSTRAP then
         require('packer').sync()

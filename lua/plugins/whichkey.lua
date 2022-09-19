@@ -8,8 +8,7 @@ local gs = package.loaded.gitsigns
 which_key.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
-    --["/"] = { "<cmd>lua require('Comment').toggle()<CR>", "Comment" },
-    ["/"] = { "<cmd>lua require('Comment.api').toggle_current_linewise()<cr>", "Comment" },
+    ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
     s = {
         name = "Telescope",
         t = { "<cmd>Telescope live_grep<cr>", "Grep files" },

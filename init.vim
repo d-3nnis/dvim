@@ -7,6 +7,7 @@ lua require('user.keymaps')
 
 lua require('plugins')
 lua require('user.colourscheme')
+lua require('plugins.mason')
 lua require('plugins.cmp')
 lua require('plugins.lsp')
 lua require('plugins.telescope')

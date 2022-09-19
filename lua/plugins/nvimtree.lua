@@ -32,7 +32,7 @@ function M.setup()
         renderer = {
             icons = {
                 glyphs = {
-default = "",
+       default = "",
       symlink = "",
       git = {
         unstaged = "",

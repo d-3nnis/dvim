@@ -1,3 +1,4 @@
+--[[
 vim.cmd [[
 try
   colorscheme doom-one
@@ -6,3 +7,4 @@ catch /^Vim\%((\a\+)\)\=:E185/
   set background=dark
 endtry
 ]]
+--]]
