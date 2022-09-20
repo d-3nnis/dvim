@@ -130,7 +130,7 @@ return packer.startup(function(use)
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    use { 
+    use {
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "neovim/nvim-lspconfig",
@@ -180,7 +180,7 @@ return packer.startup(function(use)
 
     use {
         "nvim-neorg/neorg",
-        after = {"nvim-treesitter", "telescope.nvim"},
+        after = { "nvim-treesitter", "telescope.nvim" },
         tag = '0.0.12',
         config = function()
             require('neorg').setup {
@@ -208,8 +208,8 @@ return packer.startup(function(use)
     }
 
     --use {
-        --'lewis6991/gitsigns.nvim',
-        --tag = 'release', -- To use the latest release
+    --'lewis6991/gitsigns.nvim',
+    --tag = 'release', -- To use the latest release
     --}
 
     -- Colourschemes
@@ -256,6 +256,12 @@ return packer.startup(function(use)
             vim.cmd("colorscheme doom-one")
         end,
     })
+
+    use { 'gen740/SmoothCursor.nvim',
+        config = function()
+            require('smoothcursor').setup()
+        end
+    }
 
     if PACKER_BOOTSTRAP then
         require('packer').sync()
