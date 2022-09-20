@@ -23,6 +23,7 @@ lua require('plugins.gitsigns')
 lua require('plugins.whichkey')
 lua require('plugins.barbar')
 lua require('plugins.toggleterm')
+lua require('plugins.smoothcursor')
 
 set linebreak
 

@@ -258,9 +258,6 @@ return packer.startup(function(use)
     })
 
     use { 'gen740/SmoothCursor.nvim',
-        config = function()
-            require('smoothcursor').setup()
-        end
     }
 
     if PACKER_BOOTSTRAP then
