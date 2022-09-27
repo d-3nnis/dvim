@@ -257,8 +257,8 @@ return packer.startup(function(use)
         end,
     })
 
-    use { 'gen740/SmoothCursor.nvim',
-    }
+    use 'gen740/SmoothCursor.nvim'
+    use 'jose-elias-alvarez/null-ls.nvim'
 
     if PACKER_BOOTSTRAP then
         require('packer').sync()

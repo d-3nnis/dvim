@@ -24,6 +24,7 @@ lua require('plugins.whichkey')
 lua require('plugins.barbar')
 lua require('plugins.toggleterm')
 lua require('plugins.smoothcursor')
+lua require('plugins.nullls')
 
 set linebreak
 
