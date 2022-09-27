@@ -87,7 +87,6 @@ packer.startup(function(use)
     use 'romgrk/barbar.nvim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
-    use 'ellisonleao/gruvbox.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'rcarriga/nvim-notify'
     use 'gen740/SmoothCursor.nvim' --TODO add arrows that change direction when moving up or down :)
@@ -112,7 +111,11 @@ packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
-    ----------------
+
+    -- Colourschemes
+    use 'ellisonleao/gruvbox.nvim'
+    use 'sainnhe/everforest'
+    use 'navarasu/onedark.nvim'
 
     -- TODO FIX ALL THE PACKER BOOTSTRAP STUFf
     if PACKER_BOOTSTRAP then

@@ -42,4 +42,4 @@ o.list = true
 -- Misc Options --
 o.clipboard = "unnamedplus"
 o.number = true
-vim.cmd([[colorscheme gruvbox]])
+--vim.cmd([[colorscheme gruvbox]])

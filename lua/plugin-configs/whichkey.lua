@@ -18,7 +18,7 @@ wk.register({
         name = "Tree explorer",
         e = { "<cmd>Neotree filesystem left<cr>", "Open Explorer Pane" },
         c = { "<cmd>NeoTreeClose<cr>", "Close Explorer Pane" },
-        --r = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer Pane" },
+        -- TODO expand options here
     },
     l = {
         name = "LSP",
