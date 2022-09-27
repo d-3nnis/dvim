@@ -1,7 +1,5 @@
-local status_ok, tt = pcall(require, "toggleterm")
-if not status_ok then
-  return
-end
+local tt = safe_require('toggleterm')
+if not tt then return end
 
 tt.setup {
     float_opts = {
@@ -11,9 +9,6 @@ tt.setup {
 
 function _G.set_terminal_keymaps()
   local opts = {noremap = true}
-    -- I would like this to work differently, if there is already a terminal open, it should just close,
-    -- but currently it will still check which one to close, using float or split.
-    -- some kind of function
   vim.api.nvim_buf_set_keymap(0, 't', '<C-t>', [[<C-\><C-n><CMD>q<CR>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-d>', [[<C-\><C-n>]], opts)
   vim.api.nvim_buf_set_keymap(0, 't', '<C-h>', [[<C-\><C-n><C-W>h]], opts)

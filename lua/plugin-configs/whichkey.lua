@@ -1,11 +1,7 @@
-local status_ok, which_key = pcall(require, "which-key")
-if not status_ok then
-    return
-end
+local wk = safe_require("which-key")
+if not wk then return end
 
-local gs = package.loaded.gitsigns
-
-which_key.register({
+wk.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
@@ -16,25 +12,26 @@ which_key.register({
         r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
         h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
+        n = { "<cmd>Telescope notify<cr>", "Notify messages" },
     },
     e = {
         name = "Tree explorer",
-        e = { "<cmd>NvimTreeOpen<cr>", "Open Explorer Pane" },
-        c = { "<cmd>NvimTreeClose<cr>", "Close Explorer Pane" },
-        r = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer Pane" },
+        e = { "<cmd>Neotree filesystem left<cr>", "Open Explorer Pane" },
+        c = { "<cmd>NeoTreeClose<cr>", "Close Explorer Pane" },
+        --r = { "<cmd>NvimTreeRefresh<cr>", "Refresh Explorer Pane" },
     },
     l = {
         name = "LSP",
         a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
         d = {
-            "<cmd>Telescope diagnostic bufnr=0<cr>",
+            "<cmd>Telescope diagnostics<cr>",
             "Document Diagnostics",
         },
         w = {
             "<cmd>Telescope lsp_workspace_diagnostics<cr>",
             "Workspace Diagnostics",
         },
-        f = { "<cmd>lua vim.lsp.buf.formatting()<cr>", "Format" },
+        f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format" },
         i = { "<cmd>LspInfo<cr>", "Info" },
         j = {
             "<cmd>lua vim.diagnostic.goto_next()<CR>",
@@ -44,8 +41,6 @@ which_key.register({
             "<cmd>lua vim.diagnostic.goto_prev()<cr>",
             "Prev Diagnostic",
         },
-        l = { "<cmd>lua vim.lsp.codelens.run()<cr>", "CodeLens Action" },
-        q = { "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", "Quickfix" },
         r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
         s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
         S = {
@@ -69,7 +64,7 @@ which_key.register({
     j = {
         name = "Gitsigns",
         e = { function() gs.preview_hunk() end, "Preview Hunk" },
-        b = { function() gs.blame_line{full=true} end, "Blame Line" }
+        b = { function() gs.blame_line { full = true } end, "Blame Line" }
         --map('n', '', function() gs.blame_line { full = true } end)
         --map('n', 'bp', gs.preview_hunk)
         --map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
@@ -94,4 +89,3 @@ which_key.register({
     noremap = true, -- use `noremap` when creating keymaps
     nowait = true, -- use `nowait` when creating keymaps
 })
-
