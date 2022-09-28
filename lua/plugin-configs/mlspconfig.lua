@@ -2,7 +2,7 @@ local mlconfig = safe_require('mason-lspconfig')
 if not mlconfig then return end
 
 mlconfig.setup {
-    ensure_installed = { 'sumneko_lua' },
+    ensure_installed = { 'sumneko_lua', 'clangd' },
     automatic_installation = true,
 }
 
@@ -21,4 +21,6 @@ lspconfig.sumneko_lua.setup {
     capabilities=capabilities,
 }
 
-
+lspconfig.clangd.setup {
+    capabilities = capabilities,
+}
