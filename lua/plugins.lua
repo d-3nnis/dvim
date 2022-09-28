@@ -80,11 +80,11 @@ packer.startup(function(use)
         }
     }
 
-    use { 'nvim-treesitter/nvim-treesitter', run = ':TsUpdate' }
+    use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
-    use 'romgrk/barbar.nvim'
+    use {'romgrk/barbar.nvim', tag = 'release/1.1.0'}
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -92,6 +92,8 @@ packer.startup(function(use)
     use 'gen740/SmoothCursor.nvim' --TODO add arrows that change direction when moving up or down :)
     use 'nvim-lualine/lualine.nvim'
     use 'akinsho/toggleterm.nvim'
+    use 'numToStr/Comment.nvim'
+    use 'ahmedkhalf/project.nvim'
 
     -- LSP Plugins --
     use {
@@ -125,7 +127,7 @@ end)
 
 -- TODO get rid of all these safe requires
 safe_require('plugin-configs/notify')
-safe_require('plugin-configs/telescope')
+require('plugin-configs/telescope')
 safe_require('plugin-configs/treesitter')
 safe_require('plugin-configs/whichkey')
 safe_require('plugin-configs/neotree')

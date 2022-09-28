@@ -1,9 +1,9 @@
 local nt = safe_require('neo-tree')
 local nt_events = safe_require('neo-tree.events')
-local bufferline_state = safe_require('bufferline.state')
+local bl = safe_require('bufferline.state')
 if not nt then return end
 if not nt_events then return end
-if not bufferline_state then return end
+if not bl then return end
 
 local function get_tree_size(args)
     local width = vim.fn.winwidth(args.winid)
@@ -63,7 +63,7 @@ nt.setup({
                 -- Status type
                 untracked = "",
                 ignored   = "",
-                unstaged  = "",
+                unstaged  = "u",
                 staged    = "",
                 conflict  = "",
             }
@@ -139,7 +139,7 @@ nt.setup({
                 --"*/src/*/tsconfig.json",
             },
             always_show = { -- remains visible even if other settings would normally hide it
-                --".gitignored",
+                '*meta-*',
             },
             never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
                 --".DS_Store",
@@ -199,23 +199,23 @@ nt.setup({
         {
             event = "neo_tree_window_after_open",
             handler = function(args)
-                --print("neo_tree_window_before_open", vim.inspect(args))
+                --print("neo_tree_window_after_open", vim.inspect(args))
                 local width = get_tree_size(args)
-                bufferline_state.set_offset(width)
+                bl.set_offset(width)
             end
         },
         {
             event = "neo_tree_window_after_close",
             handler = function(args)
                 --print("close", vim.inspect(args))
-                bufferline_state.set_offset(0)
+                bl.set_offset(0)
             end
         }, {
             event = "vim_resized",
             handler = function(args)
                 print_inspect("resized", args)
                 local width = get_tree_size(args)
-                bufferline_state.set_offset(width)
+                bl.set_offset(width)
             end
         },
     }

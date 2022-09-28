@@ -13,3 +13,4 @@ t.setup {
 
 t.load_extension('ui-select')
 t.load_extension('notify')
+t.load_extension('projects')

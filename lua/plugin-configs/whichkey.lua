@@ -1,6 +1,8 @@
 local wk = safe_require("which-key")
 if not wk then return end
 
+wk.setup{}
+
 wk.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>q!<CR>", "Quit" },
