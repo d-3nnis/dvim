@@ -68,7 +68,7 @@ keymap('n', 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', opts)
 keymap('n', 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', opts)
 
 -- Displays a function's signature information
-keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
+--keymap('n', '<C-k>', '<cmd>lua vim.lsp.buf.signature_help()<cr>', opts)
 
 -- Renames all references to the symbol under the cursor
 keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)

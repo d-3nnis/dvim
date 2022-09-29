@@ -1,4 +1,3 @@
-require('bootstrap')
 require('initial-options')
 require('keymaps')
 require('globals')

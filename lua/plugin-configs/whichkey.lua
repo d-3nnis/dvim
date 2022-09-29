@@ -1,7 +1,9 @@
 local wk = safe_require("which-key")
 if not wk then return end
 
-wk.setup{}
+wk.setup {}
+local gs = safe_require('gitsigns')
+if not gs then return end
 
 wk.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -63,16 +65,14 @@ wk.register({
         p = { "<cmd>BufferPin<cr>", "Pin Buffer" },
         c = { "<cmd>BufferClose<cr>", "Close Buffer" },
     },
-    j = {
+    h = {
         name = "Gitsigns",
-        e = { function() gs.preview_hunk() end, "Preview Hunk" },
-        b = { function() gs.blame_line { full = true } end, "Blame Line" }
-        --map('n', '', function() gs.blame_line { full = true } end)
-        --map('n', 'bp', gs.preview_hunk)
-        --map({ 'n', 'v' }, '<leader>hs', ':Gitsigns stage_hunk<CR>')
-        --map({ 'n', 'v' }, '<leader>hr', ':Gitsigns reset_hunk<CR>')
-        --map('n', '<leader>hS', gs.stage_buffer)
-        --map('n', '<leader>hu', gs.undo_stage_hunk)
+        j = { function() gs.preview_hunk() end, "Preview Hunk" },
+        b = { function() gs.blame_line { full = true } end, "Blame Line" },
+        s = { function() gs.stage_hunk() end, "Stage Hunk" },
+        S = { function() gs.stage_buffer() end, "Stage Buffer" },
+        r = { function() gs.reset_hunk() end, "Reset Hunk" },
+        u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
         --map('n', '<leader>hR', gs.reset_buffer)
         ----map('n', '<leader>tb', gs.toggle_current_line_blame)
         --map('n', '<leader>hd', gs.diffthis)
@@ -82,7 +82,7 @@ wk.register({
     },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
-    ["h"] = { "<cmd>nohls<cr>", "Hide search highlight" },
+    ["m"] = { "<cmd>nohls<cr>", "Hide search highlight" },
 }, {
     mode = "n", -- NORMAL mode
     prefix = "<leader>",

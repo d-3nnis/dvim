@@ -84,7 +84,7 @@ packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
-    use {'romgrk/barbar.nvim', tag = 'release/1.1.0'}
+    use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -94,6 +94,8 @@ packer.startup(function(use)
     use 'akinsho/toggleterm.nvim'
     use 'numToStr/Comment.nvim'
     use 'ahmedkhalf/project.nvim'
+    use 'goolord/alpha-nvim'
+    use 'lewis6991/gitsigns.nvim'
 
     -- LSP Plugins --
     use {
@@ -141,3 +143,5 @@ require('plugin-configs/lualine')
 require('plugin-configs/cmp-setup')
 require('plugin-configs/toggleterm')
 require('plugin-configs/project')
+require('plugin-configs/alpha')
+require('plugin-configs/gitsigns')
