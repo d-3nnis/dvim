@@ -96,6 +96,7 @@ packer.startup(function(use)
     use 'ahmedkhalf/project.nvim'
     use 'goolord/alpha-nvim'
     use 'lewis6991/gitsigns.nvim'
+    use 'lewis6991/impatient.nvim'
 
     -- LSP Plugins --
     use {
@@ -127,7 +128,7 @@ packer.startup(function(use)
     end
 end)
 
--- TODO get rid of all these safe requires
+safe_require('impatient')
 require('plugin-configs/notify')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
