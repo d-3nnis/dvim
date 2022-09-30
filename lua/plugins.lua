@@ -104,11 +104,11 @@ packer.startup(function(use)
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
     }
-    -- snippets
+    -- Snippets
     use "L3MON4D3/LuaSnip" --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
-    -- cmp plugins
+    -- Cmp plugins
     use "hrsh7th/nvim-cmp" -- The completion plugin
     use "hrsh7th/cmp-buffer" -- buffer completions
     use "hrsh7th/cmp-path" -- path completions
@@ -116,6 +116,9 @@ packer.startup(function(use)
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
+
+    -- Specific LSP extensions
+    use 'p00f/clangd_extensions.nvim'
 
     -- Colourschemes
     use 'ellisonleao/gruvbox.nvim'

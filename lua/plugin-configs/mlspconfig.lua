@@ -18,9 +18,18 @@ lspconfig.sumneko_lua.setup {
             },
         },
     },
-    capabilities=capabilities,
-}
-
-lspconfig.clangd.setup {
     capabilities = capabilities,
 }
+
+local clangd_server_vars = {
+    capabilities = capabilities,
+}
+
+local clangd_ext = safe_require('clangd_extensions')
+if not clangd_ext then
+    lspconfig.clangd.setup(clangd_server_vars)
+else
+    clangd_ext.setup {
+        server = clangd_server_vars,
+    }
+end
