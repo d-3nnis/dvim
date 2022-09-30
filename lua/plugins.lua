@@ -98,6 +98,7 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
     use 'nvim-orgmode/orgmode'
+    use {'s1n7ax/nvim-window-picker', tag = 'v1.*', }
 
     -- LSP Plugins --
     use {
@@ -134,6 +135,7 @@ end)
 
 safe_require('impatient')
 require('plugin-configs/notify')
+require('plugin-configs/window-picker')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
 require('plugin-configs/whichkey')
