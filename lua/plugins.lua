@@ -97,6 +97,7 @@ packer.startup(function(use)
     use 'goolord/alpha-nvim'
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
+    use 'nvim-orgmode/orgmode'
 
     -- LSP Plugins --
     use {
@@ -149,3 +150,4 @@ require('plugin-configs/toggleterm')
 require('plugin-configs/project')
 require('plugin-configs/alpha')
 require('plugin-configs/gitsigns')
+require('plugin-configs/orgmode')

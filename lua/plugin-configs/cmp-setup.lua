@@ -85,6 +85,7 @@ cmp.setup {
         { name = "luasnip", keyword_length = 2 },
         { name = "buffer", keyword_length = 3 },
         { name = "path" },
+        { name = "orgmode" },
     },
     confirm_opts = {
         behavior = cmp.ConfirmBehavior.Replace,
