@@ -7,7 +7,7 @@ if not gs then return end
 
 wk.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
-    ["q"] = { "<cmd>q!<CR>", "Quit" },
+    ["q"] = { "<cmd>qa<CR>", "Quit" },
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
     s = {
         name = "Telescope",
