@@ -183,7 +183,8 @@ nt.setup({
     },
     git_status = {
         window = {
-            position = "float",
+            position = "left",
+    --[[
             mappings = {
                 ["A"]  = "git_add_all",
                 ["gu"] = "git_unstage_file",
@@ -193,30 +194,33 @@ nt.setup({
                 ["gp"] = "git_push",
                 ["gg"] = "git_commit_and_push",
             }
+--]]
         }
     },
+    --[[
     event_handlers = {
         {
             event = "neo_tree_window_after_open",
             handler = function(args)
                 --print("neo_tree_window_after_open", vim.inspect(args))
-                local width = get_tree_size(args)
-                bl.set_offset(width)
+                --local width = get_tree_size(args)
+                --bl.set_offset(width)
             end
         },
         {
             event = "neo_tree_window_after_close",
             handler = function(args)
                 --print("close", vim.inspect(args))
-                bl.set_offset(0)
+                --bl.set_offset(0)
             end
         }, {
             event = "vim_resized",
             handler = function(args)
-                print_inspect("resized", args)
-                local width = get_tree_size(args)
-                bl.set_offset(width)
+                --print_inspect("resized", args)
+                --local width = get_tree_size(args)
+                --bl.set_offset(width)
             end
         },
     }
+--]]
 })
