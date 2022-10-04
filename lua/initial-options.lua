@@ -42,4 +42,3 @@ o.list = true
 o.clipboard = "unnamedplus"
 o.number = true
 o.mouse = 'a'
---vim.cmd([[colorscheme gruvbox]])

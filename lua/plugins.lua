@@ -99,7 +99,6 @@ packer.startup(function(use)
     use 'lewis6991/impatient.nvim'
     use 'nvim-orgmode/orgmode'
     use {'s1n7ax/nvim-window-picker', tag = 'v1.*', }
-    use 'numToStr/Comment.nvim'
     use { "anuvyklack/windows.nvim",
         requires = {
             "anuvyklack/middleclass",
@@ -142,7 +141,6 @@ end)
 
 safe_require('impatient').enable_profile()
 require('plugin-configs/notify')
-require('plugin-configs/window-picker')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
 require('plugin-configs/whichkey')

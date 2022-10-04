@@ -5,4 +5,4 @@ if not onedark then return end
 
 onedark.setup { style = 'deep' }
 
-vim.cmd([[colorscheme gruvbox]])
+vim.cmd([[colorscheme everforest]])
