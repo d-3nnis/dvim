@@ -84,7 +84,7 @@ keymap('n', 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 keymap('n', 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 
 -- Colourscheme
-keymap('n', 'tb', '<cmd>toggle_background()<CR>', opts)
+keymap('n', 'tb', '<cmd>lua toggle_background()<CR>', opts)
 
 keymap('n', '<C-w>z', '<cmd>WindowsMaximize<CR>', opts)
 keymap('n', '<C-w>_', '<cmd>WindowsMaximizeVertically<CR>', opts)
