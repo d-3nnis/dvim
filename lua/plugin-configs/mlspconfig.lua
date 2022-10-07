@@ -21,6 +21,8 @@ lspconfig.sumneko_lua.setup {
     capabilities = capabilities,
 }
 
+lspconfig.bashls.setup {}
+
 local clangd_server_vars = {
     capabilities = capabilities,
 }
@@ -33,3 +35,5 @@ else
         server = clangd_server_vars,
     }
 end
+
+

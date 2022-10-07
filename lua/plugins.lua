@@ -97,9 +97,18 @@ packer.startup(function(use)
     use 'goolord/alpha-nvim'
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
-    use 'nvim-orgmode/orgmode'
-    use {'s1n7ax/nvim-window-picker', tag = 'v1.*', }
-    use 'numToStr/Comment.nvim'
+    use { 's1n7ax/nvim-window-picker', tag = 'v1.*', }
+    use { "anuvyklack/windows.nvim",
+        requires = {
+            "anuvyklack/middleclass",
+            "anuvyklack/animation.nvim"
+        },
+    }
+    use { 'nvim-neorg/neorg',
+        requires = "nvim-lua/plenary.nvim",
+        run = ":Neorg sync-parsers",
+    }
+    -- add more here --
 
     -- LSP Plugins --
     use {
@@ -136,7 +145,6 @@ end)
 
 safe_require('impatient').enable_profile()
 require('plugin-configs/notify')
-require('plugin-configs/window-picker')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
 require('plugin-configs/whichkey')
@@ -153,5 +161,7 @@ require('plugin-configs/toggleterm')
 require('plugin-configs/project')
 require('plugin-configs/alpha')
 require('plugin-configs/gitsigns')
-require('plugin-configs/orgmode')
 require('plugin-configs/comment')
+require('plugin-configs/window-picker')
+require('plugin-configs/windows')
+require('plugin-configs/neorg')

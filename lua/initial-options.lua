@@ -29,7 +29,6 @@ o.shiftwidth = 4
 o.title = true
 o.cursorline = true
 
-
 -- Visual Options --
 o.cmdheight = 2
 o.termguicolors = true
@@ -42,4 +41,4 @@ o.list = true
 -- Misc Options --
 o.clipboard = "unnamedplus"
 o.number = true
---vim.cmd([[colorscheme gruvbox]])
+o.mouse = 'a'

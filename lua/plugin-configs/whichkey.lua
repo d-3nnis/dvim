@@ -4,6 +4,8 @@ if not wk then return end
 wk.setup {}
 local gs = safe_require('gitsigns')
 if not gs then return end
+local wp = safe_require('window-picker')
+if not wp then return end
 
 wk.register({
     ["w"] = { "<cmd>w!<CR>", "Save" },
@@ -20,8 +22,9 @@ wk.register({
     },
     e = {
         name = "Tree explorer",
-        e = { "<cmd>Neotree filesystem left<cr>", "Open Explorer Pane" },
-        c = { "<cmd>NeoTreeClose<cr>", "Close Explorer Pane" },
+        e = { "<cmd>Neotree filesystem left<cr>", "Open File Tree" },
+        g = { "<cmd>Neotree git_status float<cr>", "Open Git Status" },
+        c = { "<cmd>NeoTreeClose<cr>", "Close Tree" },
         -- TODO expand options here
     },
     l = {
@@ -80,6 +83,11 @@ wk.register({
         --map('n', '<leader>td', gs.toggle_deleted)
 
     },
+    ["t"] = { function()
+        local picked_window_id = wp.pick_window() or vim.api.nvim_get_current_win()
+        vim.api.nvim_set_current_win(picked_window_id)
+    end,
+        "Window Picker" },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
     ["m"] = { "<cmd>nohls<cr>", "Hide search highlight" },
