@@ -98,12 +98,14 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
     use { 's1n7ax/nvim-window-picker', tag = 'v1.*', }
+    --[[
     use { "anuvyklack/windows.nvim",
         requires = {
             "anuvyklack/middleclass",
             "anuvyklack/animation.nvim"
         },
     }
+    --]]
     use { 'nvim-neorg/neorg',
         requires = "nvim-lua/plenary.nvim",
         run = ":Neorg sync-parsers",
@@ -146,6 +148,10 @@ packer.startup(function(use)
     use 'ellisonleao/gruvbox.nvim'
     use 'sainnhe/everforest'
     use 'navarasu/onedark.nvim'
+    use {
+        "catppuccin/nvim",
+        as = "catppuccin",
+    }
 
     -- TODO FIX ALL THE PACKER BOOTSTRAP STUFf
     if PACKER_BOOTSTRAP then
