@@ -108,6 +108,16 @@ packer.startup(function(use)
         requires = "nvim-lua/plenary.nvim",
         run = ":Neorg sync-parsers",
     }
+
+    use({
+        "folke/noice.nvim",
+        event = "VimEnter",
+        requires = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        }
+    })
+
     -- add more here --
 
     -- LSP Plugins --
@@ -165,3 +175,5 @@ require('plugin-configs/comment')
 require('plugin-configs/window-picker')
 require('plugin-configs/windows')
 require('plugin-configs/neorg')
+require('plugin-configs/noice')
+
