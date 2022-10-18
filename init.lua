@@ -1,5 +1,5 @@
 require('initial-options')
-require('keymaps')
 require('globals')
+require('keymaps')
 require('plugins')
 require('post-plugins')

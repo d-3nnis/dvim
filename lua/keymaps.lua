@@ -86,7 +86,10 @@ keymap('n', 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 -- Colourscheme
 keymap('n', 'tb', '<cmd>lua toggle_background()<CR>', opts)
 
-keymap('n', '<C-w>z', '<cmd>WindowsMaximize<CR>', opts)
-keymap('n', '<C-w>_', '<cmd>WindowsMaximizeVertically<CR>', opts)
-keymap('n', '<C-w>|', '<cmd>WindowsMaximizeHorizontally<CR>', opts)
-keymap('n', '<C-w>=', '<cmd>WindowsEqualize<CR>', opts)
+local win = safe_require('windows')
+if win then
+    keymap('n', '<C-w>z', '<cmd>WindowsMaximize<CR>', opts)
+    keymap('n', '<C-w>_', '<cmd>WindowsMaximizeVertically<CR>', opts)
+    keymap('n', '<C-w>|', '<cmd>WindowsMaximizeHorizontally<CR>', opts)
+    keymap('n', '<C-w>=', '<cmd>WindowsEqualize<CR>', opts)
+end
