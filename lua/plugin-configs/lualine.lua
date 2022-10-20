@@ -10,5 +10,4 @@ ll.setup {
         },
     },
     extensions = { 'fzf', 'neo-tree', 'toggleterm' },
-    -- ]]
 }
