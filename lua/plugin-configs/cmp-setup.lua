@@ -1,9 +1,3 @@
-local function simple_setup(name)
-    local plugin = safe_require(name)
-    if not plugin then return end
-    plugin.setup({})
-end
-
 --local plugin_list = { "cmp-buffer", "hrsh7th/cmp-path", "hrsh7th/cmp-cmdline", "saadparwaiz1/cmp_luasnip", "hrsh7th/cmp-nvim-lsp", "hrsh7th/cmp-nvim-lua" }
 local cmp = safe_require('cmp')
 if not cmp then return end

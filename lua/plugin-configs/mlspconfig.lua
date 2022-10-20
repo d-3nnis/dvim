@@ -9,7 +9,8 @@ mlconfig.setup {
 local lspconfig = safe_require('lspconfig')
 if not lspconfig then return end
 
-local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+--local capabilities = require('cmp_nvim_lsp').default_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require('cmp_nvim_lsp').default_capabilities()
 lspconfig.sumneko_lua.setup {
     settings = {
         Lua = {
