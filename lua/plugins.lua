@@ -120,6 +120,8 @@ packer.startup(function(use)
         }
     })
 
+    use 'tamton-aquib/duck.nvim'
+
     -- add more here --
 
     -- LSP Plugins --
@@ -182,4 +184,3 @@ require('plugin-configs/window-picker')
 --require('plugin-configs/windows')
 require('plugin-configs/neorg')
 require('plugin-configs/noice')
-

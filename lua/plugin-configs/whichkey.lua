@@ -83,6 +83,21 @@ wk.register({
         --map('n', '<leader>td', gs.toggle_deleted)
 
     },
+    d = {
+        name = 'Duck?',
+        d = { function()
+            local duck = safe_require('duck')
+            if not duck then return else end
+            duck.hatch()
+        end, 'Hatch Duck'
+        },
+        k = { function()
+            local duck = safe_require('duck')
+            if not duck then return else end
+            duck.cook()
+        end, 'Catch Duck'
+        },
+    },
     ["t"] = { function()
         local picked_window_id = wp.pick_window() or vim.api.nvim_get_current_win()
         vim.api.nvim_set_current_win(picked_window_id)
