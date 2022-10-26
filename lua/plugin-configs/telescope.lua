@@ -16,3 +16,4 @@ vim.api.nvim_create_autocmd({"User TelescopePreviewerLoaded"}, { command = "setl
 t.load_extension('ui-select')
 t.load_extension('notify')
 t.load_extension('projects')
+t.load_extension('noice')

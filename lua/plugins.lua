@@ -113,7 +113,6 @@ packer.startup(function(use)
 
     use({
         "folke/noice.nvim",
-        --event = "VimEnter",
         requires = {
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
@@ -184,3 +183,4 @@ require('plugin-configs/window-picker')
 --require('plugin-configs/windows')
 require('plugin-configs/neorg')
 require('plugin-configs/noice')
+
