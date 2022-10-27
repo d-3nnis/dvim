@@ -77,6 +77,8 @@ keymap('n', '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', opts)
 keymap('n', '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', opts)
 keymap('x', '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', opts)
 
+keymap('v', 'f', '<cmd>lua vim.lsp.buf.format({insertFinalNewline = false})<cr>', opts)
+
 -- Move to the previous diagnostic
 keymap('n', 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 

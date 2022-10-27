@@ -9,6 +9,14 @@ local luasnip_loaders = safe_require('luasnip.loaders.from_vscode')
 if not luasnip_loaders then return end
 luasnip_loaders.lazy_load()
 
+local cmp_ap = safe_require('nvim-autopairs.completion.cmp')
+if not cmp_ap then return end
+
+cmp.event:on(
+  'confirm_done',
+  cmp_ap.on_confirm_done()
+)
+
 local kind_icons = {
     Text = "",
     Method = "m",

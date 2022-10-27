@@ -89,7 +89,8 @@ packer.startup(function(use)
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'rcarriga/nvim-notify'
-    use 'gen740/SmoothCursor.nvim' --TODO add arrows that change direction when moving up or down :)
+    -- use 'gen740/SmoothCursor.nvim' --TODO add arrows that change direction when moving up or down :)
+    use 'karb94/neoscroll.nvim'
     use 'nvim-lualine/lualine.nvim'
     use 'akinsho/toggleterm.nvim'
     use 'numToStr/Comment.nvim'
@@ -120,7 +121,7 @@ packer.startup(function(use)
     })
 
     use 'tamton-aquib/duck.nvim'
-
+    use 'windwp/nvim-autopairs'
     -- add more here --
 
     -- LSP Plugins --
@@ -183,4 +184,5 @@ require('plugin-configs/window-picker')
 --require('plugin-configs/windows')
 require('plugin-configs/neorg')
 require('plugin-configs/noice')
+require('plugin-configs/autopairs')
 
