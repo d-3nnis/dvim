@@ -22,5 +22,7 @@ if cursor then
 else
     local ns = safe_require("neoscroll")
     if not ns then return end
-    ns.setup({})
+    ns.setup({
+        easing_function = "sine",
+    })
 end

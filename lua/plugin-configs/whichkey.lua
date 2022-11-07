@@ -1,7 +1,12 @@
 local wk = safe_require("which-key")
 if not wk then return end
 
-wk.setup {}
+wk.setup {
+    disable = {
+        filetypes = { "TelescopePrompt", "neo-tree" }
+    }
+}
+
 local gs = safe_require('gitsigns')
 if not gs then return end
 local wp = safe_require('window-picker')

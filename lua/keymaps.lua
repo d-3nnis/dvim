@@ -2,6 +2,7 @@
 
 local opts = { noremap = true, silent = true }
 local keymap = vim.api.nvim_set_keymap
+local vmap = vim.keymap.set
 
 local function toggleterm(direction)
     local size = 0
@@ -13,7 +14,7 @@ local function toggleterm(direction)
     return '<CMD>ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction .. '<CR>'
 end
 
-function toggle_background()
+local function toggle_background()
     if vim.opt.background:get() == 'dark' then
         vim.opt.background = 'light'
     else
@@ -41,7 +42,6 @@ keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Toggle term
--- TODO check for tt
 keymap('n', '<C-t>f', toggleterm('float'), opts)
 keymap('n', '<C-t>s', toggleterm('horizontal'), opts)
 keymap('n', '<C-t>v', toggleterm('vertical'), opts)
@@ -85,8 +85,24 @@ keymap('n', 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', opts)
 -- Move to the next diagnostic
 keymap('n', 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', opts)
 
+-- gitsigns
+local gs = safe_require("gitsigns")
+if gs then
+    vmap('n', '<C-g>j', function()
+        if vim.wo.diff then return '<C-g>j' end
+        vim.schedule(function() gs.next_hunk() end)
+        return '<Ignore>'
+    end, opts)
+    vmap('n', '<C-g>k', function()
+        if vim.wo.diff then return '<C-g>k' end
+        vim.schedule(function() gs.prev_hunk() end)
+        return '<Ignore>'
+    end, opts)
+end
+--]]
+
 -- Colourscheme
-keymap('n', 'tb', '<cmd>lua toggle_background()<CR>', opts)
+vmap('n', 'tb', function() toggle_background() end, opts)
 
 local win = safe_require('windows')
 if win then

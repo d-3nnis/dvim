@@ -1,5 +1,6 @@
 local no = safe_require('neorg')
 if not no then return end
+
 no.setup {
     load = {
         ["core.defaults"] = {},
