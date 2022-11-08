@@ -123,6 +123,8 @@ packer.startup(function(use)
     use 'tamton-aquib/duck.nvim'
     use 'windwp/nvim-autopairs'
     use 'gorbit99/codewindow.nvim'
+
+    --use 'mong8se/actually.nvim'  --weirdly bugged
     -- add more here --
 
     -- LSP Plugins --
