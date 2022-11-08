@@ -62,7 +62,8 @@ wk.register({
     },
     o = {
         name = "Misc",
-        q = { "gq", "Reformat line widths" }
+        q = { "gq", "Reformat line widths" },
+        m = { "<cmd>nohls<cr>", "Hide search highlight" },
     },
     -- add one for window
     -- add one for barbar
@@ -77,9 +78,7 @@ wk.register({
         name = "Gitsigns",
         j = { function() gs.preview_hunk() end, "Preview Hunk" },
         b = { function() gs.blame_line { full = true } end, "Blame Line" },
-        s = { function() gs.stage_hunk() end, "Stage Hunk" },
         S = { function() gs.stage_buffer() end, "Stage Buffer" },
-        r = { function() gs.reset_hunk() end, "Reset Hunk" },
         u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
         --map('n', '<leader>hR', gs.reset_buffer)
         ----map('n', '<leader>tb', gs.toggle_current_line_blame)
@@ -103,6 +102,22 @@ wk.register({
         end, 'Catch Duck'
         },
     },
+    m = {
+        name = 'Code Window',
+        o = {
+            function() require("codewindow").open_minimap() end, "Open Minimap"
+        },
+        c = {
+            function() require("codewindow").close_minimap() end, "Close Minimap"
+        },
+        f = {
+            function() require("codewindow").toggle_focus() end, "Focus Toggle Minimap"
+        },
+        m = {
+            function() require("codewindow").toggle_minimap() end, "Toggle Minimap"
+
+        },
+    },
     ["t"] = { function()
         local picked_window_id = wp.pick_window() or vim.api.nvim_get_current_win()
         vim.api.nvim_set_current_win(picked_window_id)
@@ -110,12 +125,27 @@ wk.register({
         "Window Picker" },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
-    ["m"] = { "<cmd>nohls<cr>", "Hide search highlight" },
 }, {
-    mode = "n", -- NORMAL mode
+    mode = "n",
     prefix = "<leader>",
-    buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
-    silent = true, -- use `silent` when creating keymaps
-    noremap = true, -- use `noremap` when creating keymaps
-    nowait = true, -- use `nowait` when creating keymaps
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = true,
 })
+
+wk.register({
+    h = {
+        name = "Gitsigns",
+        s = { function() gs.stage_hunk() end, "Stage Hunk" },
+        r = { function() gs.reset_hunk() end, "Reset Hunk" },
+    },
+}, {
+    mode = { "n", "v" },
+    prefix = "<leader>",
+    buffer = nil,
+    silent = true,
+    noremap = true,
+    nowait = true,
+})
+

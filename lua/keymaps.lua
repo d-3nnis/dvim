@@ -99,7 +99,6 @@ if gs then
         return '<Ignore>'
     end, opts)
 end
---]]
 
 -- Colourscheme
 vmap('n', 'tb', function() toggle_background() end, opts)

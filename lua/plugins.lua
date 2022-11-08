@@ -122,6 +122,7 @@ packer.startup(function(use)
 
     use 'tamton-aquib/duck.nvim'
     use 'windwp/nvim-autopairs'
+    use 'gorbit99/codewindow.nvim'
     -- add more here --
 
     -- LSP Plugins --
@@ -185,4 +186,5 @@ require('plugin-configs/window-picker')
 require('plugin-configs/neorg')
 require('plugin-configs/noice')
 require('plugin-configs/autopairs')
+require('plugin-configs/codewindow')
 
