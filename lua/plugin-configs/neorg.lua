@@ -12,7 +12,12 @@ no.setup {
                 }
             }
         },
-        -- ["core.norg.concealer"] = {},
+        ["core.norg.concealer"] = {
+            config = {
+                icon_preset = 'diamond',
+                folds = false,
+            }
+        },
         ["core.norg.completion"] = {
             config = {
                 engine = 'nvim-cmp',
