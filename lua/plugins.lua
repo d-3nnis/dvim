@@ -89,6 +89,8 @@ packer.startup(function(use)
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
     use 'rcarriga/nvim-notify'
+
+    -- TODO check me out in the future
     -- use 'gen740/SmoothCursor.nvim' --TODO add arrows that change direction when moving up or down :)
     use 'karb94/neoscroll.nvim'
     use 'nvim-lualine/lualine.nvim'
@@ -99,6 +101,7 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
     use { 's1n7ax/nvim-window-picker', tag = 'v1.*', }
+    -- can't remember why I ditched this guy
     --[[
     use { "anuvyklack/windows.nvim",
         requires = {
@@ -125,6 +128,8 @@ packer.startup(function(use)
     use 'gorbit99/codewindow.nvim'
 
     --use 'mong8se/actually.nvim'  --weirdly bugged
+    use 'nvim-zh/colorful-winsep.nvim'
+    use 'https://gitlab.com/madyanov/svart.nvim'
     -- add more here --
 
     -- LSP Plugins --
@@ -158,7 +163,6 @@ packer.startup(function(use)
         as = "catppuccin",
     }
 
-    -- TODO FIX ALL THE PACKER BOOTSTRAP STUFf
     if PACKER_BOOTSTRAP then
         require('packer').sync()
     end
@@ -189,4 +193,5 @@ require('plugin-configs/neorg')
 require('plugin-configs/noice')
 require('plugin-configs/autopairs')
 require('plugin-configs/codewindow')
-
+require('plugin-configs.winsep')
+require('plugin-configs.svart')
