@@ -37,7 +37,32 @@ local function keymap()
     return ''
 end
 
--- TODO customize me more! move some stuff to the left?
+local line_x = {};
+local noice = safe_require('noice')
+if noice then
+    line_x = {
+        {
+            require("noice").api.status.message.get_hl,
+            cond = require("noice").api.status.message.has,
+        },
+        {
+            require("noice").api.status.command.get,
+            cond = require("noice").api.status.command.has,
+            color = { fg = "#ff9e64" },
+        },
+        {
+            require("noice").api.status.mode.get,
+            cond = require("noice").api.status.mode.has,
+            color = { fg = "#ff9e64" },
+        },
+        {
+            require("noice").api.status.search.get,
+            cond = require("noice").api.status.search.has,
+            color = { fg = "#ff9e64" },
+        },
+    }
+end
+
 ll.setup {
     options = {
         component_separators = { left = '', right = '' },
@@ -48,37 +73,18 @@ ll.setup {
     },
     extensions = { 'fzf', 'neo-tree', 'toggleterm' },
     sections = {
-        lualine_a = { 'mode', { 'buffers', mode = 4, }, },
+        lualine_a = { 'mode', },
         lualine_b = { 'branch', 'diff', 'diagnostics', },
         lualine_c = {
             trailing_space,
             mixed_indents,
             --TODO: not sure what this keymap does
             keymap,
+            { 'buffers', mode = 4, },
         },
-        lualine_x = {
-            {
-                require("noice").api.status.message.get_hl,
-                cond = require("noice").api.status.message.has,
-            },
-            {
-                require("noice").api.status.command.get,
-                cond = require("noice").api.status.command.has,
-                color = { fg = "#ff9e64" },
-            },
-            {
-                require("noice").api.status.mode.get,
-                cond = require("noice").api.status.mode.has,
-                color = { fg = "#ff9e64" },
-            },
-            {
-                require("noice").api.status.search.get,
-                cond = require("noice").api.status.search.has,
-                color = { fg = "#ff9e64" },
-            }, 'encoding', 'fileformat', 'filetype',
-        },
-        lualine_y = { 'progress' },
-        lualine_z = { 'location' }
+        lualine_x = line_x,
+        lualine_y = { 'encoding', 'fileformat', 'filetype', },
+        lualine_z = { 'location', --[[ 'progress' ]] }
     },
     inactive_sections = {
         lualine_a = { 'filename' },

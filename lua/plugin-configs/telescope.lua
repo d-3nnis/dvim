@@ -11,9 +11,13 @@ t.setup {
     }
 }
 
-vim.api.nvim_create_autocmd({"User TelescopePreviewerLoaded"}, { command = "setlocal wrap" })
+vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
 
 t.load_extension('ui-select')
 t.load_extension('notify')
 t.load_extension('projects')
-t.load_extension('noice')
+
+local noice = safe_require('noice')
+if noice then
+    t.load_extension('noice')
+end

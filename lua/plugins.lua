@@ -84,7 +84,8 @@ packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
-    use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
+    --use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
+    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -101,7 +102,7 @@ packer.startup(function(use)
     use 'lewis6991/gitsigns.nvim'
     use 'lewis6991/impatient.nvim'
     use { 's1n7ax/nvim-window-picker', tag = 'v1.*', }
-    -- can't remember why I ditched this guy
+    -- doesn't work with toggleterm
     --[[
     use { "anuvyklack/windows.nvim",
         requires = {
@@ -114,7 +115,6 @@ packer.startup(function(use)
         requires = "nvim-lua/plenary.nvim",
         run = ":Neorg sync-parsers",
     }
-
     use({
         "folke/noice.nvim",
         requires = {
@@ -174,7 +174,8 @@ require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
 require('plugin-configs/whichkey')
 require('plugin-configs/neotree')
-require('plugin-configs/barbar')
+--require('plugin-configs/barbar')
+require('plugin-configs/bufferline')
 require('plugin-configs/indentline')
 require('plugin-configs/mason')
 require('plugin-configs/mlspconfig')

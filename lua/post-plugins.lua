@@ -13,7 +13,7 @@ end
 local cat = safe_require('catppuccin')
 if cat
 then
-    vim.g.catppuccin_flavour = "latte"
+    vim.g.catppuccin_flavour = "frappe"
     cat.setup()
     vim.api.nvim_command('colorscheme catppuccin')
 else

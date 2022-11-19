@@ -2,6 +2,20 @@ local noice = safe_require("noice")
 if not noice then return end
 
 noice.setup {
+    presets = {
+        long_message_to_split = true,
+    },
+    cmdline = {
+    },
+    routes = {
+        {
+            view = 'mini',
+            opts = {
+                timeout = 10000,
+            },
+            filter = { event = 'msg_showmode' }
+        },
+    },
     views = {
         cmdline_popup = {
             position = {
@@ -30,6 +44,14 @@ noice.setup {
             win_options = {
                 winhighlight = { Normal = "Normal", FloatBorder = "DiagnosticInfo" },
             },
+        },
+    },
+
+    lsp = {
+        override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
         },
     },
 }

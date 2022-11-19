@@ -30,10 +30,19 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- TODO check for barbar
-keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
-keymap("n", "<S-l>", ":BufferNext<CR>", opts)
-keymap("n", "<S-[>", "<Cmd>BufferMovePrevious<CR>", opts)
-keymap("n", "<S-]>", "<Cmd>BufferMoveNext<CR>", opts)
+local bl = safe_require('bufferline')
+vmap("n", "<S-h>", "<CMD>BufferLineCyclePrev<CR>", opts)
+vmap("n", "<S-l>", "<CMD>BufferLineCycleNext<CR>", opts)
+keymap("n", "<S-[>", "<CMD>BufferLineMovePrevious<CR>", opts)
+keymap("n", "<S-]>", "<CMD>BufferLineMoveNext<CR>", opts)
+
+-- if bl then
+--     keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
+--     keymap("n", "<S-l>", ":BufferNext<CR>", opts)
+--     keymap("n", "<S-[>", "<Cmd>BufferMovePrevious<CR>", opts)
+--     keymap("n", "<S-]>", "<Cmd>BufferMoveNext<CR>", opts)
+-- else
+-- end
 
 -- Buffer resize
 keymap("n", "<C-Up>", ":resize +2<CR>", opts)
@@ -102,8 +111,8 @@ end
 
 local svt = safe_require('svart')
 if svt then
-    vmap({ "n", "x", "o" }, "s", "<Cmd>Svart<CR>")        -- begin exact search
-    vmap({ "n", "x", "o" }, "S", "<Cmd>SvartRegex<CR>")   -- begin regex search
+    vmap({ "n", "x", "o" }, "s", "<Cmd>Svart<CR>") -- begin exact search
+    vmap({ "n", "x", "o" }, "S", "<Cmd>SvartRegex<CR>") -- begin regex search
     vmap({ "n", "x", "o" }, "gs", "<Cmd>SvartRepeat<CR>") -- repeat with last accepted query
 end
 
