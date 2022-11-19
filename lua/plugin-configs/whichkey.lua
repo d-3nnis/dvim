@@ -63,7 +63,7 @@ wk.register({
     o = {
         name = "Misc",
         q = { "gq", "Reformat line widths" },
-        m = { "<cmd>nohls<cr>", "Hide search highlight" },
+        h = { "<cmd>nohls<cr>", "Hide search highlight" },
     },
     -- add one for window
     -- add one for barbar

@@ -100,6 +100,13 @@ if gs then
     end, opts)
 end
 
+local svt = safe_require('svart')
+if svt then
+    vmap({ "n", "x", "o" }, "s", "<Cmd>Svart<CR>")        -- begin exact search
+    vmap({ "n", "x", "o" }, "S", "<Cmd>SvartRegex<CR>")   -- begin regex search
+    vmap({ "n", "x", "o" }, "gs", "<Cmd>SvartRepeat<CR>") -- repeat with last accepted query
+end
+
 -- Colourscheme
 vmap('n', 'tb', function() toggle_background() end, opts)
 
