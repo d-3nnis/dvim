@@ -169,6 +169,7 @@ packer.startup(function(use)
 end)
 
 safe_require('impatient').enable_profile()
+require('plugin-configs/colourschemes')
 require('plugin-configs/notify')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
