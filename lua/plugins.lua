@@ -66,6 +66,8 @@ packer.startup(function(use)
         opt = false
     }
 
+    use({ 'mrjones2014/legendary.nvim', tag = 'v2.1.0' })
+
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
     use "MunifTanjim/nui.nvim"
@@ -174,6 +176,7 @@ require('plugin-configs/notify')
 require('plugin-configs/telescope')
 require('plugin-configs/treesitter')
 require('plugin-configs/whichkey')
+require('plugin-configs/legendary')
 require('plugin-configs/neotree')
 --require('plugin-configs/barbar')
 require('plugin-configs/bufferline')
