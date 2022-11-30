@@ -1,18 +1,11 @@
 local wk = safe_require("which-key")
 if not wk then return end
-
-wk.setup {
-    disable = {
-        filetypes = { "TelescopePrompt", "neo-tree" }
-    }
-}
-
 local gs = safe_require('gitsigns')
 if not gs then return end
 local wp = safe_require('window-picker')
 if not wp then return end
-
-wk.register({
+local M = {}
+M.whichkey_binds = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>qa<CR>", "Quit" },
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
@@ -78,15 +71,19 @@ wk.register({
         name = "Gitsigns",
         j = { function() gs.preview_hunk() end, "Preview Hunk" },
         b = { function() gs.blame_line { full = true } end, "Blame Line" },
+
         S = { function() gs.stage_buffer() end, "Stage Buffer" },
         u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
+        s = { '<CMD>Gitsigns stage_hunk', "Stage Hunk", mode = { 'n', 'v' } },
+        r = { '<CMD>Gitsigns reset_hunk', "Reset Hunk", mode = { 'n', 'v' } },
         --map('n', '<leader>hR', gs.reset_buffer)
-        ----map('n', '<leader>tb', gs.toggle_current_line_blame)
+        --map('n', '<leader>tb', gs.toggle_current_line_blame)
         --map('n', '<leader>hd', gs.diffthis)
         --map('n', '<leader>hD', function() gs.diffthis('~') end)
         --map('n', '<leader>td', gs.toggle_deleted)
 
     },
+
     d = {
         name = 'Duck?',
         d = { function()
@@ -125,27 +122,22 @@ wk.register({
         "Window Picker" },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
     ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
-}, {
+}
+M.whichkey_opts = {
     mode = "n",
     prefix = "<leader>",
     buffer = nil,
     silent = true,
     noremap = true,
     nowait = true,
-})
+}
 
-wk.register({
-    h = {
-        name = "Gitsigns",
-        s = { function() gs.stage_hunk() end, "Stage Hunk" },
-        r = { function() gs.reset_hunk() end, "Reset Hunk" },
-    },
-}, {
-    mode = { "n", "v" },
-    prefix = "<leader>",
-    buffer = nil,
-    silent = true,
-    noremap = true,
-    nowait = true,
-})
+wk.setup {
+    disable = {
+        filetypes = { "TelescopePrompt", "neo-tree" }
+    }
+}
 
+wk.register(M.whichkey_binds, M.whichkey_opts)
+
+return M
