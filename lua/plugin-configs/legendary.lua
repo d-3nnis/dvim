@@ -17,15 +17,6 @@ local function toggleterm(direction)
     return '<CMD>ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction .. '<CR>'
 end
 
-local function toggle_background()
-    if vim.opt.background:get() == 'dark' then
-        vim.opt.background = 'light'
-    else
-        vim.opt.background = 'dark'
-    end
-    vim.notify("Background is now: " .. vim.opt.background:get())
-end
-
 -- TODO check for barbar
 local bl = safe_require('bufferline')
 
@@ -69,7 +60,6 @@ if svt then
 end
 
 -- Colourscheme
-vmap('n', 'tb', function() toggle_background() end, opts)
 
 -- local win = safe_require('windows')
 -- if win then
@@ -98,7 +88,8 @@ legend.setup({
         { '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', description = 'Buffer rename', mode = { 'n' } },
         { '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', description = 'Code action', mode = { 'n' } },
         { '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', description = 'Range code action', mode = { 'x' } },
-        { 'f', '<cmd>lua vim.lsp.buf.format({insertFinalNewline = false})<cr>', description = 'Format range', mode = { 'v' } },
+        { 'f', '<cmd>lua vim.lsp.buf.format({insertFinalNewline = false})<cr>', description = 'Format range',
+            mode = { 'v' } },
         { '<S-h>', '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer', mode = { 'n' } },
         { '<S-l>', '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer', mode = { 'n' } },
         { '<C-[>', '<CMD>BufferLineMovePrev<CR>', description = 'Move tab left', mode = { 'n' } },
@@ -111,10 +102,18 @@ legend.setup({
         { '<C-t>f', toggleterm('float'), description = 'Open floating terminal', mode = { 'n' } },
         { '<C-t>s', toggleterm('horizontal'), description = 'Open horizontal terminal', mode = { 'n' } },
         { '<C-t>v', toggleterm('vertical'), description = 'Open vertical terminal', mode = { 'n' } },
+        { 'tb', '<CMD>ToggleBackground<CR>', description = 'Toggle background colour', mode = { 'n' } },
 
     },
     commands = {
-
+        { '<CMD>ToggleBackground', function()
+            if vim.opt.background:get() == 'dark' then
+                vim.opt.background = 'light'
+            else
+                vim.opt.background = 'dark'
+            end
+            vim.notify("Background is now: " .. vim.opt.background:get())
+        end, description = 'Toggle the background colour' }
     },
     functions = {
         { function(testval)
