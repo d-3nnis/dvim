@@ -99,7 +99,7 @@ M.whichkey_binds = {
         end, 'Catch Duck'
         },
     },
-    m = {
+    i = {
         name = 'Code Window',
         o = {
             function() require("codewindow").open_minimap() end, "Open Minimap"
@@ -110,9 +110,8 @@ M.whichkey_binds = {
         f = {
             function() require("codewindow").toggle_focus() end, "Focus Toggle Minimap"
         },
-        m = {
+        t = {
             function() require("codewindow").toggle_minimap() end, "Toggle Minimap"
-
         },
     },
     ["t"] = { function()
@@ -121,7 +120,7 @@ M.whichkey_binds = {
     end,
         "Window Picker" },
     ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
-    ["f"] = { "<cmd>Telescope find_files<cr>", "Find file" },
+    ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
 }
 M.whichkey_opts = {
     mode = "n",
