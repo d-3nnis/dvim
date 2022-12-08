@@ -113,13 +113,27 @@ legend.setup({
                 vim.opt.background = 'dark'
             end
             vim.notify("Background is now: " .. vim.opt.background:get())
-        end, description = 'Toggle the background colour' }
+        end, description = 'Toggle the background colour' },
+        {
+            '<CMD>CloseCurrentTab<CR>',
+            function()
+                safe_require('bufdelete').bufdelete(0, false);
+            end,
+            description = 'Close the current tab',
+        },
+        {
+            '<CMD>CloseTab<CR>',
+            function(input)
+                if input.fargs then
+                    safe_require('bufdelete').bufdelete(tonumber(input.fargs[1]), false);
+                end
+            end,
+            description = 'Close the current tab',
+            unfinished = true,
+            opts = {nargs = 1--[[ , complete = 'buffer' ]]}
+        },
     },
-    functions = {
-        { function(testval)
-            print(testval)
-        end, description = "testval" }
-    },
+    funcs = {},
     defaults_ops = {
         keymaps = { noremap = true, silent = true },
     }

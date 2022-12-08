@@ -66,7 +66,7 @@ packer.startup(function(use)
         opt = false
     }
 
-    use({ 'mrjones2014/legendary.nvim', tag = 'v2.1.0' })
+    use({ 'mrjones2014/legendary.nvim'})
 
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
@@ -87,7 +87,8 @@ packer.startup(function(use)
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
     --use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
-    use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+    -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
+    use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons'}
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
@@ -132,6 +133,7 @@ packer.startup(function(use)
     --use 'mong8se/actually.nvim'  --weirdly bugged
     use 'nvim-zh/colorful-winsep.nvim'
     use 'https://gitlab.com/madyanov/svart.nvim'
+    use 'famiu/bufdelete.nvim'
     -- add more here --
 
     -- LSP Plugins --

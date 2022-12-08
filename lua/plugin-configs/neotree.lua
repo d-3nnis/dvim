@@ -120,8 +120,8 @@ nt.setup({
             ["q"] = "close_window",
             ["R"] = "refresh",
             ["?"] = "show_help",
-            ["<"] = "prev_source",
-            [">"] = "next_source",
+            ["K"] = "prev_source",
+            ["J"] = "next_source",
         }
     },
     nesting_rules = {},
@@ -197,6 +197,9 @@ nt.setup({
 --]]
         }
     },
+    source_selector = {
+        winbar = true,
+    }
     --[[
     event_handlers = {
         {

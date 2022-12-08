@@ -119,7 +119,8 @@ M.whichkey_binds = {
         vim.api.nvim_set_current_win(picked_window_id)
     end,
         "Window Picker" },
-    ["c"] = { "<cmd>BufferClose<cr>", "Close Buffer" },
+    -- make me a menu
+    ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
     ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
 }
 M.whichkey_opts = {
