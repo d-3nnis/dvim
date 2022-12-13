@@ -76,20 +76,6 @@ legend.setup({
         { '<C-k>', '<C-w>k', description = 'Go to up window' },
         { '<C-l>', '<C-w>l', description = 'Go to right window' },
         { '<C-s>', '<CMD>ClangdSwitchSourceHeader<CR>', description = 'Switch Header/Source', mode = { 'n', 'i' } },
-        { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', description = 'LSP Show Hover Field', mode = { 'n' } },
-        { 'gl', '<cmd>lua vim.lsp.buf.signature_help()<cr>', description = '', mode = { 'n' } },
-        { 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', description = 'Go to definition', mode = { 'n' } },
-        { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', description = 'Go to declaration', mode = { 'n' } },
-        { 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', description = 'Go to implementation', mode = { 'n' } },
-        { 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', description = 'Type definition', mode = { 'n' } },
-        { 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', description = 'Show references', mode = { 'n' } },
-        { 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', description = 'Go to previous LSP diagnostic', mode = { 'n' } },
-        { 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', description = 'Go to next LSP diagnostic', mode = { 'n' } },
-        { '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', description = 'Buffer rename', mode = { 'n' } },
-        { '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', description = 'Code action', mode = { 'n' } },
-        { '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', description = 'Range code action', mode = { 'x' } },
-        { 'f', '<cmd>lua vim.lsp.buf.format({insertFinalNewline = false})<cr>', description = 'Format range',
-            mode = { 'v' } },
         { '<S-h>', '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer', mode = { 'n' } },
         { '<S-l>', '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer', mode = { 'n' } },
         { '<C-[>', '<CMD>BufferLineMovePrev<CR>', description = 'Move tab left', mode = { 'n' } },
@@ -103,7 +89,31 @@ legend.setup({
         { '<C-t>s', toggleterm('horizontal'), description = 'Open horizontal terminal', mode = { 'n' } },
         { '<C-t>v', toggleterm('vertical'), description = 'Open vertical terminal', mode = { 'n' } },
         { 'tb', '<CMD>ToggleBackground<CR>', description = 'Toggle background colour', mode = { 'n' } },
-
+        {
+            -- groups with same itemgroup will be merged
+            itemgroup = 'lsps',
+            description = 'LSP Server Functions',
+            icon = '',
+            keymaps = {
+                { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', description = 'LSP Show Hover Field', mode = { 'n' } },
+                { 'gl', '<cmd>lua vim.lsp.buf.signature_help()<cr>', description = '', mode = { 'n' } },
+                { 'gd', '<cmd>lua vim.lsp.buf.definition()<cr>', description = 'Go to definition', mode = { 'n' } },
+                { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', description = 'Go to declaration', mode = { 'n' } },
+                { 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', description = 'Go to implementation', mode = { 'n' } },
+                { 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', description = 'Type definition', mode = { 'n' } },
+                { 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', description = 'Show references', mode = { 'n' } },
+                { 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', description = 'Go to previous LSP diagnostic',
+                    mode = { 'n' } },
+                { 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', description = 'Go to next LSP diagnostic',
+                    mode = { 'n' } },
+                { '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', description = 'Buffer rename', mode = { 'n' } },
+                { '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', description = 'Code action', mode = { 'n' } },
+                { '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', description = 'Range code action',
+                    mode = { 'x' } },
+                { 'f', '<cmd>lua vim.lsp.buf.format({insertFinalNewline = false})<cr>v', description = 'Format range',
+                    mode = { 'v' } },
+            },
+        },
     },
     commands = {
         { '<CMD>ToggleBackground', function()
@@ -130,12 +140,21 @@ legend.setup({
             end,
             description = 'Close the current tab',
             unfinished = true,
-            opts = {nargs = 1--[[ , complete = 'buffer' ]]}
+            opts = { nargs = 1 --[[ , complete = 'buffer' ]] }
         },
     },
     funcs = {},
     defaults_ops = {
         keymaps = { noremap = true, silent = true },
+    },
+    sort = {
+        frecency = {
+            -- the directory to store the database in
+            db_root = string.format('%s/legendary/', vim.fn.stdpath('data')),
+            -- the maximum number of timestamps for a single item
+            -- to store in the database
+            max_timestamps = 10,
+        },
     }
 })
 

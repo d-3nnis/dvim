@@ -66,7 +66,10 @@ packer.startup(function(use)
         opt = false
     }
 
-    use({ 'mrjones2014/legendary.nvim'})
+    use({
+        'mrjones2014/legendary.nvim',
+        requires = 'kkharji/sqlite.lua',
+    })
 
     use "nvim-lua/plenary.nvim"
     use "kyazdani42/nvim-web-devicons"
@@ -88,7 +91,7 @@ packer.startup(function(use)
     use 'folke/which-key.nvim'
     --use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
     -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
-    use {'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons'}
+    use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use 'lukas-reineke/indent-blankline.nvim'
