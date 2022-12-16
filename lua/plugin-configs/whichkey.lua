@@ -74,8 +74,8 @@ M.whichkey_binds = {
 
         S = { function() gs.stage_buffer() end, "Stage Buffer" },
         u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
-        s = { '<CMD>Gitsigns stage_hunk', "Stage Hunk", mode = { 'n', 'v' } },
-        r = { '<CMD>Gitsigns reset_hunk', "Reset Hunk", mode = { 'n', 'v' } },
+        s = { '<CMD>Gitsigns stage_hunk<CR>', "Stage Hunk", mode = { 'n', 'v' } },
+        r = { '<CMD>Gitsigns reset_hunk<CR>', "Reset Hunk", mode = { 'n', 'v' } },
         --map('n', '<leader>hR', gs.reset_buffer)
         --map('n', '<leader>tb', gs.toggle_current_line_blame)
         --map('n', '<leader>hd', gs.diffthis)
