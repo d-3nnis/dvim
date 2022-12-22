@@ -80,7 +80,7 @@ ll.setup {
             mixed_indents,
             --TODO: not sure what this keymap does
             keymap,
-            { 'buffers', mode = 4, },
+            -- { 'buffers', mode = 4, },
         },
         lualine_x = line_x,
         lualine_y = { 'encoding', 'fileformat', 'filetype', },

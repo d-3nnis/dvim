@@ -114,7 +114,14 @@ M.whichkey_binds = {
             function() require("codewindow").toggle_minimap() end, "Toggle Minimap"
         },
     },
-    ["t"] = { function()
+    t = {
+        name = 'To[ggle]',
+        g = {
+            name = 'Git',
+            b = { function() gs.toggle_current_line_blame() end, 'Toggle Line Blame' },
+        },
+    },
+    ["n"] = { function()
         local picked_window_id = wp.pick_window() or vim.api.nvim_get_current_win()
         vim.api.nvim_set_current_win(picked_window_id)
     end,
