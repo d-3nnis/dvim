@@ -18,7 +18,7 @@ local function toggleterm(direction)
 end
 
 -- TODO check for barbar
-local bl = safe_require('bufferline')
+-- local bl = safe_require('bufferline')
 
 -- if bl then
 --     keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
@@ -144,6 +144,16 @@ legend.setup({
         },
     },
     funcs = {},
+    autocmds = {
+        -- { 'VimEnter', function ()
+        --     local nt = safe_require('neo-tree')
+        --     if not nt then return end
+        -- --     if argc() && isDirectory(argv()[0]) begin
+        -- -- endif
+        --     vim.cmd('Neotree float')
+        -- end, 'Open floating Neo-Tree window',
+        -- },
+    },
     defaults_ops = {
         keymaps = { noremap = true, silent = true },
     },
