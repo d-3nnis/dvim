@@ -120,8 +120,9 @@ nt.setup({
             ["q"] = "close_window",
             ["R"] = "refresh",
             ["?"] = "show_help",
-            ["K"] = "prev_source",
-            ["J"] = "next_source",
+            ["H"] = "prev_source",
+            ["L"] = "next_source",
+            ["space"] = "none",
         }
     },
     nesting_rules = {},
@@ -152,19 +153,20 @@ nt.setup({
         follow_current_file = true, -- This will find and focus the file in the active buffer every
         -- time the current file is changed while the tree is open.
         group_empty_dirs = true, -- when true, empty folders will be grouped together
-        use_libuv_file_watcher = false, -- This will use the OS level file watchers to detect changes
+        use_libuv_file_watcher = true, -- This will use the OS level file watchers to detect changes
         -- instead of relying on nvim autocmd events.
         window = {
             mappings = {
                 ["<bs>"] = "navigate_up",
                 ["."] = "set_root",
-                ["H"] = "toggle_hidden",
+                ["J"] = "toggle_hidden",
                 ["/"] = "fuzzy_finder",
                 ["D"] = "fuzzy_finder_directory",
                 ["f"] = "filter_on_submit",
                 ["<c-x>"] = "clear_filter",
                 ["[g"] = "prev_git_modified",
                 ["]g"] = "next_git_modified",
+                ['space'] = 'none',
             }
         }
     },

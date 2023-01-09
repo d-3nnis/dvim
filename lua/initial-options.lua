@@ -1,4 +1,3 @@
---local o = vim.o
 local o = vim.opt
 
 -- LEADER --

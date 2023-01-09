@@ -1,10 +1,12 @@
 local wk = safe_require("which-key")
 if not wk then return end
 local gs = safe_require('gitsigns')
-if not gs then return end
+-- if not gs then return end
 local wp = safe_require('window-picker')
-if not wp then return end
+-- if not wp then return end
+
 local M = {}
+
 M.whichkey_binds = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>qa<CR>", "Quit" },
@@ -21,7 +23,7 @@ M.whichkey_binds = {
     e = {
         name = "Tree explorer",
         e = { "<cmd>Neotree filesystem left<cr>", "Open File Tree" },
-        g = { "<cmd>Neotree git_status float<cr>", "Open Git Status" },
+        g = { "<cmd>Neotree float source=git_status<cr>", "Open Git Status" },
         c = { "<cmd>NeoTreeClose<cr>", "Close Tree" },
         -- TODO expand options here
     },
@@ -74,6 +76,11 @@ M.whichkey_binds = {
 
         S = { function() gs.stage_buffer() end, "Stage Buffer" },
         u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
+        i = { function()
+            vim.cmd('Gitsigns toggle_linehl')
+            vim.cmd('Gitsigns toggle_numhl')
+            vim.cmd('Gitsigns toggle_word_diff')
+        end, "Toggle Line Highlighting" },
         s = { '<CMD>Gitsigns stage_hunk<CR>', "Stage Hunk", mode = { 'n', 'v' } },
         r = { '<CMD>Gitsigns reset_hunk<CR>', "Reset Hunk", mode = { 'n', 'v' } },
         --map('n', '<leader>hR', gs.reset_buffer)
@@ -141,7 +148,7 @@ M.whichkey_opts = {
 
 wk.setup {
     disable = {
-        filetypes = { "TelescopePrompt", "neo-tree" }
+        filetypes = { "TelescopePrompt" }
     }
 }
 
