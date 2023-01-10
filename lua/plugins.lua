@@ -117,7 +117,8 @@ packer.startup(function(use)
         },
     }
     --]]
-    use { 'nvim-neorg/neorg',
+    use { 
+        'nvim-neorg/neorg',
         requires = "nvim-lua/plenary.nvim",
         run = ":Neorg sync-parsers",
     }
