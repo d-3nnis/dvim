@@ -24,5 +24,6 @@ no.setup {
             },
         },
         ["core.keybinds"] = {},
+        ["core.highlights"] = {},
     }
 }
