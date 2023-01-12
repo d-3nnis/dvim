@@ -16,6 +16,7 @@ vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "se
 t.load_extension('ui-select')
 t.load_extension('notify')
 t.load_extension('projects')
+t.load_extension('fzf')
 
 local noice = safe_require('noice')
 if noice then

@@ -92,8 +92,12 @@ packer.startup(function(use)
     --use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
     -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
-    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
+
+    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use 'sharkdp/fd'
     use 'nvim-telescope/telescope-ui-select.nvim'
+    use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
+
     use 'lukas-reineke/indent-blankline.nvim'
     use 'rcarriga/nvim-notify'
 
@@ -117,7 +121,7 @@ packer.startup(function(use)
         },
     }
     --]]
-    use { 
+    use {
         'nvim-neorg/neorg',
         requires = "nvim-lua/plenary.nvim",
         run = ":Neorg sync-parsers",
