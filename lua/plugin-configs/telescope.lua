@@ -7,7 +7,8 @@ t.setup {
             require("telescope.themes").get_dropdown {
                 -- even more opts
             }
-        }
+        },
+        fzf = {}
     }
 }
 
