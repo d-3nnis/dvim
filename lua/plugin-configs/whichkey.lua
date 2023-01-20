@@ -14,6 +14,11 @@ M.whichkey_binds = {
     s = {
         name = "Telescope",
         t = { "<cmd>Telescope live_grep<cr>", "Grep files" },
+        z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
+        s = { function ()
+            require('telescope.builtin').grep_string{ shorten_path = true, word_match = "-w",
+                only_sort_text = true, search = '', prompt_title = 'Fuzzy grep',
+        } end, "Fuzzy grep" },
         f = { "<cmd>Telescope find_files<cr>", "Find file" },
         r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
