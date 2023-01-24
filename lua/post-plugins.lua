@@ -34,6 +34,7 @@ if cat then
     -- vim.api.nvim_command('colorscheme catppuccin-latte')
     vim.opt.background = 'light'
     vim.api.nvim_command('colorscheme rose-pine')
+    vim.api.nvim_command('colorscheme rose-pine')
 else
     vim.api.nvim_command([[colorscheme everforest]])
 end
