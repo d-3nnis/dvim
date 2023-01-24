@@ -9,31 +9,14 @@ mlconfig.setup {
 local lspconfig = safe_require('lspconfig')
 if not lspconfig then return end
 
-local capabilities = require("cmp_nvim_lsp").default_capabilities()
-lspconfig.sumneko_lua.setup {
-    settings = {
-        Lua = {
-            diagnostics = {
-                globals = { 'vim' },
-            },
-        },
-    },
-    capabilities = capabilities,
-}
-
-lspconfig.bashls.setup {}
-
-local clangd_server_vars = {
-    capabilities = capabilities,
-}
+mlconfig.setup_handlers({
+  function (server_name)
+    lspconfig[server_name].setup {}
+  end
+})
 
 local clangd_ext = safe_require('clangd_extensions')
-if not clangd_ext then
-    lspconfig.clangd.setup(clangd_server_vars)
-else
-    clangd_ext.setup {
-        server = clangd_server_vars,
-    }
+if clangd_ext then
+    clangd_ext.setup {}
 end
-
 
