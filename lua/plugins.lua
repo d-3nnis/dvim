@@ -89,8 +89,6 @@ packer.startup(function(use)
     use 'nvim-treesitter/nvim-treesitter-context'
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
-    --use { 'romgrk/barbar.nvim', tag = 'release/1.1.0' }
-    -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
 
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
@@ -142,6 +140,8 @@ packer.startup(function(use)
     use 'nvim-zh/colorful-winsep.nvim'
     use 'https://gitlab.com/madyanov/svart.nvim'
     use 'famiu/bufdelete.nvim'
+    use 'mrjones2014/nvim-ts-rainbow'
+
     -- add more here --
 
     -- LSP Plugins --
@@ -177,6 +177,10 @@ packer.startup(function(use)
     use 'rose-pine/neovim'
     use {
         'mcchrish/zenbones.nvim',
+        requires = 'rktjmp/lush.nvim'
+    }
+    use {
+        'uloco/bluloco.nvim',
         requires = 'rktjmp/lush.nvim'
     }
 

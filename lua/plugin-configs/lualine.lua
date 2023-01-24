@@ -70,6 +70,7 @@ ll.setup {
         disabled_filetypes = {
             { 'neo-tree', 'packer' }
         },
+        theme = 'auto',
     },
     extensions = { 'fzf', 'neo-tree', 'toggleterm' },
     sections = {
