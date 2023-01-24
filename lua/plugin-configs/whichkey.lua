@@ -29,6 +29,7 @@ M.whichkey_binds = {
         name = "Tree explorer",
         e = { "<cmd>Neotree filesystem left<cr>", "Open File Tree" },
         g = { "<cmd>Neotree float source=git_status<cr>", "Open Git Status" },
+        r = { "<cmd>NeoTreeReveal<cr>", "Reveal current file" },
         c = { "<cmd>NeoTreeClose<cr>", "Close Tree" },
         -- TODO expand options here
     },

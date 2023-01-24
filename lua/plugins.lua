@@ -93,7 +93,7 @@ packer.startup(function(use)
     -- use {'akinsho/bufferline.nvim', tag = "v3.*", requires = 'nvim-tree/nvim-web-devicons'}
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
 
-    use {'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+    use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'sharkdp/fd'
     use 'nvim-telescope/telescope-ui-select.nvim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
@@ -173,6 +173,11 @@ packer.startup(function(use)
     use {
         "catppuccin/nvim",
         as = "catppuccin",
+    }
+    use 'rose-pine/neovim'
+    use {
+        'mcchrish/zenbones.nvim',
+        requires = 'rktjmp/lush.nvim'
     }
 
     if PACKER_BOOTSTRAP then

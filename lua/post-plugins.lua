@@ -14,7 +14,7 @@ end
 
 local cat = safe_require('catppuccin')
 if cat then
-    vim.g.catppuccin_flavour = "frappe"
+    vim.g.catppuccin_flavour = "latte"
     cat.setup({
         integrations = {
             cmp = true,
@@ -29,9 +29,11 @@ if cat then
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
     })
-    vim.api.nvim_command('colorscheme catppuccin')
-    vim.api.nvim_command('colorscheme catppuccin-frappe')
-    vim.api.nvim_command('colorscheme catppuccin-frappe')
+    -- vim.api.nvim_command('colorscheme catppuccin')
+    -- vim.api.nvim_command('colorscheme catppuccin-latte')
+    -- vim.api.nvim_command('colorscheme catppuccin-latte')
+    vim.opt.background = 'light'
+    vim.api.nvim_command('colorscheme rose-pine')
 else
     vim.api.nvim_command([[colorscheme everforest]])
 end
