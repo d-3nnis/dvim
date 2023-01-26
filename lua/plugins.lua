@@ -141,7 +141,7 @@ packer.startup(function(use)
     use 'https://gitlab.com/madyanov/svart.nvim'
     use 'famiu/bufdelete.nvim'
     use 'mrjones2014/nvim-ts-rainbow'
-
+    use 'RRethy/vim-illuminate'
     -- add more here --
 
     -- LSP Plugins --

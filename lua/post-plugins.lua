@@ -35,6 +35,7 @@ if cat then
     vim.opt.background = 'light'
     vim.api.nvim_command('colorscheme rose-pine')
     vim.api.nvim_command('colorscheme rose-pine')
+    vim.cmd("hi link IlluminatedWordRead Search")
 else
     vim.api.nvim_command([[colorscheme everforest]])
 end
