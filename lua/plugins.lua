@@ -93,6 +93,10 @@ packer.startup(function(use)
 
     use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
     use 'sharkdp/fd'
+    use { 'ibhagwan/fzf-lua',
+        -- optional for icon support
+        requires = { 'nvim-tree/nvim-web-devicons' }
+    }
     use 'nvim-telescope/telescope-ui-select.nvim'
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
 
@@ -142,6 +146,12 @@ packer.startup(function(use)
     use 'famiu/bufdelete.nvim'
     use 'mrjones2014/nvim-ts-rainbow'
     use 'RRethy/vim-illuminate'
+
+    use { 'gennaro-tedesco/nvim-possession',
+        dependencies = {
+            'ibhagwan/fzf-lua',
+        },
+    }
     -- add more here --
 
     -- LSP Plugins --
@@ -149,6 +159,8 @@ packer.startup(function(use)
         'williamboman/mason.nvim',
         'williamboman/mason-lspconfig.nvim',
         'neovim/nvim-lspconfig',
+        "jose-elias-alvarez/null-ls.nvim",
+        "jay-babu/mason-null-ls.nvim",
     }
     -- Snippets
     use "L3MON4D3/LuaSnip" --snippet engine
@@ -202,6 +214,7 @@ require('plugin-configs/bufferline')
 require('plugin-configs/indentline')
 require('plugin-configs/mason')
 require('plugin-configs/mlspconfig')
+require('plugin-configs.null-ls')
 require('plugin-configs/smooth-cursor')
 require('plugin-configs/devicons')
 require('plugin-configs/lualine')
@@ -214,8 +227,10 @@ require('plugin-configs/comment')
 require('plugin-configs/window-picker')
 --require('plugin-configs/windows')
 require('plugin-configs/neorg')
-require('plugin-configs/noice')
+require('plugin-configs.noice_cfg')
 require('plugin-configs/autopairs')
-require('plugin-configs/codewindow')
+require('plugin-configs.codewindow')
 require('plugin-configs.winsep')
 require('plugin-configs.svart')
+require('plugin-configs.possession')
+

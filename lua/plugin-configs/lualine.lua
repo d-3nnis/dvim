@@ -85,7 +85,7 @@ ll.setup {
         },
         lualine_x = line_x,
         lualine_y = { 'encoding', 'fileformat', 'filetype', },
-        lualine_z = { 'location', --[[ 'progress' ]] }
+        lualine_z = { 'location', "require'nvim-possession'.status()", --[[ 'progress' ]] }
     },
     inactive_sections = {
         lualine_a = { 'filename' },

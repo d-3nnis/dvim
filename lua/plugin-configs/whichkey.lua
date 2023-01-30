@@ -4,6 +4,7 @@ local gs = safe_require('gitsigns')
 -- if not gs then return end
 local wp = safe_require('window-picker')
 -- if not wp then return end
+local poss = safe_require('nvim-possession')
 
 local M = {}
 
@@ -15,10 +16,11 @@ M.whichkey_binds = {
         name = "Telescope",
         t = { "<cmd>Telescope live_grep<cr>", "Grep files" },
         z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
-        s = { function ()
-            require('telescope.builtin').grep_string{ shorten_path = true, word_match = "-w",
+        s = { function()
+            require('telescope.builtin').grep_string { shorten_path = true, word_match = "-w",
                 only_sort_text = true, search = '', prompt_title = 'Fuzzy grep',
-        } end, "Fuzzy grep" },
+            }
+        end, "Fuzzy grep" },
         f = { "<cmd>Telescope find_files<cr>", "Find file" },
         r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
@@ -65,6 +67,24 @@ M.whichkey_binds = {
         name = "Misc",
         q = { "gq", "Reformat line widths" },
         h = { "<cmd>nohls<cr>", "Hide search highlight" },
+    },
+    a = {
+        name = 'Session Manager',
+        l = { function()
+            if poss then
+                poss.list()
+            end
+        end, 'Session List' },
+        n = { function()
+            if poss then
+                poss.new()
+            end
+        end, 'Session List' },
+        u = { function()
+            if poss then
+                poss.update()
+            end
+        end, 'Session List' },
     },
     -- add one for window
     -- add one for barbar

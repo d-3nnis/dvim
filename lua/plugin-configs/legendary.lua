@@ -17,25 +17,7 @@ local function toggleterm(direction)
     return '<CMD>ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction .. '<CR>'
 end
 
--- TODO check for barbar
--- local bl = safe_require('bufferline')
-
--- if bl then
---     keymap("n", "<S-h>", ":BufferPrevious<CR>", opts)
---     keymap("n", "<S-l>", ":BufferNext<CR>", opts)
---     { '<S-[>', '<Cmd>BufferMovePrevious<CR>', description = '', mode = { 'n' } }
---     { '<S-]>', '<Cmd>BufferMoveNext<CR>', description = '', mode = { 'n' } }
--- else
--- end
-
--- Buffer resize
-
--- Toggle term
--- LSP
-
-
--- Displays a function's signature information
-
+local poss = require("nvim-possession")
 
 -- gitsigns
 local gs = safe_require("gitsigns")
@@ -144,16 +126,7 @@ legend.setup({
         },
     },
     funcs = {},
-    autocmds = {
-        -- { 'VimEnter', function ()
-        --     local nt = safe_require('neo-tree')
-        --     if not nt then return end
-        -- --     if argc() && isDirectory(argv()[0]) begin
-        -- -- endif
-        --     vim.cmd('Neotree float')
-        -- end, 'Open floating Neo-Tree window',
-        -- },
-    },
+    autocmds = {},
     defaults_ops = {
         keymaps = { noremap = true, silent = true },
     },
