@@ -117,7 +117,7 @@ M.whichkey_binds = {
 
     },
 
-    d = {
+    u = {
         name = 'Duck?',
         d = { function()
             local duck = safe_require('duck')

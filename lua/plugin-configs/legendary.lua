@@ -34,13 +34,6 @@ if gs then
     end, opts)
 end
 
-local svt = safe_require('svart')
-if svt then
-    vmap({ "n", "x", "o" }, "s", "<Cmd>Svart<CR>") -- begin exact search
-    vmap({ "n", "x", "o" }, "S", "<Cmd>SvartRegex<CR>") -- begin regex search
-    vmap({ "n", "x", "o" }, "gs", "<Cmd>SvartRepeat<CR>") -- repeat with last accepted query
-end
-
 -- Colourscheme
 
 -- local win = safe_require('windows')
@@ -96,6 +89,9 @@ legend.setup({
                     mode = { 'v' } },
             },
         },
+        { "s", "<Cmd>Svart<CR>", description = 'Svart search', mode = { 'n', 'x', 'o' } },
+        { "s", "<Cmd>SvartRegex<CR>", description = 'Svart regex search', mode = { 'n', 'x', 'o' } },
+        { "s", "<Cmd>SvartRepeat<CR>", description = 'Svart search repeat', mode = { 'n', 'x', 'o' } },
     },
     commands = {
         { '<CMD>ToggleBackground', function()
