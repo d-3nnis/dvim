@@ -93,8 +93,8 @@ legend.setup({
             },
         },
         { "s", "<Cmd>Svart<CR>", description = 'Svart search', mode = { 'n', 'x', 'o' } },
-        { "s", "<Cmd>SvartRegex<CR>", description = 'Svart regex search', mode = { 'n', 'x', 'o' } },
-        { "s", "<Cmd>SvartRepeat<CR>", description = 'Svart search repeat', mode = { 'n', 'x', 'o' } },
+        { "S", "<Cmd>SvartRegex<CR>", description = 'Svart regex search', mode = { 'n', 'x', 'o' } },
+        { "gs", "<Cmd>SvartRepeat<CR>", description = 'Svart search repeat', mode = { 'n', 'x', 'o' } },
     },
     commands = {
         { '<CMD>ToggleBackground', function()
