@@ -44,3 +44,5 @@ o.number = true
 o.relativenumber = true
 o.mouse = 'a'
 
+o.iskeyword:append("_")
+
