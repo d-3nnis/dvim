@@ -125,7 +125,18 @@ legend.setup({
         },
     },
     funcs = {},
-    autocmds = {},
+    autocmds = {
+        {
+            { "BufLeave", "FocusLost" },
+            function()
+                if not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
+                    vim.api.nvim_command('silent update')
+                end
+            end,
+            description = 'Save buffer when exiting or focus lost',
+        }
+
+    },
     defaults_ops = {
         keymaps = { noremap = true, silent = true },
     },

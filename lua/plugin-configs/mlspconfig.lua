@@ -23,7 +23,12 @@ if not lspconfig then return end
 
 mlconfig.setup_handlers({
     function(server_name)
-        lspconfig[server_name].setup(setup_values[server_name])
+        local config = setup_values[server_name]
+        print(config)
+        if not config then
+            config = {}
+        end
+        lspconfig[server_name].setup(config)
     end
 })
 
