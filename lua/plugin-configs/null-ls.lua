@@ -6,7 +6,9 @@ if not null then return end
 -- mason_null.setup({
 --     automatic_setup = true,
 -- })
-null.setup({})
+--
+null.setup()
+
 mason_null.setup({
     ensure_installed = nil,
     automatic_installation = true,
