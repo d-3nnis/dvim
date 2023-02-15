@@ -79,7 +79,7 @@ legend.setup({
                 { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', description = 'Go to declaration' },
                 { 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', description = 'Go to implementation' },
                 { 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', description = 'Type definition' },
-                { 'gr', '<cmd>lua vim.lsp.buf.references()<cr>', description = 'Show references' },
+                { 'gr', '<cmd>lua require"telescope.builtin".lsp_references{} <cr>', description = 'Show references' },
                 { 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', description = 'Go to previous LSP diagnostic'
                 },
                 { 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', description = 'Go to next LSP diagnostic',
