@@ -152,6 +152,8 @@ packer.startup(function(use)
             'ibhagwan/fzf-lua',
         },
     }
+
+    use 'tzachar/local-highlight.nvim'
     -- add more here --
 
     -- LSP Plugins --
@@ -214,7 +216,7 @@ require('plugin-configs/indentline')
 require('plugin-configs/mason')
 require('plugin-configs/mlspconfig')
 require('plugin-configs.null-ls')
-require('plugin-configs/smooth-cursor')
+-- require('plugin-configs/smooth-cursor')
 require('plugin-configs/devicons')
 require('plugin-configs/lualine')
 require('plugin-configs/cmp-setup')
@@ -232,4 +234,4 @@ require('plugin-configs.codewindow')
 require('plugin-configs.winsep')
 require('plugin-configs.svart')
 require('plugin-configs.possession')
-
+require('plugin-configs.highlight')

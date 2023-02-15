@@ -29,12 +29,13 @@ if cat then
             -- For more plugins integrations please scroll down (https://github.com/catppuccin/nvim#integrations)
         },
     })
-    -- vim.api.nvim_command('colorscheme catppuccin')
-    -- vim.api.nvim_command('colorscheme catppuccin-latte')
-    -- vim.api.nvim_command('colorscheme catppuccin-latte')
+end
+
+local cs = safe_require('zenbones')
+if cs then
     vim.opt.background = 'light'
-    vim.api.nvim_command('colorscheme rose-pine')
-    vim.api.nvim_command('colorscheme rose-pine')
+    vim.api.nvim_command('colorscheme zenbones')
+    vim.api.nvim_command('colorscheme zenbones')
     vim.cmd("hi link IlluminatedWordRead Search")
 else
     vim.api.nvim_command([[colorscheme everforest]])
