@@ -25,5 +25,6 @@ no.setup {
         },
         ["core.keybinds"] = {},
         ["core.highlights"] = {},
+        ["core.norg.qol.todo_items"] = {},
     }
 }

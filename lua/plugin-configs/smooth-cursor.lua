@@ -1,4 +1,6 @@
 local cursor = safe_require('smoothcursor')
+local ns = safe_require("neoscroll")
+
 if cursor then
     cursor.setup {
         type = "exp", -- define cursor movement calculate function, "default" or "exp" (exponential).
@@ -19,10 +21,9 @@ if cursor then
         },
         speed = 20, -- max is 100 to stick to your current position
     }
-else
-    local ns = safe_require("neoscroll")
-    if not ns then return end
+elseif ns then
     ns.setup({
         easing_function = "sine",
     })
 end
+

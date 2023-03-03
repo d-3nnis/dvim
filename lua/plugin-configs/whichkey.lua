@@ -26,6 +26,7 @@ M.whichkey_binds = {
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
         h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
         n = { "<cmd>Telescope notify<cr>", "Notify messages" },
+        b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
     },
     e = {
         name = "Tree explorer",
