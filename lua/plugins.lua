@@ -141,11 +141,10 @@ packer.startup(function(use)
     use 'gorbit99/codewindow.nvim'
 
     --use 'mong8se/actually.nvim'  --weirdly bugged
-    use 'nvim-zh/colorful-winsep.nvim'
+    -- use 'nvim-zh/colorful-winsep.nvim'
     use 'https://gitlab.com/madyanov/svart.nvim'
     use 'famiu/bufdelete.nvim'
     use 'mrjones2014/nvim-ts-rainbow'
-    use 'RRethy/vim-illuminate'
 
     use { 'gennaro-tedesco/nvim-possession',
         dependencies = {
@@ -154,6 +153,7 @@ packer.startup(function(use)
     }
 
     use 'tzachar/local-highlight.nvim'
+    use 'folke/twilight.nvim'
     -- add more here --
 
     -- LSP Plugins --
@@ -231,7 +231,8 @@ require('plugin-configs/neorg')
 require('plugin-configs.noice_cfg')
 require('plugin-configs/autopairs')
 require('plugin-configs.codewindow')
-require('plugin-configs.winsep')
+-- require('plugin-configs.winsep')
 require('plugin-configs.svart')
 require('plugin-configs.possession')
 require('plugin-configs.highlight')
+require('plugin-configs.twilight')

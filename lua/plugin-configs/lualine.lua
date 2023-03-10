@@ -6,6 +6,15 @@ local function trailing_space()
     return space ~= 0 and "TW:" .. space or ""
 end
 
+local function macro_recording_status()
+    local register = vim.fn.reg_recording()
+    if register ~= '' then
+        return 'Recording: ' .. register
+    else
+        return ''
+    end
+end
+
 local function mixed_indents()
     local space_pat = [[\v^ +]]
     local tab_pat = [[\v^\t+]]
@@ -74,11 +83,12 @@ ll.setup {
     },
     extensions = { 'fzf', 'neo-tree', 'toggleterm' },
     sections = {
-        lualine_a = { 'mode', },
+        lualine_a = { 'mode' },
         lualine_b = { 'branch', 'diff', 'diagnostics', },
         lualine_c = {
             trailing_space,
             mixed_indents,
+            macro_recording_status,
             --TODO: not sure what this keymap does
             keymap,
             -- { 'buffers', mode = 4, },

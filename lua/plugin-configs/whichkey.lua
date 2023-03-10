@@ -12,6 +12,10 @@ M.whichkey_binds = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>qa<CR>", "Quit" },
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
+    v = {
+        name = "Focusing",
+        v = { '<cmd>Twilight<CR>', 'Toggle focus'},
+    },
     s = {
         name = "Telescope",
         t = { "<cmd>Telescope live_grep<cr>", "Grep files" },

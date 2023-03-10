@@ -2,7 +2,7 @@ local mlconfig = safe_require('mason-lspconfig')
 if not mlconfig then return end
 
 mlconfig.setup {
-    ensure_installed = { 'lua-language-server', 'clangd' },
+    ensure_installed = { 'lua_ls', 'clangd' },
     automatic_installation = true,
 }
 
