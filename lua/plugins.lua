@@ -66,6 +66,10 @@ packer.startup(function(use)
         opt = false
     }
 
+    use {
+        'willothy/flatten.nvim',
+    }
+
     use({
         'mrjones2014/legendary.nvim',
         requires = 'kkharji/sqlite.lua',
@@ -87,6 +91,11 @@ packer.startup(function(use)
 
     use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
     use 'nvim-treesitter/nvim-treesitter-context'
+    use({
+        "nvim-treesitter/nvim-treesitter-textobjects",
+        after = "nvim-treesitter",
+        requires = "nvim-treesitter/nvim-treesitter",
+    })
     use 'JoosepAlviste/nvim-ts-context-commentstring'
     use 'folke/which-key.nvim'
     use { 'akinsho/bufferline.nvim', requires = 'nvim-tree/nvim-web-devicons' }
@@ -204,6 +213,7 @@ packer.startup(function(use)
 end)
 
 safe_require('impatient').enable_profile()
+require('plugin-configs.flatten')
 require('plugin-configs/colourschemes')
 require('plugin-configs/notify')
 require('plugin-configs/telescope')
