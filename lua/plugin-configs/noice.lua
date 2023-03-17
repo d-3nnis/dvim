@@ -7,15 +7,15 @@ noice.setup {
     },
     cmdline = {
     },
-    routes = {
-        {
-            view = 'mini',
-            opts = {
-                timeout = 10000,
-            },
-            filter = { event = 'msg_showmode' }
-        },
-    },
+    -- routes = {
+    --     {
+    --         view = 'mini',
+    --         opts = {
+    --             timeout = 10000,
+    --         },
+    --         filter = { event = 'msg_showmode' }
+    --     },
+    -- },
     views = {
         cmdline_popup = {
             position = {
@@ -53,5 +53,10 @@ noice.setup {
             ["vim.lsp.util.stylize_markdown"] = true,
             ["cmp.entry.get_documentation"] = true,
         },
+    },
+    messages = {
+        enabled = true,
+        view_history = "popup",
+        view_search = false,
     },
 }

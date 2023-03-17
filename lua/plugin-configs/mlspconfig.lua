@@ -7,7 +7,7 @@ mlconfig.setup {
 }
 
 local setup_values = {
-    sumneko_lua = {
+    lua_ls = {
         settings = {
             Lua = {
                 diagnostics = {
@@ -28,7 +28,7 @@ local capabilities = vim.lsp.protocol.make_client_capabilities()
 mlconfig.setup_handlers({
     function(server_name)
         if ignore_list[server_name] then
-            vim.notify("Ignoring setup for: " .. server_name)
+            -- vim.notify("Ignoring setup for: " .. server_name)
         else
             local server_config = setup_values[server_name]
             if not server_config then

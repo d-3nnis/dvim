@@ -50,24 +50,27 @@ local line_x = {};
 local noice = safe_require('noice')
 if noice then
     line_x = {
-        {
-            require("noice").api.status.message.get_hl,
-            cond = require("noice").api.status.message.has,
-        },
-        {
-            require("noice").api.status.command.get,
-            cond = require("noice").api.status.command.has,
-            color = { fg = "#ff9e64" },
-        },
+        -- this shows the status of things, like search results, errors and buffer saves
+        -- {
+        --     require("noice").api.status.message.get_hl,
+        --     cond = require("noice").api.status.message.has,
+        -- },
+        -- this shows the last command, but inconsistently
+        -- {
+        --     require("noice").api.status.command.get,
+        --     cond = require("noice").api.status.command.has,
+        --     color = { fg = "#ff9e64" },
+        -- },
+        -- this shows the mode we're in, normal not included
         {
             require("noice").api.status.mode.get,
             cond = require("noice").api.status.mode.has,
-            color = { fg = "#ff9e64" },
+            -- color = { fg = "#ff9e64" },
         },
         {
             require("noice").api.status.search.get,
             cond = require("noice").api.status.search.has,
-            color = { fg = "#ff9e64" },
+            -- color = { fg = "#ff9e64" },
         },
     }
 end
@@ -77,7 +80,7 @@ ll.setup {
         component_separators = { left = '', right = '' },
         section_separators = { left = '', right = '' },
         disabled_filetypes = {
-            { 'neo-tree', 'packer' }
+            { 'neo-tree', 'packer', 'noice' }
         },
         theme = 'auto',
     },
