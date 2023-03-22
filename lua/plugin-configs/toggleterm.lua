@@ -3,7 +3,7 @@ if not tt then return end
 
 tt.setup {
     float_opts = {
-        border = 'curved'
+        border = 'solid'
     }
 }
 
