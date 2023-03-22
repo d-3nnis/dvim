@@ -15,8 +15,8 @@ configs.setup {
     },
     rainbow = {
         enable = true,
-        extended_mode = true,
-        max_file_lines = nil,
+        query = 'rainbow-parens',
+        strategy = require 'ts-rainbow'.strategy.global,
     },
     textobjects = {
         select = {
@@ -27,10 +27,10 @@ configs.setup {
 
             keymaps = {
                 -- You can use the capture groups defined in textobjects.scm
-                ["af"] = { query = "@function.outer", desc = 'Select outer function'},
-                ["if"] = { query = "@function.inner", desc = 'Select inner function'},
-                ["ac"] = { query = "@class.outer"   , desc = 'Select outer part of class'},
-                ["ic"] = { query = "@class.inner"   , desc = 'Select inner part of class'},
+                ["af"] = { query = "@function.outer", desc = 'Select outer function' },
+                ["if"] = { query = "@function.inner", desc = 'Select inner function' },
+                ["ac"] = { query = "@class.outer", desc = 'Select outer part of class' },
+                ["ic"] = { query = "@class.inner", desc = 'Select inner part of class' },
                 -- TODO ADD MORE
             },
             include_surrounding_whitespace = true,

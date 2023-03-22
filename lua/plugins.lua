@@ -153,7 +153,7 @@ packer.startup(function(use)
     -- use 'nvim-zh/colorful-winsep.nvim'
     use 'https://gitlab.com/madyanov/svart.nvim'
     use 'famiu/bufdelete.nvim'
-    use 'mrjones2014/nvim-ts-rainbow'
+    use 'HiPhish/nvim-ts-rainbow2'
 
     use { 'gennaro-tedesco/nvim-possession',
         dependencies = {
