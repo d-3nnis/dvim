@@ -48,6 +48,9 @@ local lsp_telescope_opts = {
 }
 
 legend.setup({
+    extensions = {
+        nvim_tree = true,
+    },
     keymaps = {
         { '<C-h>', '<C-w>h', description = 'Go to left window' },
         { '<C-j>', '<C-w>j', description = 'Go to down window' },

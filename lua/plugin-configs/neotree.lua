@@ -5,13 +5,8 @@ if not nt then return end
 if not nt_events then return end
 if not bl then return end
 
-local function get_tree_size(args)
-    local width = vim.fn.winwidth(args.winid)
-    print(width)
-    return width
-end
-
 nt.setup({
+    use_default_mappings = false,
     close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
     popup_border_style = "solid",
     enable_git_status = true,
@@ -77,10 +72,10 @@ nt.setup({
             nowait = true,
         },
         mappings = {
-            -- ["o"] = {
-            --     "toggle_node",
-            --     nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
-            -- },
+            ["o"] = {
+                "toggle_node",
+                nowait = false, -- disable `nowait` if you have existing combos starting with this char that you want to use
+            },
             ["<cr>"] = "open",
             ["<esc>"] = "revert_preview",
             ["P"] = { "toggle_preview", config = { use_float = true } },
@@ -155,7 +150,6 @@ nt.setup({
                 ["D"] = "fuzzy_finder_directory",
                 ["f"] = "filter_on_submit",
                 ["<c-x>"] = "clear_filter",
-                ['space'] = 'none',
             }
         }
     },
@@ -174,7 +168,6 @@ nt.setup({
     git_status = {
         window = {
             position = "left",
-    --[[
             mappings = {
                 ["A"]  = "git_add_all",
                 ["gu"] = "git_unstage_file",
@@ -184,7 +177,6 @@ nt.setup({
                 ["gp"] = "git_push",
                 ["gg"] = "git_commit_and_push",
             }
---]]
         }
     },
     source_selector = {
