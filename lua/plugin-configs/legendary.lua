@@ -17,8 +17,6 @@ local function toggleterm(count, direction)
     return count .. 'ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction
 end
 
-local poss = require("nvim-possession")
-
 -- gitsigns
 local gs = safe_require("gitsigns")
 if gs then
@@ -52,51 +50,66 @@ legend.setup({
         nvim_tree = true,
     },
     keymaps = {
-        { '<C-h>', '<C-w>h', description = 'Go to left window' },
-        { '<C-j>', '<C-w>j', description = 'Go to down window' },
-        { '<C-k>', '<C-w>k', description = 'Go to up window' },
-        { '<C-l>', '<C-w>l', description = 'Go to right window' },
-        { '<C-s>', '<CMD>ClangdSwitchSourceHeader<CR>', description = 'Switch Header/Source', mode = { 'n', 'i' } },
-        { '<S-h>', '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer' },
-        { '<S-l>', '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer' },
-        { '<C-[>', '<CMD>BufferLineMovePrev<CR>', description = 'Move tab left' },
-        { '<C-]>', '<CMD>BufferLineMoveNext<CR>', description = 'Move tab right' },
+        { '<C-h>',     '<C-w>h',                                                 description = 'Go to left window' },
+        { '<C-j>',     '<C-w>j',                                                 description = 'Go to down window' },
+        { '<C-k>',     '<C-w>k',                                                 description = 'Go to up window' },
+        { '<C-l>',     '<C-w>l',                                                 description = 'Go to right window' },
+        { '<C-s>',     '<CMD>ClangdSwitchSourceHeader<CR>',                      description = 'Switch Header/Source',   mode = { 'n', 'i' } },
+        { '<S-h>',     '<CMD>BufferLineCyclePrev<CR>',                           description = 'Previous buffer' },
+        { '<S-l>',     '<CMD>BufferLineCycleNext<CR>',                           description = 'Next buffer' },
+        { '<C-[>',     '<CMD>BufferLineMovePrev<CR>',                            description = 'Move tab left' },
+        { '<C-]>',     '<CMD>BufferLineMoveNext<CR>',                            description = 'Move tab right' },
 
-        { '<C-Up>', '<CMD>resize +2<CR>', description = 'Resize +2' },
-        { '<C-Down>', '<CMD>resize -2<CR>', description = 'Resize -2' },
-        { '<C-Right>', '<CMD>vertical resize +2<CR>', description = 'Vertical resize +2' },
-        { '<C-Left>', '<CMD>vertical resize -2<CR>', description = 'Vertical resize -2' },
-        { '<C-t>f', function() vim.cmd(toggleterm(vim.v.count, 'float')) end, description = 'Open floating terminal',
-        },
+        { '<C-Up>',    '<CMD>resize +2<CR>',                                     description = 'Resize +2' },
+        { '<C-Down>',  '<CMD>resize -2<CR>',                                     description = 'Resize -2' },
+        { '<C-Right>', '<CMD>vertical resize +2<CR>',                            description = 'Vertical resize +2' },
+        { '<C-Left>',  '<CMD>vertical resize -2<CR>',                            description = 'Vertical resize -2' },
+        { '<C-t>f',    function() vim.cmd(toggleterm(vim.v.count, 'float')) end, description = 'Open floating terminal', },
         { '<C-t>s', function() vim.cmd(toggleterm(vim.v.count, 'horizontal')) end,
             description = 'Open horizontal terminal' },
-        { '<C-t>v', function() vim.cmd(toggleterm(vim.v.count, 'vertical')) end, description = 'Open vertical terminal',
-        },
-        { 'tb', '<CMD>ToggleBackground<CR>', description = 'Toggle background colour' },
+        { '<C-t>v', function() vim.cmd(toggleterm(vim.v.count, 'vertical')) end, description = 'Open vertical terminal', },
+        { 'tb',     '<CMD>ToggleBackground<CR>',                                 description = 'Toggle background colour' },
+        { 'j', function()
+            if vim.v.count == 0 then
+                vim.cmd('norm! gj')
+            else
+                vim.cmd('norm! j')
+            end
+        end, description = 'Line wrap aware move down', mode = { 'n', 'v', 'x', 'o' } },
+        { 'k', function()
+            if vim.v.count == 0 then
+                vim.cmd('norm! gk')
+            else
+                vim.cmd('norm! k')
+            end
+        end, description = 'Line wrap aware move up', mode = { 'n', 'v', 'x', 'o' } },
+        -- { '<expr><c-p>', function() vim.notify('test') end, description = 'Testing' },
+        -- { '<EXPR>j', function() v end }
+        -- {nnoremap <expr> j v:count ? 'j' : 'gj'},
+        --     { nnoremap <expr> k v:count ? 'k' : 'gk'}
         {
             -- groups with same itemgroup will be merged
             itemgroup = 'lsps',
             description = 'LSP Server Functions',
             icon = '',
             keymaps = {
-                { 'K', '<cmd>lua vim.lsp.buf.hover()<cr>', description = 'LSP Show Hover Field' },
+                { 'K',  '<cmd>lua vim.lsp.buf.hover()<cr>',          description = 'LSP Show Hover Field' },
                 { 'gl', '<cmd>lua vim.lsp.buf.signature_help()<cr>', description = '' },
                 -- { 'gd', '<cmd>lua require"telescope.builtin".lsp_definitions{lsp_telescope_opts} <cr>', description = 'Show defintions' },
-                { 'gd', function ()
+                { 'gd', function()
                     require("telescope.builtin").lsp_definitions(lsp_telescope_opts)
                 end, description = 'Show defintions' },
-                { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>', description = 'Go to declaration' },
-                { 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>', description = 'Go to implementation' },
+                { 'gD', '<cmd>lua vim.lsp.buf.declaration()<cr>',     description = 'Go to declaration' },
+                { 'gi', '<cmd>lua vim.lsp.buf.implementation()<cr>',  description = 'Go to implementation' },
                 { 'go', '<cmd>lua vim.lsp.buf.type_definition()<cr>', description = 'Type definition' },
-                -- { 'gr', '<cmd>lua require"telescope.builtin".lsp_references{lsp_telescope_opts} <cr>', description = 'Show references' },
-                { 'gr', function ()
-                    require"telescope.builtin".lsp_references(lsp_telescope_opts)
+                { 'gr', function()
+                    require "telescope.builtin".lsp_references(lsp_telescope_opts)
                 end, description = 'Show references' },
-                { 'gk', '<cmd>lua vim.diagnostic.goto_prev()<cr>', description = 'Go to previous LSP diagnostic'
+                { 'gh', '<cmd>lua vim.diagnostic.goto_prev()<cr>', description = 'Go to previous LSP diagnostic'
                 },
-                { 'gj', '<cmd>lua vim.diagnostic.goto_next()<cr>', description = 'Go to next LSP diagnostic',
+                { 'gl', '<cmd>lua vim.diagnostic.goto_next()<cr>', description = 'Go to next LSP diagnostic',
                 },
-                { '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>', description = 'Buffer rename' },
+                { '<F2>', '<cmd>lua vim.lsp.buf.rename()<cr>',      description = 'Buffer rename' },
                 { '<F4>', '<cmd>lua vim.lsp.buf.code_action()<cr>', description = 'Code action' },
                 { '<F4>', '<cmd>lua vim.lsp.buf.range_code_action()<cr>', description = 'Range code action',
                     mode = { 'x' } },
@@ -104,8 +117,8 @@ legend.setup({
                     mode = { 'v' } },
             },
         },
-        { "s", "<Cmd>Svart<CR>", description = 'Svart search', mode = { 'n', 'x', 'o' } },
-        { "S", "<Cmd>SvartRegex<CR>", description = 'Svart regex search', mode = { 'n', 'x', 'o' } },
+        { "s",  "<Cmd>Svart<CR>",       description = 'Svart search',        mode = { 'n', 'x', 'o' } },
+        { "S",  "<Cmd>SvartRegex<CR>",  description = 'Svart regex search',  mode = { 'n', 'x', 'o' } },
         { "gs", "<Cmd>SvartRepeat<CR>", description = 'Svart search repeat', mode = { 'n', 'x', 'o' } },
     },
     commands = {

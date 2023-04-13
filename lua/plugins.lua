@@ -26,30 +26,31 @@ local packer = safe_require('packer')
 if not packer then return end
 
 packer.init {
-    ensure_dependencies  = true, -- Should packer install plugin dependencies?
+    ensure_dependencies  = true,     -- Should packer install plugin dependencies?
     plugin_package       = 'packer', -- The default package for plugins
-    max_jobs             = nil, -- Limit the number of simultaneous jobs. nil means no limit
-    auto_clean           = true, -- During sync(), remove unused plugins
-    compile_on_sync      = true, -- During sync(), run packer.compile()
-    opt_default          = false, -- Default to using opt (as opposed to start) plugins
-    transitive_opt       = true, -- Make dependencies of opt plugins also opt by default
-    transitive_disable   = true, -- Automatically disable dependencies of disabled plugins
-    auto_reload_compiled = true, -- Automatically reload the compiled file after creating it.
+    max_jobs             = nil,      -- Limit the number of simultaneous jobs. nil means no limit
+    auto_clean           = true,     -- During sync(), remove unused plugins
+    compile_on_sync      = true,     -- During sync(), run packer.compile()
+    opt_default          = false,    -- Default to using opt (as opposed to start) plugins
+    transitive_opt       = true,     -- Make dependencies of opt plugins also opt by default
+    transitive_disable   = true,     -- Automatically disable dependencies of disabled plugins
+    auto_reload_compiled = true,     -- Automatically reload the compiled file after creating it.
     display              = {
-        non_interactive = false, -- If true, disable display windows for all operations
+        non_interactive = false,     -- If true, disable display windows for all operations
         open_fn         = function()
             return require('packer.util').float { border = "solid" }
         end,
         open_cmd        = '65vnew \\[packer\\]', -- An optional command to open a window for packer's display
-        working_sym     = '⟳', -- The symbol for a plugin being installed/updated
-        error_sym       = '✗', -- The symbol for a plugin with an error in installation/updating
-        done_sym        = '✓', -- The symbol for a plugin which has completed installation/updating
-        removed_sym     = '-', -- The symbol for an unused plugin which was removed
-        moved_sym       = '→', -- The symbol for a plugin which was moved (e.g. from opt to start)
-        header_sym      = '━', -- The symbol for the header line in packer's display
-        show_all_info   = true, -- Should packer show all update details automatically?
-        prompt_border   = 'solid', -- Border style of prompt popups.
-        keybindings     = { -- Keybindings for the display window
+        working_sym     = '⟳',                 -- The symbol for a plugin being installed/updated
+        error_sym       = '✗',                 -- The symbol for a plugin with an error in installation/updating
+        done_sym        = '✓',                 -- The symbol for a plugin which has completed installation/updating
+        removed_sym     = '-',                   -- The symbol for an unused plugin which was removed
+        moved_sym       = '→',                 -- The symbol for a plugin which was moved (e.g. from opt to start)
+        header_sym      = '━',                 -- The symbol for the header line in packer's display
+        show_all_info   = true,                  -- Should packer show all update details automatically?
+        prompt_border   = 'solid',               -- Border style of prompt popups.
+        keybindings     = {
+                                                 -- Keybindings for the display window
             quit = 'q',
             toggle_info = '<CR>',
             diff = 'd',
@@ -107,6 +108,13 @@ packer.startup(function(use)
         requires = { 'nvim-tree/nvim-web-devicons' }
     }
     use 'nvim-telescope/telescope-ui-select.nvim'
+    use {
+        "nvim-telescope/telescope-frecency.nvim",
+        config = function()
+            require "telescope".load_extension("frecency")
+        end,
+        requires = { "kkharji/sqlite.lua" }
+    }
     use { 'nvim-telescope/telescope.nvim', tag = '0.1.0' }
 
     use 'lukas-reineke/indent-blankline.nvim'
@@ -155,14 +163,16 @@ packer.startup(function(use)
     use 'famiu/bufdelete.nvim'
     use 'HiPhish/nvim-ts-rainbow2'
 
-    use { 'gennaro-tedesco/nvim-possession',
-        dependencies = {
-            'ibhagwan/fzf-lua',
-        },
-    }
-
     use 'tzachar/local-highlight.nvim'
     use 'folke/twilight.nvim'
+    use {
+        'SmiteshP/nvim-navbuddy',
+        requires = {
+            'neovim/nvim-lspconfig',
+            'SmiteshP/nvim-navic',
+            'MunifTanjim/nui.nvim'
+        },
+    }
     -- add more here --
 
     -- LSP Plugins --
@@ -174,14 +184,14 @@ packer.startup(function(use)
         "jay-babu/mason-null-ls.nvim",
     }
     -- Snippets
-    use "L3MON4D3/LuaSnip" --snippet engine
+    use "L3MON4D3/LuaSnip"             --snippet engine
     use "rafamadriz/friendly-snippets" -- a bunch of snippets to use
 
     -- Cmp plugins
-    use "hrsh7th/nvim-cmp" -- The completion plugin
-    use "hrsh7th/cmp-buffer" -- buffer completions
-    use "hrsh7th/cmp-path" -- path completions
-    use "hrsh7th/cmp-cmdline" -- cmdline completions
+    use "hrsh7th/nvim-cmp"         -- The completion plugin
+    use "hrsh7th/cmp-buffer"       -- buffer completions
+    use "hrsh7th/cmp-path"         -- path completions
+    use "hrsh7th/cmp-cmdline"      -- cmdline completions
     use "saadparwaiz1/cmp_luasnip" -- snippet completions
     use "hrsh7th/cmp-nvim-lsp"
     use "hrsh7th/cmp-nvim-lua"
@@ -230,7 +240,7 @@ require('plugin-configs/smooth-cursor')
 require('plugin-configs/devicons')
 require('plugin-configs/lualine')
 require('plugin-configs/cmp-setup')
-require('plugin-configs/toggleterm')
+require('plugin-configs/toggleterm-config')
 require('plugin-configs/project')
 require('plugin-configs/alpha')
 require('plugin-configs/gitsigns')
@@ -238,11 +248,11 @@ require('plugin-configs/comment')
 require('plugin-configs/window-picker')
 --require('plugin-configs/windows')
 require('plugin-configs/neorg')
-require('plugin-configs.noice')
+require('plugin-configs.noice-config')
 require('plugin-configs/autopairs')
-require('plugin-configs.codewindow')
+require('plugin-configs.codewindow-config')
 -- require('plugin-configs.winsep')
 require('plugin-configs.svart')
-require('plugin-configs.possession')
 require('plugin-configs.highlight')
 require('plugin-configs.twilight')
+require('plugin-configs.nav-buddy')

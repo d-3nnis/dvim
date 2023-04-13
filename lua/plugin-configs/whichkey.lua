@@ -4,7 +4,6 @@ local gs = safe_require('gitsigns')
 -- if not gs then return end
 local wp = safe_require('window-picker')
 -- if not wp then return end
-local poss = safe_require('nvim-possession')
 
 local M = {}
 
@@ -14,7 +13,7 @@ M.whichkey_binds = {
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
     v = {
         name = "Focusing",
-        v = { '<cmd>Twilight<CR>', 'Toggle focus'},
+        v = { '<cmd>Twilight<CR>', 'Toggle focus' },
     },
     s = {
         name = "Telescope",
@@ -26,12 +25,14 @@ M.whichkey_binds = {
             }
         end, "Fuzzy grep" },
         f = { "<cmd>Telescope find_files<cr>", "Find file" },
-        r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+        -- r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+        r = { "<cmd>Telescope frecency<cr>", "Recent files" },
         k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
         h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
         n = { "<cmd>Telescope notify<cr>", "Notify messages" },
         b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
         e = { "<cmd>Telescope projects<cr>", "Projects list" },
+        w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
     },
     e = {
         name = "Tree explorer",
@@ -52,7 +53,7 @@ M.whichkey_binds = {
             "<cmd>Telescope lsp_workspace_diagnostics<cr>",
             "Workspace Diagnostics",
         },
-        f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format" },
+        f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format", mode = { 'n', 'v' } },
         i = { "<cmd>LspInfo<cr>", "Info" },
         j = {
             "<cmd>lua vim.diagnostic.goto_next()<CR>",
@@ -85,12 +86,12 @@ M.whichkey_binds = {
             if poss then
                 poss.new()
             end
-        end, 'Session List' },
+        end, 'New session' },
         u = { function()
             if poss then
                 poss.update()
             end
-        end, 'Session List' },
+        end, 'Update session' },
     },
     -- add one for window
     -- add one for barbar
@@ -122,18 +123,19 @@ M.whichkey_binds = {
         --map('n', '<leader>td', gs.toggle_deleted)
 
     },
-
     u = {
         name = 'Duck?',
         d = { function()
             local duck = safe_require('duck')
-            if not duck then return else end
+            if not duck then return else
+            end
             duck.hatch()
         end, 'Hatch Duck'
         },
         k = { function()
             local duck = safe_require('duck')
-            if not duck then return else end
+            if not duck then return else
+            end
             duck.cook()
         end, 'Catch Duck'
         },

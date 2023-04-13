@@ -38,7 +38,7 @@ noice.setup {
                 height = 10,
             },
             border = {
-                style = "border",
+                style = "solid",
                 padding = { 0, 1 },
             },
             win_options = {
