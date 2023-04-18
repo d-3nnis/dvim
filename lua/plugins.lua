@@ -25,7 +25,11 @@ M.plugins = {
         }
     },
 
-    { 'nvim-treesitter/nvim-treesitter', build = ':TSUpdate' },
+    { 'nvim-treesitter/nvim-treesitter',
+    build = ':TSUpdate',
+    config = function()
+require('plugin-configs/treesitter')
+    end},
     'nvim-treesitter/nvim-treesitter-context',
     {
         "nvim-treesitter/nvim-treesitter-textobjects",
@@ -40,7 +44,7 @@ M.plugins = {
 
     { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', },
 
-    { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
     'sharkdp/fd',
     { 'ibhagwan/fzf-lua',
@@ -90,7 +94,7 @@ end
     {
         'nvim-neorg/neorg',
         dependencies = "nvim-lua/plenary.nvim",
-        run = ":Neorg sync-parsers",
+        build = ":Neorg sync-parsers",
     },
     {
         "folke/noice.nvim",
@@ -98,6 +102,9 @@ end
             "MunifTanjim/nui.nvim",
             "rcarriga/nvim-notify",
         },
+        config = function()
+            require('plugin-configs.noice-config')
+        end,
     },
 
     'tamton-aquib/duck.nvim',
