@@ -9,6 +9,11 @@ M.plugins = {
 
             'kkharji/sqlite.lua',
         },
+        config = function() 
+local ret = require('plugin-configs/legendary')
+local legend = safe_require('legendary')
+            legend.setup(ret.config)
+        end
     },
 
     'nvim-lua/plenary.nvim',
@@ -22,7 +27,10 @@ M.plugins = {
             "nvim-lua/plenary.nvim",
             "nvim-tree/nvim-web-devicons",
             "MunifTanjim/nui.nvim",
-        }
+        },
+        config = function()
+            require('plugin-configs/neotree')
+        end
     },
 
     { 'nvim-treesitter/nvim-treesitter',
@@ -42,7 +50,11 @@ require('plugin-configs/treesitter')
     end,
     },
 
-    { 'akinsho/bufferline.nvim', dependencies = 'nvim-tree/nvim-web-devicons', },
+    { 'akinsho/bufferline.nvim',
+        config = function()
+            require('plugin-configs/bufferline')
+        end,
+        dependencies = 'nvim-tree/nvim-web-devicons', },
 
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
@@ -192,10 +204,6 @@ require('plugin-configs.flatten')
 require('plugin-configs/colourschemes')
 require('plugin-configs/notify')
 require('plugin-configs/telescope-config')
-require('plugin-configs/treesitter')
-require('plugin-configs/legendary')
-require('plugin-configs/neotree')
-require('plugin-configs/bufferline')
 require('plugin-configs/indentline')
 require('plugin-configs/mason')
 require('plugin-configs/mlspconfig')

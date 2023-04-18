@@ -1,7 +1,7 @@
-local legend = safe_require('legendary')
-if not legend then return end
 local wk = safe_require('plugin-configs/whichkey')
 if not wk then return end
+
+local M = {}
 
 -- local keymap = vim.api.nvim_set_keymap
 local vmap = vim.keymap.set
@@ -45,7 +45,7 @@ local lsp_telescope_opts = {
     initial_mode = 'normal'
 }
 
-legend.setup({
+M.config = {
     extensions = {
         nvim_tree = true,
     },
@@ -82,7 +82,7 @@ legend.setup({
             else
                 vim.cmd('norm! k')
             end
-        end, description = 'Line wrap aware move up', mode = { 'n', 'v', 'x', 'o' } },
+        end, description = 'Line wrap aware move up', mode =  },
         -- { '<expr><c-p>', function() vim.notify('test') end, description = 'Testing' },
         -- { '<EXPR>j', function() v end }
         -- {nnoremap <expr> j v:count ? 'j' : 'gj'},
@@ -174,8 +174,10 @@ legend.setup({
             max_timestamps = 10,
         },
     }
-})
+}
 
 local li = safe_require('legendary.integrations.which-key')
 if not li then return end
 li.bind_whichkey(wk.whichkey_binds, wk.whichkey_opts, false)
+
+return M
