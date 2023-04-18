@@ -34,7 +34,7 @@ local cs = safe_require('zenbones')
 if cs then
     vim.opt.background = 'light'
     vim.api.nvim_command('colorscheme zenbones')
-    vim.api.nvim_command('colorscheme zenbones')
+    vim.api.nvim_command('colorscheme everforest')
     vim.cmd("hi link IlluminatedWordRead Search")
 else
     vim.api.nvim_command([[colorscheme everforest]])
