@@ -8,8 +8,12 @@ t.setup {
                 -- even more opts
             }
         },
-        fzf = {}
-    }
+        fzf = {},
+        frecency = {
+            db_root = "~/.local/share/nvim/",
+            show_scores = true,
+        }
+    },
 }
 
 vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
