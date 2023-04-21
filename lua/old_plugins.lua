@@ -11,7 +11,6 @@ M.plugins = {
     -- TODO check me out in the future
     -- 'gen740/SmoothCursor.nvim', --TODO add arrows that change direction when moving up or down :)
     'karb94/neoscroll.nvim',
-    'nvim-lualine/lualine.nvim',
     'akinsho/toggleterm.nvim',
 
     'lewis6991/gitsigns.nvim',
@@ -32,12 +31,10 @@ M.plugins = {
     },
 
     'tamton-aquib/duck.nvim',
-    'windwp/nvim-autopairs',
     'gorbit99/codewindow.nvim',
 
     --'mong8se/actually.nvim',  --weirdly bugged
     -- 'nvim-zh/colorful-winsep.nvim',
-    'famiu/bufdelete.nvim',
 
     'tzachar/local-highlight.nvim',
     'folke/twilight.nvim',
@@ -58,18 +55,6 @@ M.plugins = {
         "jose-elias-alvarez/null-ls.nvim",
         "jay-babu/mason-null-ls.nvim",
     },
-    -- Snippets
-    'L3MON4D3/LuaSnip',             --snippet engine
-    'rafamadriz/friendly-snippets', -- a bunch of snippets to use
-
-    -- Cmp plugins
-    'hrsh7th/nvim-cmp',         -- The completion plugin
-    'hrsh7th/cmp-buffer',       -- buffer completions
-    'hrsh7th/cmp-path',         -- path completions
-    'hrsh7th/cmp-cmdline',      -- cmdline completions
-    'saadparwaiz1/cmp_luasnip', -- snippet completions
-    'hrsh7th/cmp-nvim-lsp',
-    'hrsh7th/cmp-nvim-lua',
 
     -- Specific LSP extensions
     'p00f/clangd_extensions.nvim',
