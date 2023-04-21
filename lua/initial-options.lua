@@ -39,7 +39,6 @@ o.list = true
 
 -- Misc Options --
 o.clipboard = "unnamedplus"
---vim.cmd('source ~/.config/nvim/lua/clipboard.vim')
 o.number = true
 o.relativenumber = true
 o.mouse = 'a'

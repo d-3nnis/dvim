@@ -1,13 +1,13 @@
-local wk = safe_require("which-key")
-if not wk then return end
-local gs = safe_require('gitsigns')
--- if not gs then return end
-local wp = safe_require('window-picker')
--- if not wp then return end
 
-local config = {}
-
-config.whichkey_binds = {
+local config = {
+    { 'folke/which-key.nvim',
+    lazy = false,
+    config = function()
+        local wk = safe_require("which-key")
+        -- if not wk then return end
+        local gs = safe_require('gitsigns')
+        -- if not gs then return end
+local whichkey_binds = {
     ["w"] = { "<cmd>w!<CR>", "Save" },
     ["q"] = { "<cmd>qa<CR>", "Quit" },
     ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
@@ -187,6 +187,12 @@ wk.setup {
     }
 }
 
--- wk.register(M.whichkey_binds, M.whichkey_opts)
+wk.register(whichkey_binds, whichkey_opts)
+
+
+    end,
+    },
+}
+
 
 return config
