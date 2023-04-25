@@ -7,7 +7,7 @@ local config = {
             if not configs then return end
 
             configs.setup {
-                ensure_installed = { "c", "lua", "rust", "cpp", 'org',},
+                ensure_installed = { "c", "lua", "rust", "cpp", 'org', 'regex', 'bash', 'markdown', 'markdown_inline'},
                 sync_install = false,                        -- install languages synchronously (only applied to `ensure_installed`)
                 highlight = {
                     enable = true,                           -- false will disable the whole extension

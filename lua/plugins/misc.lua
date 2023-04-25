@@ -11,12 +11,9 @@ local config = {
     {
         'tzachar/local-highlight.nvim',
         config = function()
-            local hl = safe_require('local-highlight')
-            if not hl then return end
-
-            hl.setup()
+            safe_require('local-highlight').setup()
                 -- file_types = { 'python', 'cpp', 'lua' }
-        end
+        end,
     },
     {
         'lewis6991/gitsigns.nvim',
