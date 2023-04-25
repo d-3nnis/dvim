@@ -1,14 +1,15 @@
 local config = {
+    -- 'p00f/clangd_extensions.nvim',
     {
         'williamboman/mason.nvim',
-    lazy = false,
+        lazy = false,
         config = function()
             require("mason").setup()
         end,
     },
     {
         'williamboman/mason-lspconfig.nvim',
-    lazy = false,
+        lazy = false,
         config = function()
             local mlconfig = safe_require('mason-lspconfig')
             if not mlconfig then return end

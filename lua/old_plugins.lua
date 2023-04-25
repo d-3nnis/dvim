@@ -4,14 +4,7 @@ local M = {}
 M.plugins = {
     'willothy/flatten.nvim',
 
-    
     'sharkdp/fd',
-
-
-    -- TODO check me out in the future
-    -- 'gen740/SmoothCursor.nvim', --TODO add arrows that change direction when moving up or down :)
-    'karb94/neoscroll.nvim',
-    'akinsho/toggleterm.nvim',
 
     'lewis6991/gitsigns.nvim',
 
@@ -37,27 +30,15 @@ M.plugins = {
     -- 'nvim-zh/colorful-winsep.nvim',
 
     'tzachar/local-highlight.nvim',
-    'folke/twilight.nvim',
-    {
-        'SmiteshP/nvim-navbuddy',
-        dependencies = {
-            'neovim/nvim-lspconfig',
-            'SmiteshP/nvim-navic',
-            'MunifTanjim/nui.nvim'
-        },
-    },
     -- add more here --
 
     -- LSP Plugins --
-    {
-        'williamboman/mason-lspconfig.nvim',
-        'neovim/nvim-lspconfig',
-        "jose-elias-alvarez/null-ls.nvim",
-        "jay-babu/mason-null-ls.nvim",
-    },
+    -- {
+    --     "jose-elias-alvarez/null-ls.nvim",
+    --     "jay-babu/mason-null-ls.nvim",
+    -- },
 
     -- Specific LSP extensions
-    'p00f/clangd_extensions.nvim',
 }
 
 -- vim.cmd [[
