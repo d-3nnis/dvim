@@ -1,5 +1,17 @@
 local config = {
-    'p00f/clangd_extensions.nvim',
+    {
+        'p00f/clangd_extensions.nvim',
+        config = function()
+            safe_require('clangd_extensions').setup {
+                extensions = {
+                    inlay_hints = {
+                        parameter_hints_prefix = "  ",
+                        other_hints_prefix = " ",
+                    }
+                }
+            }
+        end,
+    },
     'famiu/bufdelete.nvim',
     'https://gitlab.com/madyanov/svart.nvim',
     'nvim-lua/plenary.nvim',
@@ -12,7 +24,7 @@ local config = {
         'tzachar/local-highlight.nvim',
         config = function()
             safe_require('local-highlight').setup()
-                -- file_types = { 'python', 'cpp', 'lua' }
+            -- file_types = { 'python', 'cpp', 'lua' }
         end,
     },
     {

@@ -1,3 +1,5 @@
+local actions = require("telescope.actions")
+
 local config = {
     {
         'folke/which-key.nvim',
@@ -31,7 +33,16 @@ local config = {
                     h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },
                     b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
-                    e = { "<cmd>Telescope projects<cr>", "Projects list" },
+                    -- e = { "<cmd>Telescope projects<cr>", "Projects list" },
+                    e = { function()
+                        require('telescope').extensions.projects.projects {
+                        }
+                        local on_project_selected = function()
+                            -- find_project_files(prompt_bufnr)
+                            vim.notify('test')
+                        end
+                        actions.select_default:replace(on_project_selected)
+                    end, "Projects list" },
                     w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
                 },
                 e = {
