@@ -12,7 +12,7 @@ local config = {
             local whichkey_binds = {
                 ["w"] = { "<cmd>w!<CR>", "Save" },
                 ["q"] = { "<cmd>qa<CR>", "Quit" },
-                ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
+                -- ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
                 v = {
                     name = "Focusing",
                     v = { '<cmd>Twilight<CR>', 'Toggle focus' },
@@ -27,8 +27,8 @@ local config = {
                         }
                     end, "Fuzzy grep" },
                     f = { "<cmd>Telescope find_files<cr>", "Find file" },
-                    -- r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-                    r = { "<cmd>Telescope frecency<cr>", "Recent files" },
+                    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+                    a = { "<cmd>Telescope frecency<cr>", "Frecency search" },
                     k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
                     h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },

@@ -17,7 +17,11 @@ local config = {
                             -- even more opts
                         }
                     },
-                    fzf = {}
+                    fzf = {},
+                    frecency = {
+                        db_root = "~/.local/share/nvim/",
+                        show_scores = true,
+                    }
                 }
             }
 

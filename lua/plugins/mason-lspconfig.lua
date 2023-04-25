@@ -1,5 +1,4 @@
 local config = {
-    -- 'p00f/clangd_extensions.nvim',
     {
         'williamboman/mason.nvim',
         lazy = false,

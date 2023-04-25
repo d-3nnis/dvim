@@ -13,5 +13,4 @@ end
 local lazy_config = {
 }
 require('lazy').setup('plugins', lazy_config)
-require('lspconfig-setup')
 require('post-plugins')
