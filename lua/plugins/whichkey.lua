@@ -1,4 +1,3 @@
-local actions = require("telescope.actions")
 
 local config = {
     {
@@ -33,16 +32,7 @@ local config = {
                     h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },
                     b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
-                    -- e = { "<cmd>Telescope projects<cr>", "Projects list" },
-                    e = { function()
-                        require('telescope').extensions.projects.projects {
-                        }
-                        local on_project_selected = function()
-                            -- find_project_files(prompt_bufnr)
-                            vim.notify('test')
-                        end
-                        actions.select_default:replace(on_project_selected)
-                    end, "Projects list" },
+                    e = { "<cmd>Telescope projects<cr>", "Projects list" },
                     w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
                 },
                 e = {
@@ -85,25 +75,26 @@ local config = {
                     name = "Misc",
                     q = { "gq", "Reformat line widths" },
                     h = { "<cmd>nohls<cr>", "Hide search highlight" },
+                    x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' }
                 },
-                a = {
-                    name = 'Session Manager',
-                    l = { function()
-                        if poss then
-                            poss.list()
-                        end
-                    end, 'Session List' },
-                    n = { function()
-                        if poss then
-                            poss.new()
-                        end
-                    end, 'New session' },
-                    u = { function()
-                        if poss then
-                            poss.update()
-                        end
-                    end, 'Update session' },
-                },
+                -- a = {
+                --     name = 'Session Manager',
+                --     l = { function()
+                --         if poss then
+                --             poss.list()
+                --         end
+                --     end, 'Session List' },
+                --     n = { function()
+                --         if poss then
+                --             poss.new()
+                --         end
+                --     end, 'New session' },
+                --     u = { function()
+                --         if poss then
+                --             poss.update()
+                --         end
+                --     end, 'Update session' },
+                -- },
                 -- add one for window
                 -- add one for barbar
                 -- easy access
@@ -165,6 +156,7 @@ local config = {
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
                 ["u"] = { vim.cmd.UndotreeToggle, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
+                ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', 'Search and replace with text under cursor' }
             }
 
             local whichkey_opts = {

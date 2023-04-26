@@ -191,8 +191,9 @@ local config = {
                     mode = {
                         'n', 'x', 'o' }
                 },
-                { "n", "nzzzv", description = 'Centered forward search',   mode = { 'n' } },
-                { "N", "Nzzzv", description = 'Centered backwards search', mode = { 'n' } },
+                { 'n', 'nzzzv', description = 'Centered forward search',   mode = { 'n' } },
+                { 'N', 'Nzzzv', description = 'Centered backwards search', mode = { 'n' } },
+                { 'Q', '<nop>', description = 'Delete me', mode = { 'n' } },
             },
             commands = {
                 {
