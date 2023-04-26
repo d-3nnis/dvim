@@ -6,7 +6,7 @@ require('keymaps')
 -- If opening from inside neovim terminal then do not load all the other plugins
 if os.getenv("NVIM") ~= nil then
     require('lazy').setup {
-        {'willothy/flatten.nvim', config = true },
+        { 'willothy/flatten.nvim', config = true },
     }
     return
 end

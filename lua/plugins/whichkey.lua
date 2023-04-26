@@ -1,4 +1,3 @@
-
 local config = {
     {
         'folke/which-key.nvim',
@@ -11,7 +10,6 @@ local config = {
             local whichkey_binds = {
                 ["w"] = { "<cmd>w!<CR>", "Save" },
                 ["q"] = { "<cmd>qa<CR>", "Quit" },
-                -- ["/"] = { "<cmd>lua require('Comment.api').toggle.linewise.current()<cr>", "Comment" },
                 v = {
                     name = "Focusing",
                     v = { '<cmd>Twilight<CR>', 'Toggle focus' },
@@ -25,7 +23,22 @@ local config = {
                             only_sort_text = true, search = '', prompt_title = 'Fuzzy grep',
                         }
                     end, "Fuzzy grep" },
-                    f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                    f = {
+                        name = 'Fine tuned file search',
+                        a = {
+                            function()
+                                require 'telescope.builtin'.find_files({
+                                    find_command = { 'fd', '--hidden', '--no-ignore' } })
+                            end,
+                            "Search ALL files" },
+                        d = {
+                            function()
+                                require 'telescope.builtin'.find_files({
+                                    find_command = { 'fd', '--no-ignore', '-E', '.git' } })
+                            end,
+                            "Search files including gitignore" },
+                        f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                    },
                     r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
                     a = { "<cmd>Telescope frecency<cr>", "Frecency search" },
                     k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
@@ -77,27 +90,6 @@ local config = {
                     h = { "<cmd>nohls<cr>", "Hide search highlight" },
                     x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' }
                 },
-                -- a = {
-                --     name = 'Session Manager',
-                --     l = { function()
-                --         if poss then
-                --             poss.list()
-                --         end
-                --     end, 'Session List' },
-                --     n = { function()
-                --         if poss then
-                --             poss.new()
-                --         end
-                --     end, 'New session' },
-                --     u = { function()
-                --         if poss then
-                --             poss.update()
-                --         end
-                --     end, 'Update session' },
-                -- },
-                -- add one for window
-                -- add one for barbar
-                -- easy access
                 b = {
                     name = "Buffers",
                     l = { "<Cmd>BufferOrderByLanguage<CR>", "Order Buffers by Language" },
@@ -124,21 +116,6 @@ local config = {
                     --map('n', '<leader>td', gs.toggle_deleted)
 
                 },
-                i = {
-                    name = 'Code Window',
-                    o = {
-                        function() require("codewindow").open_minimap() end, "Open Minimap"
-                    },
-                    c = {
-                        function() require("codewindow").close_minimap() end, "Close Minimap"
-                    },
-                    f = {
-                        function() require("codewindow").toggle_focus() end, "Focus Toggle Minimap"
-                    },
-                    t = {
-                        function() require("codewindow").toggle_minimap() end, "Toggle Minimap"
-                    },
-                },
                 t = {
                     name = 'To[ggle]',
                     g = {
@@ -156,7 +133,8 @@ local config = {
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
                 ["u"] = { vim.cmd.UndotreeToggle, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
-                ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', 'Search and replace with text under cursor' }
+                ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
+                    'Search and replace with text under cursor' }
             }
 
             local whichkey_opts = {

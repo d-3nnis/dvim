@@ -22,7 +22,12 @@ local config = {
                         db_root = "~/.local/share/nvim/",
                         show_scores = true,
                     }
-                }
+                },
+                -- pickers = {
+                --     -- find_files = {
+                --     --     find_command = { 'fd', '--no-ignore', '-E', '.git' },
+                --     -- },
+                -- },
             }
 
             vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
