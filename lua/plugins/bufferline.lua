@@ -1,3 +1,10 @@
+local config = {
+
+    { 'akinsho/bufferline.nvim',
+    lazy = false,
+        config = function()
+
+
 local bl = safe_require('bufferline')
 if not bl then return end
 
@@ -21,3 +28,8 @@ bl.setup{
     }
 }
 
+
+        end,
+        dependencies = 'nvim-tree/nvim-web-devicons', },
+}
+return config

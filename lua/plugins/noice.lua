@@ -1,5 +1,14 @@
+
+local config = {
+    {
+        "folke/noice.nvim",
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "rcarriga/nvim-notify",
+        },
+        config = function()
 local noice = safe_require("noice")
-if not noice then return end
+-- if not noice then return end
 
 noice.setup {
     presets = {
@@ -60,3 +69,7 @@ noice.setup {
         view_search = false,
     },
 }
+        end,
+    },
+}
+return config

@@ -1,3 +1,7 @@
+
+local config = {
+    'rcarriga/nvim-notify',
+    config = function ()
 local notify = safe_require('notify')
 if not notify then return end
 local stages = require("notify.stages.slide")("top_down")
@@ -17,3 +21,6 @@ notify.setup {
 }
 
 vim.notify = notify
+    end
+}
+return config

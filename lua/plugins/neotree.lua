@@ -1,3 +1,15 @@
+local config = {
+{
+        "nvim-neo-tree/neo-tree.nvim",
+    lazy = false,
+        branch = "v2.x",
+        dependencies = {
+            "nvim-lua/plenary.nvim",
+            "nvim-tree/nvim-web-devicons",
+            "MunifTanjim/nui.nvim",
+        },
+        config = function()
+
 local nt = safe_require('neo-tree')
 local nt_events = safe_require('neo-tree.events')
 local bl = safe_require('bufferline.state')
@@ -183,3 +195,12 @@ nt.setup({
         winbar = true,
     }
 })
+
+
+
+
+        end
+    },
+
+}
+return config

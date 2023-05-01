@@ -1,3 +1,9 @@
+local config = {
+{
+    'lukas-reineke/indent-blankline.nvim',
+    config = function()
+
+
 local ts = safe_require('nvim-treesitter')
 if ts then
     vim.opt.listchars = { eol = '﬋', tab = '--', trail = '·' }
@@ -10,3 +16,11 @@ il.setup {
     show_current_context = true,
     show_current_context_start = true,
 }
+
+
+        end
+    }
+
+
+}
+return config
