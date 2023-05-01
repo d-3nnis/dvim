@@ -8,9 +8,7 @@ if os.getenv("NVIM") ~= nil then
     require('lazy').setup {
         { 'willothy/flatten.nvim', config = true },
     }
-    return
 end
-local lazy_config = {
-}
+local lazy_config = {}
 require('lazy').setup('plugins', lazy_config)
 require('post-plugins')
