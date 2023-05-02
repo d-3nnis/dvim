@@ -3,6 +3,11 @@ local config = {
         'p00f/clangd_extensions.nvim',
         config = function()
             safe_require('clangd_extensions').setup {
+                server = {
+                    init_options = {
+                        compilationDatabaseDirectory = "/home/dvidovic/co/odin/hlos/build-qti-distro-fullstack-perf/"
+                    }
+                },
                 extensions = {
                     inlay_hints = {
                         parameter_hints_prefix = "  ",
@@ -19,7 +24,6 @@ local config = {
     'MunifTanjim/nui.nvim',
     { 'HiPhish/nvim-ts-rainbow2', lazy = true },
     'mbbill/undotree',
-    'mong8se/actually.nvim',
     {
         'tzachar/local-highlight.nvim',
         config = function()
