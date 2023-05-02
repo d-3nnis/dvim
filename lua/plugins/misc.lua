@@ -5,7 +5,7 @@ local config = {
             safe_require('clangd_extensions').setup {
                 server = {
                     init_options = {
-                        compilationDatabaseDirectory = "/home/dvidovic/co/odin/hlos/build-qti-distro-fullstack-perf/"
+                        compilationDatabaseDirectory = "/home/dvidovic/co/*/hlos/build/"
                     }
                 },
                 extensions = {
