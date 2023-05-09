@@ -17,6 +17,7 @@ local config = {
                 s = {
                     name = "Telescope",
                     t = { "<cmd>Telescope live_grep<cr>", "Grep files" },
+                    c = { "<cmd>Telescope persisted<cr>", "Session Manager" },
                     z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
                     s = { function()
                         require('telescope.builtin').grep_string { shorten_path = true, word_match = "-w",

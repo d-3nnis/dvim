@@ -37,6 +37,7 @@ local config = {
             t.load_extension('notify')
             t.load_extension('projects')
             t.load_extension('fzf')
+            t.load_extension("persisted")
 
             local noice = safe_require('noice')
             if noice then
