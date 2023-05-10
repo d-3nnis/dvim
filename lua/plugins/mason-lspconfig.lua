@@ -1,3 +1,12 @@
+local function on_attach()
+    local legendary = safe_require('legendary')
+    if not legendary then
+        return
+    end
+    local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
+    legendary.commands(lsp_legend)
+end
+
 local config = {
     {
         'williamboman/mason.nvim',
@@ -22,9 +31,12 @@ local config = {
                 lua_ls = {
                     settings = {
                         Lua = {
-                            diagnostics = {
-                                globals = { 'vim' }
-                            }
+                            completion = {
+                                callSnippet = "Replace"
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                            },
                         }
                     }
                 },
@@ -48,25 +60,12 @@ local config = {
                             server_config = {}
                         end
 
-                        local default_config = { capabilities = capabilities }
-                        local config = vim.tbl_extend("error", server_config, default_config)
-                        lspconfig[server_name].setup(config)
+                        local default_config = { on_attach = on_attach, capabilities = capabilities }
+                        local extended_config = vim.tbl_extend("error", server_config, default_config)
+                        lspconfig[server_name].setup(extended_config)
                     end
                 end
             })
-
-            -- local clangd_ext = safe_require('clangd_extensions')
-            -- if clangd_ext then
-            --     clangd_ext.setup {
-            --         extensions = {
-            --             inlay_hints = {
-            --
-            --                 parameter_hints_prefix = "  ",
-            --                 other_hints_prefix = " ",
-            --             }
-            --         }
-            --     }
-            -- end
         end,
         dependencies = {
             'williamboman/mason.nvim',
@@ -74,9 +73,6 @@ local config = {
     },
     {
         'neovim/nvim-lspconfig',
-        dependencies = {
-            -- 'williamboman/mason.nvim',
-        },
     }
 }
 

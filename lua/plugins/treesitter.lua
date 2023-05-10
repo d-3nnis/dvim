@@ -30,13 +30,15 @@ local config = {
                         keymaps = {
                             ["af"] = { query = "@function.outer", desc = 'Select outer function' },
                             ["if"] = { query = "@function.inner", desc = 'Select inner function' },
-                            ["ac"] = { query = "@class.outer", desc = 'Select outer part of class' },
-                            ["ic"] = { query = "@class.inner", desc = 'Select inner part of class' },
+                            ["aC"] = { query = "@class.outer", desc = 'Select outer part of class' },
+                            ["iC"] = { query = "@class.inner", desc = 'Select inner part of class' },
+                            ["ac"] = { query = "@comment.outer", desc = 'Select outer part of comment' },
+                            ["ic"] = { query = "@comment.inner", desc = 'Select inner part of comment' },
                             ["aP"] = { query = "@parameter.outer", desc = 'Select outer part of parameter' },
                             ["iP"] = { query = "@parameter.inner", desc = 'Select inner part of parameter' },
                             -- TODO ADD MORE
                         },
-                        include_surrounding_whitespace = true,
+                        include_surrounding_whitespace = false,
                     },
                 },
             }
