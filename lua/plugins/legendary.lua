@@ -36,9 +36,6 @@ local config = {
             end, opts)
         end
 
-        local lsp_telescope_opts = {
-            initial_mode = 'normal'
-        }
         local legendary = safe_require('legendary')
         legendary.setup({
             extensions = {

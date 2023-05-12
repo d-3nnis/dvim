@@ -84,12 +84,11 @@ local config = {
                     lualine_b = { 'diagnostics', },
                     lualine_c = {
                         mixed_indents,
-                        macro_recording_status,
                     },
                     lualine_x = line_x,
                     -- lualine_y = { 'encoding', 'fileformat', 'filetype', },
                     lualine_y = {},
-                    lualine_z = { which_project, }
+                    lualine_z = { which_project, macro_recording_status }
                 },
                 inactive_sections = {
                     lualine_a = { 'filename' },

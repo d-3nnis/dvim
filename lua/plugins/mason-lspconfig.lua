@@ -4,7 +4,7 @@ local function on_attach()
         return
     end
     local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
-    legendary.commands(lsp_legend)
+    legendary.keymaps(lsp_legend, {buffer = true})
 end
 
 local config = {
