@@ -19,6 +19,10 @@ local config = {
                 end
             end
 
+            local function which_project()
+                return vim.g.project_config
+            end
+
             local function mixed_indents()
                 local space_pat = [[\v^ +]]
                 local tab_pat = [[\v^\t+]]
@@ -43,13 +47,6 @@ local config = {
                 end
             end
 
-            local function keymap()
-                if vim.opt.iminsert:get() > 0 and vim.b.keymap_name then
-                    return '⌨ ' .. vim.b.keymap_name
-                end
-                return ''
-            end
-
             local line_x = {};
             local noice = safe_require('noice')
             if noice then
@@ -65,16 +62,9 @@ local config = {
                     --     cond = require("noice").api.status.command.has,
                     --     color = { fg = "#ff9e64" },
                     -- },
-                    -- this shows the mode we're in, normal not included
-                    {
-                        require("noice").api.status.mode.get,
-                        cond = require("noice").api.status.mode.has,
-                        -- color = { fg = "#ff9e64" },
-                    },
                     {
                         require("noice").api.status.search.get,
                         cond = require("noice").api.status.search.has,
-                        -- color = { fg = "#ff9e64" },
                     },
                 }
             end
@@ -90,17 +80,16 @@ local config = {
                 },
                 extensions = { 'fzf', 'neo-tree', 'toggleterm' },
                 sections = {
-                    lualine_a = { 'mode', trailing_space, },
-                    lualine_b = { 'branch', 'diff', 'diagnostics', },
+                    lualine_a = { 'mode', trailing_space, 'branch' },
+                    lualine_b = { 'diagnostics', },
                     lualine_c = {
                         mixed_indents,
                         macro_recording_status,
-                        --TODO: not sure what this keymap does
-                        keymap,
                     },
                     lualine_x = line_x,
-                    lualine_y = { 'encoding', 'fileformat', 'filetype', },
-                    lualine_z = { 'location', "require'nvim-possession'.status()", --[[ 'progress' ]] }
+                    -- lualine_y = { 'encoding', 'fileformat', 'filetype', },
+                    lualine_y = {},
+                    lualine_z = { which_project, }
                 },
                 inactive_sections = {
                     lualine_a = { 'filename' },

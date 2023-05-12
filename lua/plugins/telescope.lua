@@ -12,6 +12,9 @@ local config = {
             if not t then return end
 
             t.setup {
+                defaults = {
+                    wrap_results = true,
+                },
                 extensions = {
                     ["ui-select"] = {
                         require("telescope.themes").get_dropdown {
@@ -24,11 +27,6 @@ local config = {
                         show_scores = true,
                     }
                 },
-                -- pickers = {
-                --     -- find_files = {
-                --     --     find_command = { 'fd', '--no-ignore', '-E', '.git' },
-                --     -- },
-                -- },
             }
 
             vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
