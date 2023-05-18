@@ -93,8 +93,8 @@ local config = {
                 inactive_sections = {
                     lualine_a = { 'filename' },
                     lualine_c = {},
-                    lualine_x = {},
-                    lualine_z = { 'location' },
+                    lualine_x = { 'branch' },
+                    lualine_z = { which_project },
                 },
             }
         end,

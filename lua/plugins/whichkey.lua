@@ -4,7 +4,6 @@ local config = {
         lazy = false,
         config = function()
             local wk = safe_require("which-key")
-            -- if not wk then return end
             local gs = safe_require('gitsigns')
             -- if not gs then return end
             local whichkey_binds = {
@@ -124,13 +123,8 @@ local config = {
                         b = { function() gs.toggle_current_line_blame() end, 'Toggle Line Blame' },
                     },
                 },
-                -- ["n"] = { function()
-                --     local picked_window_id = wp.pick_window() or vim.api.nvim_get_current_win()
-                --     vim.api.nvim_set_current_win(picked_window_id)
-                -- end,
-                --     "Window Picker" },
-                -- make me a menu
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
+                ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
                 ["u"] = { vim.cmd.UndotreeToggle, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
@@ -155,6 +149,9 @@ local config = {
 
             wk.register(whichkey_binds, whichkey_opts)
         end,
+        dependencies = {
+            'lewis6991/gitsigns.nvim',
+        }
     },
 }
 

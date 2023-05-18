@@ -42,10 +42,6 @@ local config = {
                 nvim_tree = true,
             },
             keymaps = {
-                { '<C-h>', '<C-w>h', description = 'Go to left window' },
-                { '<C-j>', '<C-w>j', description = 'Go to down window' },
-                { '<C-k>', '<C-w>k', description = 'Go to up window' },
-                { '<C-l>', '<C-w>l', description = 'Go to right window' },
                 {
                     '<C-s>',
                     '<CMD>ClangdSwitchSourceHeader<CR>',
@@ -246,6 +242,7 @@ local config = {
                 },
             }
         })
+
 
         -- local li = safe_require('legendary.integrations.which-key')
         -- if not li then return end

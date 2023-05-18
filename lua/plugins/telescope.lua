@@ -1,3 +1,4 @@
+
 local config = {
     {
         'nvim-telescope/telescope.nvim',
@@ -10,10 +11,14 @@ local config = {
         config = function()
             local t = safe_require('telescope')
             if not t then return end
-
             t.setup {
                 defaults = {
                     wrap_results = true,
+                    mappings = {
+                        n = {
+                            ['<M-q>'] = false,
+                        },
+                    },
                 },
                 extensions = {
                     ["ui-select"] = {

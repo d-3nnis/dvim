@@ -4,7 +4,7 @@ local function on_attach()
         return
     end
     local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
-    legendary.keymaps(lsp_legend, {buffer = true})
+    legendary.keymaps(lsp_legend, { buffer = true })
 end
 
 local config = {
@@ -73,6 +73,16 @@ local config = {
     },
     {
         'neovim/nvim-lspconfig',
+        dependencies = {
+            {
+                "SmiteshP/nvim-navbuddy",
+                dependencies = {
+                    "SmiteshP/nvim-navic",
+                    "MunifTanjim/nui.nvim"
+                },
+                opts = { lsp = { auto_attach = true } },
+            },
+        },
     }
 }
 
