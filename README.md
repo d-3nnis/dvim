@@ -3,7 +3,7 @@ Make sure neovim is installed before proceding.
 To install dvim, run the following commands:
 
 ```
-mkdir ~/.config/nvim/
+mkdir -p ~/.config/nvim/
 git clone git@github.com:d-3nnis/dvim.git ~/.config/nvim/
 ```
 
