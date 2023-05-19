@@ -15,8 +15,8 @@ local config = {
                 },
                 s = {
                     name = "Telescope",
-                    t = { "<cmd>Telescope live_grep<cr>", "Grep files" },
-                    c = { "<cmd>Telescope persisted<cr>", "Session Manager" },
+                    t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Grep files" },
+                    c = { "<cmd>Telescope persisted theme=dropdown<cr>", "Session Manager" },
                     z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
                     s = { function()
                         require('telescope.builtin').grep_string { shorten_path = true, word_match = "-w",
@@ -42,9 +42,9 @@ local config = {
                     r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
                     a = { "<cmd>Telescope frecency<cr>", "Frecency search" },
                     k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
-                    h = { "<cmd>Telescope colorscheme<cr>", "List of themes" },
+                    h = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "List of themes" },
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },
-                    b = { "<cmd>Telescope buffers<cr>", "Open buffers" },
+                    b = { "<cmd>Telescope buffers theme=dropdown<cr>", "Open buffers" },
                     e = { "<cmd>Telescope projects<cr>", "Projects list" },
                     w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
                 },
@@ -102,25 +102,25 @@ local config = {
                     b = { function() gs.blame_line { full = true } end, "Blame Line" },
                     S = { function() gs.stage_buffer() end, "Stage Buffer" },
                     u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
-                    i = { function()
-                        vim.cmd('Gitsigns toggle_linehl')
-                        vim.cmd('Gitsigns toggle_numhl')
-                        vim.cmd('Gitsigns toggle_word_diff')
-                    end, "Toggle Line Highlighting" },
                     s = { '<CMD>Gitsigns stage_hunk<CR>', "Stage Hunk", mode = { 'n', 'v' } },
                     r = { '<CMD>Gitsigns reset_hunk<CR>', "Reset Hunk", mode = { 'n', 'v' } },
-                    --map('n', '<leader>hR', gs.reset_buffer)
-                    --map('n', '<leader>tb', gs.toggle_current_line_blame)
-                    --map('n', '<leader>hd', gs.diffthis)
-                    --map('n', '<leader>hD', function() gs.diffthis('~') end)
-                    --map('n', '<leader>td', gs.toggle_deleted)
-
-                },
-                t = {
-                    name = 'To[ggle]',
-                    g = {
-                        name = 'Git',
+                    R = { '<CMD>Gitsigns reset_buffer<CR>', "Reset Buffer" },
+                    d = { function()
+                        gs.diffthis()
+                    end, "Diff against index" },
+                    D = { function()
+                        gs.diffthis('~')
+                    end, "Diff against last commit" },
+                    c = { '<CMD>diffoff<CR>', "Cancel diff" },
+                    t = {
+                        name = 'To[ggle]',
                         b = { function() gs.toggle_current_line_blame() end, 'Toggle Line Blame' },
+                        i = { function()
+                            vim.cmd('Gitsigns toggle_linehl')
+                            vim.cmd('Gitsigns toggle_numhl')
+                            vim.cmd('Gitsigns toggle_word_diff')
+                        end, "Toggle Line Highlighting" },
+                        d = { gs.toggle_deleted, "Toggle showing deleted hunks" }
                     },
                 },
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },

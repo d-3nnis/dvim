@@ -19,8 +19,20 @@ local config = {
                 end
             end
 
+            local function zoomed_pane_set()
+                if vim.g.zoomed_pane_status then
+                    return vim.g.zoomed_pane_status
+                else
+                    return ''
+                end
+            end
+
             local function which_project()
-                return vim.g.project_config
+                if vim.g.project_config then
+                    return vim.g.project_config
+                else
+                    return ''
+                end
             end
 
             local function mixed_indents()
@@ -88,7 +100,7 @@ local config = {
                     lualine_x = line_x,
                     -- lualine_y = { 'encoding', 'fileformat', 'filetype', },
                     lualine_y = {},
-                    lualine_z = { which_project, macro_recording_status }
+                    lualine_z = { which_project, macro_recording_status, zoomed_pane_set }
                 },
                 inactive_sections = {
                     lualine_a = { 'filename' },

@@ -177,6 +177,31 @@ local config = {
             },
             autocmds = {
                 {
+                    { "VimResized" },
+                    function()
+                        local Job = require 'plenary.job'
+                        Job:new({
+                            command = "tmux",
+                            args = { 'list-panes', '-F', "'#F'" },
+                            cwd = '/usr/bin',
+                            env = {},
+                            on_exit = function(j, return_val)
+                                if return_val == 0 then
+                                    local result = vim.inspect(j:result())
+                                    if (string.find(result, 'Z')) then
+                                        vim.g.zoomed_pane_status = 'Zoomed'
+                                    else
+                                        vim.g.zoomed_pane_status = ''
+                                    end else
+                                    vim.g.zoomed_pane_status = ''
+                                end
+                            end,
+                        }):sync()
+                        return ''
+                    end,
+                    description = 'Save buffer when exiting or focus lost',
+                },
+                {
                     { "BufLeave", "FocusLost" },
                     function()
                         if not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then

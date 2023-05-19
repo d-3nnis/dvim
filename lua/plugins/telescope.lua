@@ -11,12 +11,19 @@ local config = {
         config = function()
             local t = safe_require('telescope')
             if not t then return end
+            local actions = require('telescope.actions')
+
             t.setup {
                 defaults = {
                     wrap_results = true,
                     mappings = {
                         n = {
                             ['<M-q>'] = false,
+                            ['e'] = actions.close,
+                            ['s'] = actions.smart_send_to_qflist + actions.open_qflist,
+                            ['a'] = actions.smart_add_to_qflist,
+                            ['o'] = actions.open_qflist,
+                            ['c'] = actions.complete_tag,
                         },
                     },
                 },
