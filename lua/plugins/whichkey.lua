@@ -18,6 +18,7 @@ local config = {
                     t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Grep files" },
                     c = { "<cmd>Telescope persisted theme=dropdown<cr>", "Session Manager" },
                     z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
+                    g = { "<cmd>Telescope git_status<cr>", "Git status files" },
                     s = { function()
                         require('telescope.builtin').grep_string { shorten_path = true, word_match = "-w",
                             only_sort_text = true, search = '', prompt_title = 'Fuzzy grep',
@@ -55,34 +56,6 @@ local config = {
                     r = { "<cmd>NeoTreeReveal<cr>", "Reveal current file" },
                     c = { "<cmd>NeoTreeClose<cr>", "Close Tree" },
                     -- TODO expand options here
-                },
-                l = {
-                    name = "LSP",
-                    a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-                    d = {
-                        "<cmd>Telescope diagnostics<cr>",
-                        "Document Diagnostics",
-                    },
-                    w = {
-                        "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-                        "Workspace Diagnostics",
-                    },
-                    f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format", mode = { 'n', 'v' } },
-                    i = { "<cmd>LspInfo<cr>", "Info" },
-                    j = {
-                        "<cmd>lua vim.diagnostic.goto_next()<CR>",
-                        "Next Diagnostic",
-                    },
-                    k = {
-                        "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-                        "Prev Diagnostic",
-                    },
-                    r = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-                    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-                    S = {
-                        "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-                        "Workspace Symbols",
-                    },
                 },
                 o = {
                     name = "Misc",

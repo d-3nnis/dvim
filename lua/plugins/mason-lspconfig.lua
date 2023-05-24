@@ -1,10 +1,61 @@
-local function on_attach()
-    local legendary = safe_require('legendary')
-    if not legendary then
-        return
-    end
-    local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
-    legendary.keymaps(lsp_legend, { buffer = true })
+local function on_attach(client, bufnr)
+    -- local legendary = safe_require('legendary')
+    -- if not legendary then
+    --     return
+    -- end
+    -- local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
+    -- legendary.keymaps(lsp_legend, { buffer = true })
+    local opts = { buffer = bufnr, remap = false }
+
+    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+    -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+    -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+    vim.keymap.set("n", "gh", function() vim.diagnostic.goto_next() end, opts)
+    vim.keymap.set("n", "gl", function() vim.diagnostic.goto_prev() end, opts)
+    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+    local wk = safe_require("which-key")
+    local whichkey_opts = {
+        mode = "n",
+        prefix = "<leader>",
+        buffer = bufnr,
+        silent = true,
+        noremap = true,
+        nowait = true,
+    }
+    wk.register(
+        {
+            l = {
+                name = "LSP",
+                a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
+                d = {
+                    "<cmd>Telescope diagnostics<cr>",
+                    "Document Diagnostics",
+                },
+                w = {
+                    "<cmd>Telescope lsp_workspace_diagnostics<cr>",
+                    "Workspace Diagnostics",
+                },
+                f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format", mode = { 'n', 'v' } },
+                F = { function() vim.diagnostic.open_float() end, "Open floating diagnostics window" },
+                i = { "<cmd>LspInfo<cr>", "Info" },
+                j = {
+                    "<cmd>lua vim.diagnostic.goto_next()<CR>",
+                    "Next Diagnostic",
+                },
+                k = {
+                    "<cmd>lua vim.diagnostic.goto_prev()<cr>",
+                    "Prev Diagnostic",
+                },
+                r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
+                R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
+                s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
+                S = {
+                    "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
+                    "Workspace Symbols",
+                },
+            }
+        }, whichkey_opts)
 end
 
 local config = {
