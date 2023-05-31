@@ -19,11 +19,11 @@ local config = {
                     mappings = {
                         n = {
                             ['<M-q>'] = false,
-                            ['e'] = actions.close,
+                            ['<C-e>'] = actions.close,
                             ['s'] = actions.smart_send_to_qflist + actions.open_qflist,
-                            ['a'] = actions.smart_add_to_qflist,
+                            ['<C-a>'] = actions.smart_add_to_qflist,
                             ['o'] = actions.open_qflist,
-                            ['c'] = actions.complete_tag,
+                            ['<C-c>'] = actions.complete_tag,
                         },
                     },
                 },

@@ -1,3 +1,7 @@
+local function search_buffers()
+    require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true, })
+end
+
 local config = {
     {
         'folke/which-key.nvim',
@@ -45,7 +49,7 @@ local config = {
                     k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
                     h = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "List of themes" },
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },
-                    b = { "<cmd>Telescope buffers theme=dropdown<cr>", "Open buffers" },
+                    b = { function() search_buffers() end, "Open Buffers" },
                     e = { "<cmd>Telescope projects<cr>", "Projects list" },
                     w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
                 },
@@ -63,20 +67,34 @@ local config = {
                     h = { "<cmd>nohls<cr>", "Hide search highlight" },
                     x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' }
                 },
-                b = {
-                    name = "Buffers",
-                    l = { "<Cmd>BufferOrderByLanguage<CR>", "Order Buffers by Language" },
-                    p = { "<cmd>BufferPin<cr>", "Pin Buffer" },
-                    c = { "<cmd>BufferClose<cr>", "Close Buffer" },
-                },
                 h = {
                     name = "Gitsigns",
                     j = { function() gs.preview_hunk() end, "Preview Hunk" },
                     b = { function() gs.blame_line { full = true } end, "Blame Line" },
                     S = { function() gs.stage_buffer() end, "Stage Buffer" },
                     u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
-                    s = { '<CMD>Gitsigns stage_hunk<CR>', "Stage Hunk", mode = { 'n', 'v' } },
-                    r = { '<CMD>Gitsigns reset_hunk<CR>', "Reset Hunk", mode = { 'n', 'v' } },
+                    s = {
+                        function()
+                            if (vim.fn.visualmode() == '') then
+                                gs.stage_hunk()
+                            else
+                                gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
+                            end
+                        end,
+                        "Stage Hunk",
+                        mode = { 'v', 'n' }
+                    },
+                    r = {
+                        function()
+                            if (vim.fn.visualmode() == '') then
+                                gs.reset_hunk()
+                            else
+                                gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
+                            end
+                        end,
+                        "Reset Hunk",
+                        mode = { 'v', 'n' }
+                    },
                     R = { '<CMD>Gitsigns reset_buffer<CR>', "Reset Buffer" },
                     d = { function()
                         gs.diffthis()
@@ -102,7 +120,8 @@ local config = {
                 ["u"] = { vim.cmd.UndotreeToggle, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
                 ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
-                    'Search and replace with text under cursor' }
+                    'Search and replace with text under cursor' },
+                ["b"] = { function() search_buffers() end, "Open buffers" },
             }
 
             local whichkey_opts = {

@@ -78,7 +78,7 @@ local config = {
 
             tt.setup {
                 float_opts = {
-                    border = 'solid'
+                    border = 'curved'
                 }
             }
 
@@ -113,5 +113,19 @@ local config = {
             })
         end
     },
+    {
+        'ojroques/nvim-osc52',
+        config = function ()
+            require('osc52').setup({})
+            -- vim.keymap.set('n', '<leader>ia', require('osc52').copy_operator, {expr = true})
+            -- vim.keymap.set('v', '<leader>is', require('osc52').copy_visual)
+        end
+    },
+    {
+        'ThePrimeagen/harpoon',
+        dependencies = {
+            'nvim-lua/plenary.nvim',
+        },
+    }
 }
 return config

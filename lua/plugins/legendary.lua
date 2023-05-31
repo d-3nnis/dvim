@@ -192,7 +192,8 @@ local config = {
                                         vim.g.zoomed_pane_status = 'Zoomed'
                                     else
                                         vim.g.zoomed_pane_status = ''
-                                    end else
+                                    end
+                                else
                                     vim.g.zoomed_pane_status = ''
                                 end
                             end,
@@ -244,13 +245,23 @@ local config = {
                                 local project_name = project.name
                                 local project_icon = project.icon
                                 current_project_name = project_icon .. ' ' .. project_name
-                                -- current_project_color = project.colour
                                 break
                             end
                         end
                         vim.g.project_config = current_project_name
                     end,
                     description = 'Updated Lualine when directory changes'
+                },
+                {
+                    { "TextYankPost" },
+                    function()
+                        -- TODO the register is empty, not '+', and I'm not sure why
+                        -- if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
+                        if vim.v.event.operator == 'y' and vim.v.event.regname == '' then
+                            require('osc52').copy_register('+')
+                        end
+                    end,
+                    description = 'Move all yanked text into system clipboard',
                 },
 
             },
