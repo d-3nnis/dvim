@@ -121,11 +121,5 @@ local config = {
             -- vim.keymap.set('v', '<leader>is', require('osc52').copy_visual)
         end
     },
-    {
-        'ThePrimeagen/harpoon',
-        dependencies = {
-            'nvim-lua/plenary.nvim',
-        },
-    }
 }
 return config
