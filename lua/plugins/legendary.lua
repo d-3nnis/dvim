@@ -21,6 +21,10 @@ local config = {
             return count .. 'ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction
         end
 
+        local function toggleterm_exec_cmd(count, cmd)
+            return count .. "TermExec cmd='" .. cmd .. "'"
+        end
+
         -- gitsigns
         local gs = safe_require("gitsigns")
         if gs then
@@ -78,6 +82,13 @@ local config = {
                     '<C-t>v',
                     function() vim.cmd(toggleterm(vim.v.count, 'vertical')) end,
                     description = 'Open vertical terminal',
+                },
+                {
+                    '<C-t>g',
+                    function()
+                        local pwd = vim.fn.getcwd()
+                        vim.cmd(toggleterm_exec_cmd(vim.v.count, 'cd '.. pwd)) end,
+                    description = 'Return to cwd',
                 },
                 { 'tb', '<CMD>ToggleBackground<CR>', description = 'Toggle background colour' },
                 {
