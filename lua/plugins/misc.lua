@@ -4,9 +4,9 @@ local config = {
         config = function()
             safe_require('clangd_extensions').setup {
                 server = {
-                    init_options = {
-                        compilationDatabaseDirectory = "/home/dvidovic/co/*/hlos/build/"
-                    }
+                    -- init_options = {
+                    --     compilationDatabaseDirectory = "/home/dvidovic/co/*/hlos/build/"
+                    -- }
                 },
                 extensions = {
                     inlay_hints = {
@@ -17,12 +17,21 @@ local config = {
             }
         end,
     },
+    {
+        'Badhi/nvim-treesitter-cpp-tools',
+        dependencies = {
+            'nvim-treesitter/nvim-treesitter'
+        },
+        config = function()
+            safe_require('nt-cpp-tools').setup({})
+        end
+    },
     'famiu/bufdelete.nvim',
     'https://gitlab.com/madyanov/svart.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
-    { 'HiPhish/nvim-ts-rainbow2', lazy = true },
+    { 'HiPhish/nvim-ts-rainbow2',                   lazy = true },
     'mbbill/undotree',
     {
         'tzachar/local-highlight.nvim',
@@ -115,11 +124,12 @@ local config = {
     },
     {
         'ojroques/nvim-osc52',
-        config = function ()
+        config = function()
             require('osc52').setup({})
             -- vim.keymap.set('n', '<leader>ia', require('osc52').copy_operator, {expr = true})
             -- vim.keymap.set('v', '<leader>is', require('osc52').copy_visual)
         end
     },
+    { "KostkaBrukowa/definition-or-references.nvim" },
 }
 return config

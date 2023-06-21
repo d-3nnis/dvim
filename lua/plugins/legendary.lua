@@ -52,6 +52,14 @@ local config = {
                     description = 'Switch Header/Source',
                     mode = { 'n', 'i' }
                 },
+                {
+                    '<C-n>',
+                    function()
+                        vim.lsp.buf.inlay_hint(0, nil)
+                    end,
+                    description = 'Toggle inlay hint',
+                    mode = { 'n', 'i' },
+                },
                 { '<S-h>',    '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer' },
                 { '<S-l>',    '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer' },
                 { '<C-[>',    '<CMD>BufferLineMovePrev<CR>',  description = 'Move tab left' },
@@ -87,7 +95,8 @@ local config = {
                     '<C-t>g',
                     function()
                         local pwd = vim.fn.getcwd()
-                        vim.cmd(toggleterm_exec_cmd(vim.v.count, 'cd '.. pwd)) end,
+                        vim.cmd(toggleterm_exec_cmd(vim.v.count, 'cd ' .. pwd))
+                    end,
                     description = 'Return to cwd',
                 },
                 { 'tb', '<CMD>ToggleBackground<CR>', description = 'Toggle background colour' },
@@ -188,6 +197,18 @@ local config = {
             },
             autocmds = {
                 {
+                    { 'LspAttach' },
+                    function(ev)
+                        vim.notify("Lsp attach 2")
+                        local bufnr = ev.buf
+                        local augroup_name = 'lsp_augroup'
+                        vim.api.nvim_create_augroup(augroup_name, { clear = true })
+                        vim.api.nvim_create_autocmd("InsertEnter", { buffer = bufnr, callback = function() vim.lsp.buf.inlay_hint(bufnr, true) end, group = augroup_name, })
+                        vim.api.nvim_create_autocmd("InsertLeave", { buffer = bufnr, callback = function() vim.lsp.buf.inlay_hint(bufnr, false) end, group = augroup_name, })
+                    end,
+                    description = 'On LSP attach',
+                },
+                {
                     { "VimResized" },
                     function()
                         local Job = require 'plenary.job'
@@ -274,7 +295,6 @@ local config = {
                     end,
                     description = 'Move all yanked text into system clipboard',
                 },
-
             },
             defaults_ops = {
                 keymaps = { noremap = true, silent = true },

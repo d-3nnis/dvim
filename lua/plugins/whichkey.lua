@@ -113,6 +113,7 @@ local config = {
                         end, "Toggle Line Highlighting" },
                         d = { gs.toggle_deleted, "Toggle showing deleted hunks" }
                     },
+                    e = { "<cmd>Telescope git_status<cr>", "Git status files" },
                 },
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
                 ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },

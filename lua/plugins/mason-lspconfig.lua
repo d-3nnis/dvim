@@ -1,13 +1,9 @@
-local function on_attach(client, bufnr)
-    -- local legendary = safe_require('legendary')
-    -- if not legendary then
-    --     return
-    -- end
-    -- local lsp_legend = require('plugins.conditional-legends.lsp_legend').lsp_legend
-    -- legendary.keymaps(lsp_legend, { buffer = true })
-    local opts = { buffer = bufnr, remap = false }
+vim.api.nvim_create_autocmd('LspAttach', {
+  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+  callback = function(ev)
+    local opts = { buffer = ev.buf, remap = false }
 
-    vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+    vim.keymap.set("n", "gd", require("definition-or-references").definition_or_references, opts)
     vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
     -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
     -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
@@ -18,7 +14,7 @@ local function on_attach(client, bufnr)
     local whichkey_opts = {
         mode = "n",
         prefix = "<leader>",
-        buffer = bufnr,
+        buffer = ev.buf,
         silent = true,
         noremap = true,
         nowait = true,
@@ -56,7 +52,8 @@ local function on_attach(client, bufnr)
                 },
             }
         }, whichkey_opts)
-end
+  end,
+})
 
 local config = {
     {
@@ -88,6 +85,9 @@ local config = {
                             workspace = {
                                 checkThirdParty = false,
                             },
+                            hint = {
+                                enable = true,
+                            },
                         }
                     }
                 },
@@ -111,7 +111,7 @@ local config = {
                             server_config = {}
                         end
 
-                        local default_config = { on_attach = on_attach, capabilities = capabilities }
+                        local default_config = { capabilities = capabilities }
                         local extended_config = vim.tbl_extend("error", server_config, default_config)
                         lspconfig[server_name].setup(extended_config)
                     end
@@ -131,7 +131,10 @@ local config = {
                     "SmiteshP/nvim-navic",
                     "MunifTanjim/nui.nvim"
                 },
-                opts = { lsp = { auto_attach = true } },
+                opts = {
+                    lsp = { auto_attach = true },
+                    inlay_hints = { enabled = true },
+                },
             },
         },
     }

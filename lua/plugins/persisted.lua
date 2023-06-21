@@ -10,6 +10,7 @@ local config = {
             }
         })
     end,
+    priority = 5,
 }
 
 local group = vim.api.nvim_create_augroup("PersistedHooks", {})
