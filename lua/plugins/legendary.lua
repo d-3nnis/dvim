@@ -2,6 +2,10 @@
 -- if not wk then return end
 -- local keymap = vim.api.nvim_set_keymap
 
+local function hasLspInlaySupport(bufnr)
+    return vim.lsp.get_active_clients()[1].server_capabilities.inlayHintProvider ~= nil
+end
+
 local config = {
     'mrjones2014/legendary.nvim',
     dependencies = {
@@ -199,12 +203,19 @@ local config = {
                 {
                     { 'LspAttach' },
                     function(ev)
-                        vim.notify("Lsp attach 2")
                         local bufnr = ev.buf
                         local augroup_name = 'lsp_augroup'
                         vim.api.nvim_create_augroup(augroup_name, { clear = true })
-                        vim.api.nvim_create_autocmd("InsertEnter", { buffer = bufnr, callback = function() vim.lsp.buf.inlay_hint(bufnr, true) end, group = augroup_name, })
-                        vim.api.nvim_create_autocmd("InsertLeave", { buffer = bufnr, callback = function() vim.lsp.buf.inlay_hint(bufnr, false) end, group = augroup_name, })
+                        vim.api.nvim_create_autocmd("InsertEnter", { buffer = bufnr, callback = function()
+                            if hasLspInlaySupport() then
+                                vim.lsp.buf.inlay_hint(bufnr, true)
+                end
+                        end, group = augroup_name, })
+                        vim.api.nvim_create_autocmd("InsertLeave", { buffer = bufnr, callback = function()
+                            if hasLspInlaySupport() then
+                                vim.lsp.buf.inlay_hint(bufnr, false)
+                            end
+                        end, group = augroup_name, })
                     end,
                     description = 'On LSP attach',
                 },

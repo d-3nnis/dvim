@@ -24,6 +24,7 @@ local config = {
                             ['<C-a>'] = actions.smart_add_to_qflist,
                             ['o'] = actions.open_qflist,
                             ['<C-c>'] = actions.complete_tag,
+                            ['CR'] = actions.file_edit,
                         },
                     },
                 },

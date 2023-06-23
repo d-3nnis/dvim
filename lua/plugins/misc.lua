@@ -9,7 +9,10 @@ local config = {
                     -- }
                 },
                 extensions = {
+                    autoSetHints = false,
+
                     inlay_hints = {
+                        -- inline = vim.fn.has("nvim-0.10") == 1,
                         parameter_hints_prefix = "  ",
                         other_hints_prefix = " ",
                     }

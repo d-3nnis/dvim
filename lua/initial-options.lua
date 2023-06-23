@@ -7,6 +7,7 @@ o.updatetime = 300
 
 -- File Management --
 o.fileencoding = "utf-8"
+o.encoding = "utf-8"
 o.undofile = true
 o.swapfile = false
 
