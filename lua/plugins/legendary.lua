@@ -206,16 +206,24 @@ local config = {
                         local bufnr = ev.buf
                         local augroup_name = 'lsp_augroup'
                         vim.api.nvim_create_augroup(augroup_name, { clear = true })
-                        vim.api.nvim_create_autocmd("InsertEnter", { buffer = bufnr, callback = function()
-                            if hasLspInlaySupport() then
-                                vim.lsp.buf.inlay_hint(bufnr, true)
-                end
-                        end, group = augroup_name, })
-                        vim.api.nvim_create_autocmd("InsertLeave", { buffer = bufnr, callback = function()
-                            if hasLspInlaySupport() then
-                                vim.lsp.buf.inlay_hint(bufnr, false)
-                            end
-                        end, group = augroup_name, })
+                        vim.api.nvim_create_autocmd("InsertEnter", {
+                            buffer = bufnr,
+                            callback = function()
+                                if hasLspInlaySupport() then
+                                    vim.lsp.buf.inlay_hint(bufnr, true)
+                                end
+                            end,
+                            group = augroup_name,
+                        })
+                        vim.api.nvim_create_autocmd("InsertLeave", {
+                            buffer = bufnr,
+                            callback = function()
+                                if hasLspInlaySupport() then
+                                    vim.lsp.buf.inlay_hint(bufnr, false)
+                                end
+                            end,
+                            group = augroup_name,
+                        })
                     end,
                     description = 'On LSP attach',
                 },
@@ -226,8 +234,7 @@ local config = {
                         Job:new({
                             command = "tmux",
                             args = { 'list-panes', '-F', "'#F'" },
-                            cwd = '/usr/bin',
-                            env = {},
+                            env = { PATH = vim.env.PATH },
                             on_exit = function(j, return_val)
                                 if return_val == 0 then
                                     local result = vim.inspect(j:result())
