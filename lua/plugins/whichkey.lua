@@ -24,9 +24,10 @@ local config = {
                     z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
                     g = { "<cmd>Telescope git_status<cr>", "Git status files" },
                     s = { function()
-                        require('telescope.builtin').grep_string { shorten_path = true, word_match = "-w",
-                            only_sort_text = true, search = '', prompt_title = 'Fuzzy grep',
-                        }
+                        require('telescope.builtin').grep_string(require('telescope.themes').get_ivy {
+                            shorten_path = true, word_match = "-w",
+                            only_sort_text = true, search = '', prompt_title = 'Fuzzy grep', theme = 'ivy',
+                        })
                     end, "Fuzzy grep" },
                     f = {
                         name = 'Fine tuned file search',

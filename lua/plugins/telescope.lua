@@ -49,6 +49,7 @@ local config = {
             t.load_extension('projects')
             t.load_extension('fzf')
             t.load_extension("persisted")
+            t.load_extension("termfinder")
 
             local noice = safe_require('noice')
             if noice then

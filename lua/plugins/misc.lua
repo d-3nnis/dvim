@@ -34,7 +34,7 @@ local config = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
-    { 'HiPhish/nvim-ts-rainbow2',                   lazy = true },
+    { 'HiPhish/nvim-ts-rainbow2',          lazy = true },
     'mbbill/undotree',
     {
         'tzachar/local-highlight.nvim',
@@ -107,6 +107,7 @@ local config = {
             vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
         end
     },
+    { 'tknightz/telescope-termfinder.nvim' },
     {
         'folke/twilight.nvim',
         config = function()
@@ -134,5 +135,8 @@ local config = {
         end
     },
     { "KostkaBrukowa/definition-or-references.nvim" },
+    {
+        'github/copilot.vim',
+    },
 }
 return config

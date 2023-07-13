@@ -87,6 +87,7 @@ local config = {
                             },
                             hint = {
                                 enable = true,
+                                arrayIndex = "Disable",
                             },
                         }
                     }

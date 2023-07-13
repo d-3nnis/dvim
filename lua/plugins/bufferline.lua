@@ -7,7 +7,7 @@ local config = { {
 
         bl.setup {
             options = {
-                numbers = 'both',
+                -- numbers = 'both',
                 separator_style = 'slant',
                 max_name_length = 100,
                 indicator = {
