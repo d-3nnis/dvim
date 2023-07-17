@@ -9,7 +9,7 @@ local config = {
     'L3MON4D3/LuaSnip',             --snippet engine
     'rafamadriz/friendly-snippets', -- a bunch of snippets to use
     {
-        'hrsh7th/nvim-cmp', -- The completion plugin
+        'hrsh7th/nvim-cmp',         -- The completion plugin
         config = function()
             local cmp = safe_require('cmp')
             if not cmp then return end
@@ -85,11 +85,12 @@ local config = {
                     ["<CR>"] = cmp.mapping.confirm { select = false },
                 },
                 formatting = {
-                    fields = { "abbr" },
+                    -- fields = { "abbr" },
+                    fields = { "kind", "abbr" },
                     -- fields = { "kind", "abbr", "menu" },
                     format = function(entry, vim_item)
                         -- Kind icons
-                        -- vim_item.kind = string.format("%s", vim_item.kind)
+                        vim_item.kind = string.format("%s", vim_item.kind)
                         -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
                         vim_item.menu = ({
                             nvim_lsp = "[LSP]",
@@ -101,6 +102,7 @@ local config = {
                     end,
                 },
                 sources = {
+                    { name = "copilot" },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "luasnip", keyword_length = 2 },
@@ -118,6 +120,7 @@ local config = {
                 },
                 sorting = {
                     comparators = {
+                        require("copilot_cmp.comparators").prioritize,
                         cmp.config.compare.offset,
                         cmp.config.compare.exact,
                         cmp.config.compare.recently_used,
