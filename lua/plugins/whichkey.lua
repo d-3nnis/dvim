@@ -59,8 +59,9 @@ local config = {
                     name = "Tree explorer",
                     e = { "<cmd>Neotree filesystem right<cr>", "Open File Tree" },
                     g = { "<cmd>Neotree float source=git_status<cr>", "Open Git Status" },
-                    r = { "<cmd>NeoTreeReveal<cr>", "Reveal current file" },
-                    c = { "<cmd>NeoTreeClose<cr>", "Close Tree" },
+                    r = { "<cmd>Neotree reveal right<cr>", "Reveal current file" },
+                    c = { "<cmd>Neotree close<cr>", "Close Tree" },
+                    f = { "<cmd>Neotree focus right<cr>", "Focus Tree" },
                     -- TODO expand options here
                 },
                 o = {

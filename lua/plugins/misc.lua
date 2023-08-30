@@ -130,8 +130,6 @@ local config = {
         'ojroques/nvim-osc52',
         config = function()
             require('osc52').setup({})
-            -- vim.keymap.set('n', '<leader>ia', require('osc52').copy_operator, {expr = true})
-            -- vim.keymap.set('v', '<leader>is', require('osc52').copy_visual)
         end
     },
     { "KostkaBrukowa/definition-or-references.nvim" },
@@ -147,12 +145,42 @@ local config = {
             })
         end
     },
-
     {
         "zbirenbaum/copilot-cmp",
         config = function()
             require("copilot_cmp").setup()
         end
     },
+    -- {
+    --     "jackMort/ChatGPT.nvim",
+    --     event = "VeryLazy",
+    --     commit = "24bcca7",
+    --     config = function()
+    --         local home = vim.fn.expand("$HOME")
+    --         require("chatgpt").setup({
+    --             api_key_cmd = "gpg --decrypt " .. home .. "/gpg/oakey.txt.gpg",
+    --         })
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-lua/plenary.nvim",
+    --         "nvim-telescope/telescope.nvim"
+    --     }
+    -- },
+    {
+        dir = '~/yoctopus/',
+        config = function()
+            require('yoctopus').setup({
+                init = {
+                    env_setup = { 'source ~/bashcommands.sh', 'bb_rigel &> /dev/null' },
+                    path_to_poky_scripts = "~/co/rigelvii/hlos/poky/scripts/",
+                },
+            })
+        end,
+        dependencies = {
+            "MunifTanjim/nui.nvim",
+            "nvim-telescope/telescope.nvim",
+        }
+    }
 }
 return config

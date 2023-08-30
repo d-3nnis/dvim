@@ -19,11 +19,24 @@ local config = {
                     mappings = {
                         n = {
                             ['<M-q>'] = false,
-                            ['<C-e>'] = actions.close,
-                            ['s'] = actions.smart_send_to_qflist + actions.open_qflist,
-                            ['<C-a>'] = actions.smart_add_to_qflist,
-                            ['o'] = actions.open_qflist,
-                            ['<C-c>'] = actions.complete_tag,
+                            ['<Down>'] = false,
+                            ['<Up>'] = false,
+                            ['L'] = false,
+                            ['M'] = false,
+                            ['H'] = false,
+                            ['<PageDown>'] = false,
+                            ['<PageUp>'] = false,
+                            ['<C-X>'] = false,
+                            ['<C-T>'] = false,
+                            ['<C-V>'] = false,
+                            ['<C-Q>'] = false,
+                            ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_previous,
+                            ['<Tab>'] = actions.toggle_selection + actions.move_selection_next,
+                            -- ['<C-e>'] = actions.close,
+                            -- ['s'] = actions.smart_send_to_qflist + actions.open_qflist,
+                            ['<C-a>'] = actions.smart_send_to_loclist + actions.open_loclist,
+                            -- ['o'] = actions.open_qflist,
+                            -- ['<C-c>'] = actions.complete_tag,
                             ['CR'] = actions.file_edit,
                         },
                     },
@@ -50,6 +63,7 @@ local config = {
             t.load_extension('fzf')
             t.load_extension("persisted")
             t.load_extension("termfinder")
+            t.load_extension("yoctopus")
 
             local noice = safe_require('noice')
             if noice then

@@ -9,7 +9,7 @@ au('TextYankPost', {
     callback = function() vim.highlight.on_yank { higroup = 'IncSearch', timeout = 300 } end,
 })
 
-vim.api.nvim_command('colorscheme rose-pine')
+vim.api.nvim_command('colorscheme deepwhite')
 vim.opt.background = 'light'
 vim.cmd("hi link IlluminatedWordRead Search")
 

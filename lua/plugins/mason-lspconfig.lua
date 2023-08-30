@@ -137,6 +137,7 @@ local config = {
                     inlay_hints = { enabled = true },
                 },
             },
+            'folke/neodev.nvim',
         },
     }
 }
