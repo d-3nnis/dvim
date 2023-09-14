@@ -78,9 +78,10 @@ local config = {
                     u = { function() gs.undo_stage_hunk() end, "Undo Stage Hunk" },
                     s = {
                         function()
-                            if (vim.fn.visualmode() == '') then
+                            if (string.sub(vim.fn.mode(), 1, 1) == 'n') then
                                 gs.stage_hunk()
-                            else
+                            elseif (string.sub(vim.fn.mode(), 1, 1) == 'v' or
+                                    string.sub(vim.fn.mode(), 1, 1) == 'V') then
                                 gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
                             end
                         end,

@@ -45,3 +45,4 @@ o.relativenumber = true
 o.mouse = 'a'
 
 o.iskeyword:append("_")
+vim.o.shada = "'10000"

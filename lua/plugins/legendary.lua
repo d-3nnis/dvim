@@ -1,9 +1,17 @@
--- local wk = safe_require('plugin-configs/whichkey')
--- if not wk then return end
--- local keymap = vim.api.nvim_set_keymap
 
 local function hasLspInlaySupport(bufnr)
-    return vim.lsp.get_active_clients()[1].server_capabilities.inlayHintProvider ~= nil
+    local inlay_support = false
+    for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
+        if client.server_capabilities.inlayHintProvider ~= nil then
+            -- local ft = vim.api.nvim_get_option_value('filetype', {buf = bufnr})
+            -- bufnr = bufnr or vim.api.nvim_get_current_buf()
+            -- if client.attached_buffers[bufnr] then
+            inlay_support = true
+            break
+            -- end
+        end
+    end
+    return inlay_support
 end
 
 local config = {
