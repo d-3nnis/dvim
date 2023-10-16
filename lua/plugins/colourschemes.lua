@@ -43,5 +43,6 @@ local config = {
         'Verf/deepwhite.nvim',
         lazy = false,
     },
+    { 'projekt0n/caret.nvim' },
 }
 return config

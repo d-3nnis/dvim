@@ -19,11 +19,17 @@ local config = {
                 },
                 s = {
                     name = "Telescope",
-                    t = { "<cmd>Telescope live_grep theme=ivy<cr>", "Grep files" },
+                    t = {
+                        function()
+                            vim.cmd('normal! zt')
+                            require('telescope.builtin').live_grep(require('telescope.themes').get_ivy { theme = 'ivy', })
+                        end,
+                        "Grep files" },
                     c = { "<cmd>Telescope persisted theme=dropdown<cr>", "Session Manager" },
                     z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
                     g = { "<cmd>Telescope git_status<cr>", "Git status files" },
                     s = { function()
+                        vim.cmd('normal! zt')
                         require('telescope.builtin').grep_string(require('telescope.themes').get_ivy {
                             shorten_path = true, word_match = "-w",
                             only_sort_text = true, search = '', prompt_title = 'Fuzzy grep', theme = 'ivy',

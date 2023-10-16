@@ -9,6 +9,7 @@ local config = {
                 ["<CR>"] = "actions.select",
                 ["<C-c>"] = "actions.close",
                 ["<ESC>"] = "actions.close",
+                ["q"] = "actions.close",
                 ["<C-r>"] = "actions.refresh",
                 ["<BS>"] = "actions.parent",
                 ["gw"] = "actions.open_cwd",

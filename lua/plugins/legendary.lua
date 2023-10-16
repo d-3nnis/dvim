@@ -1,21 +1,17 @@
-
 local function hasLspInlaySupport(bufnr)
+    if vim.version().minor < 10 then
+        return false
+    end
+
     local inlay_support = false
     if bufnr == nil then
         bufnr = vim.api.nvim_get_current_buf()
     end
 
-    print("bufnr: ", bufnr)
     for _, client in ipairs(vim.lsp.get_clients({ bufnr = bufnr })) do
         if client.server_capabilities.inlayHintProvider ~= nil then
-            print(client.name)
-            print(vim.inspect(client.server_capabilities.inlayHintProvider))
-            -- local ft = vim.api.nvim_get_option_value('filetype', {buf = bufnr})
-            -- bufnr = bufnr or vim.api.nvim_get_current_buf()
-            -- if client.attached_buffers[bufnr] then
             inlay_support = true
             break
-            -- end
         end
     end
     return inlay_support

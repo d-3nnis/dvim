@@ -49,7 +49,6 @@ local config = {
                     },
                     fzf = {},
                     frecency = {
-                        db_root = "~/.local/share/nvim/",
                         show_scores = true,
                     }
                 },
@@ -76,9 +75,8 @@ local config = {
     {
         "nvim-telescope/telescope-frecency.nvim",
         config = function()
-            require "telescope".load_extension("frecency")
+            require("telescope").load_extension("frecency")
         end,
-        dependencies = { "kkharji/sqlite.lua" },
     },
 }
 
