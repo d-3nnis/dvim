@@ -167,20 +167,20 @@ local config = {
     --         "nvim-telescope/telescope.nvim"
     --     }
     -- },
-    {
-        dir = '~/yoctopus/',
-        config = function()
-            require('yoctopus').setup({
-                init = {
-                    env_setup = { 'source ~/bashcommands.sh', 'bb_rigel &> /dev/null' },
-                    path_to_poky_scripts = "~/co/rigelvii/hlos/poky/scripts/",
-                },
-            })
-        end,
-        dependencies = {
-            "MunifTanjim/nui.nvim",
-            "nvim-telescope/telescope.nvim",
-        }
-    }
+    -- {
+    --     dir = '~/yoctopus/',
+    --     config = function()
+    --         require('yoctopus').setup({
+    --             init = {
+    --                 env_setup = { 'source ~/bashcommands.sh', 'bb_rigel &> /dev/null' },
+    --                 path_to_poky_scripts = "~/co/rigelvii/hlos/poky/scripts/",
+    --             },
+    --         })
+    --     end,
+    --     dependencies = {
+    --         "MunifTanjim/nui.nvim",
+    --         "nvim-telescope/telescope.nvim",
+    --     }
+    -- }
 }
 return config
