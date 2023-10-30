@@ -94,7 +94,8 @@ local config = {
                 },
             }
 
-            local ignore_list = { clangd = {} }
+            -- local ignore_list = { clangd = {} }
+            local ignore_list = {}
 
             local lspconfig = require('lspconfig')
             -- if not lspconfig then return end

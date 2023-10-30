@@ -1,4 +1,3 @@
-
 local config = {
     {
         'nvim-telescope/telescope.nvim',
@@ -54,7 +53,17 @@ local config = {
                 },
             }
 
-            vim.api.nvim_create_autocmd({ "User TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
+            -- vim.api.nvim_create_autocmd({ "TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
+            -- vim.api.nvim_create_autocmd("User", {
+            --     pattern = "TelescopePreviewerLoaded",
+            --     callback = function(args)
+            --         if args.data.filetype ~= "help" then
+            --             vim.wo.number = true
+            --         elseif args.data.bufname:match("*.csv") then
+            --             vim.wo.wrap = false
+            --         end
+            --     end,
+            -- })
 
             t.load_extension('ui-select')
             t.load_extension('notify')
@@ -62,6 +71,7 @@ local config = {
             t.load_extension('fzf')
             t.load_extension("persisted")
             t.load_extension("termfinder")
+            t.load_extension("frecency")
             -- t.load_extension("yoctopus")
 
             local noice = safe_require('noice')
