@@ -34,7 +34,6 @@ local config = {
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
-    { 'HiPhish/nvim-ts-rainbow2',          lazy = true },
     'mbbill/undotree',
     {
         'tzachar/local-highlight.nvim',

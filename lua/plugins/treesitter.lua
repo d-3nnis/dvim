@@ -18,11 +18,6 @@ local config = {
                     enable = true,
                     enable_autocmd = false,
                 },
-                rainbow = {
-                    enable = true,
-                    query = 'rainbow-parens',
-                    strategy = require 'ts-rainbow'.strategy.global,
-                },
                 textobjects = {
                     select = {
                         enable = true,
