@@ -298,6 +298,11 @@ local config = {
                                 name = 'nvim',
                                 icon = '',
                             },
+                            {
+                                search_string = 'chickenwizard',
+                                name = 'chickenwizard',
+                                icon = '',
+                            },
                         }
                         local cwd = vim.fn.getcwd()
                         local current_project_name = ''

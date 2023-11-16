@@ -7,7 +7,6 @@ local config = { {
 
         bl.setup {
             options = {
-                -- numbers = 'both',
                 separator_style = 'slant',
                 max_name_length = 100,
                 indicator = {
@@ -22,15 +21,9 @@ local config = { {
                     }
                 },
                 custom_filter = function(buf_number, _)
-                    -- print('hello')
-                    -- and vim.bo[buf_number].filetype ~= "lazy"
                     if vim.bo[buf_number].filetype ~= "qf"
                     then
-                        -- print('hello true')
                         return true
-                        -- return false
-                    else
-                        -- print('hello false')
                     end
                 end
             }
