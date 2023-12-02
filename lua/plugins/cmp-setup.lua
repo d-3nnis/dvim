@@ -102,7 +102,7 @@ local config = {
                     end,
                 },
                 sources = {
-                    { name = "copilot" },
+                    -- { name = "copilot" },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
                     { name = "luasnip", keyword_length = 2 },
@@ -120,7 +120,7 @@ local config = {
                 },
                 sorting = {
                     comparators = {
-                        require("copilot_cmp.comparators").prioritize,
+                        -- require("copilot_cmp.comparators").prioritize,
                         cmp.config.compare.offset,
                         cmp.config.compare.exact,
                         cmp.config.compare.recently_used,

@@ -71,7 +71,7 @@ local config = {
                     '<C-n>',
                     function()
                         if hasLspInlaySupport() then
-                            vim.lsp.inlay_hint(0, nil)
+                            vim.lsp.inlay_hint.enable(0, nil)
                         end
                     end,
                     description = 'Toggle inlay hint',
@@ -223,7 +223,7 @@ local config = {
                             buffer = bufnr,
                             callback = function()
                                 if hasLspInlaySupport() then
-                                    vim.lsp.inlay_hint(bufnr, true)
+                                    vim.lsp.inlay_hint.enable(bufnr, true)
                                 end
                             end,
                             group = augroup_name,
@@ -232,7 +232,7 @@ local config = {
                             buffer = bufnr,
                             callback = function()
                                 if hasLspInlaySupport() then
-                                    vim.lsp.inlay_hint(bufnr, false)
+                                    vim.lsp.inlay_hint.enable(bufnr, false)
                                 end
                             end,
                             group = augroup_name,
