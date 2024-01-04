@@ -2,7 +2,7 @@ local config = {
     {
         'nvim-telescope/telescope.nvim',
         lazy = false,
-        version = '0.1.x',
+        version = '0.1.4',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -31,7 +31,7 @@ local config = {
                             ['<C-Q>'] = false,
                             ['<S-Tab>'] = actions.toggle_selection + actions.move_selection_previous,
                             ['<Tab>'] = actions.toggle_selection + actions.move_selection_next,
-                            -- ['<C-e>'] = actions.close,
+                            ['q'] = actions.close,
                             -- ['s'] = actions.smart_send_to_qflist + actions.open_qflist,
                             ['<C-a>'] = actions.smart_send_to_loclist + actions.open_loclist,
                             -- ['o'] = actions.open_qflist,
@@ -54,17 +54,6 @@ local config = {
                 },
             }
 
-            -- vim.api.nvim_create_autocmd({ "TelescopePreviewerLoaded" }, { command = "setlocal wrap" })
-            -- vim.api.nvim_create_autocmd("User", {
-            --     pattern = "TelescopePreviewerLoaded",
-            --     callback = function(args)
-            --         if args.data.filetype ~= "help" then
-            --             vim.wo.number = true
-            --         elseif args.data.bufname:match("*.csv") then
-            --             vim.wo.wrap = false
-            --         end
-            --     end,
-            -- })
 
             t.load_extension('ui-select')
             t.load_extension('notify')
@@ -78,6 +67,8 @@ local config = {
             if noice then
                 t.load_extension('noice')
             end
+
+            vim.api.nvim_create_autocmd("User", { pattern = "TelescopePreviewerLoaded", command = "setlocal wrap" })
         end
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
