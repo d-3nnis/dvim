@@ -58,7 +58,7 @@ local config = {
                     n = { "<cmd>Telescope notify<cr>", "Notify messages" },
                     b = { function() search_buffers() end, "Open Buffers" },
                     e = { "<cmd>Telescope projects<cr>", "Projects list" },
-                    w = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
+                    q = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
                     j = { "<cmd>Telescope termfinder<cr>", "List toggleterm terminals" },
                 },
                 e = {
