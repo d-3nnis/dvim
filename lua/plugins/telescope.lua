@@ -61,7 +61,6 @@ local config = {
             t.load_extension('fzf')
             t.load_extension("persisted")
             t.load_extension("termfinder")
-            -- t.load_extension("yoctopus")
 
             local noice = safe_require('noice')
             if noice then
