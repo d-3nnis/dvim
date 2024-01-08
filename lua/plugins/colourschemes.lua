@@ -30,7 +30,7 @@ local config = {
             end
         end,
     },
-    'rose-pine/neovim',
+    {'rose-pine/neovim', name = 'rose-pine'},
     {
         'mcchrish/zenbones.nvim',
         dependencies = 'rktjmp/lush.nvim',
