@@ -64,13 +64,6 @@ local config = {
                 e = {
                     name = "Tree explorer",
                     e = { "<CMD> Oil <CR>", "Open File Tree" },
-                    -- r = { function() require('oil'). end, "Open File Tree" },
-                    -- e = { "<cmd>Neotree filesystem right<cr>", "Open File Tree" },
-                    -- g = { "<cmd>Neotree float source=git_status<cr>", "Open Git Status" },
-                    -- r = { "<cmd>Neotree reveal right<cr>", "Reveal current file" },
-                    -- c = { "<cmd>Neotree close<cr>", "Close Tree" },
-                    -- f = { "<cmd>Neotree focus right<cr>", "Focus Tree" },
-                    -- TODO expand options here
                 },
                 o = {
                     name = "Misc",

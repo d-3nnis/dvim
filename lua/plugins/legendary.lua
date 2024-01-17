@@ -1,4 +1,7 @@
 local function hasLspInlaySupport(bufnr)
+    if vim.version().major > 0 then
+        return true
+    end
     if vim.version().minor < 10 then
         return false
     end
@@ -209,9 +212,7 @@ local config = {
                     opts = { nargs = 1 --[[ , complete = 'buffer' ]] }
                 },
             },
-            funcs = {
-
-            },
+            funcs = {},
             autocmds = {
                 {
                     { 'LspAttach' },

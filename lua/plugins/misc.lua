@@ -77,6 +77,7 @@ local config = {
             if ns then
                 ns.setup({
                     easing_function = "sine",
+                    hide_cursor = false,
                 })
             end
         end
