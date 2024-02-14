@@ -123,7 +123,7 @@ local config = {
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
                 ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
-                ["u"] = { vim.cmd.UndotreeToggle, "Toggle undo tree" },
+                ["u"] = { function () require('undotree').toggle() end, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
                 ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
                     'Search and replace with text under cursor' },
