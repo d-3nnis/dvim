@@ -59,6 +59,7 @@ local config = {
         end
 
         local legendary = safe_require('legendary')
+        if not legendary then return end
         legendary.setup({
             extensions = {
                 nvim_tree = true,
@@ -79,6 +80,19 @@ local config = {
                     end,
                     description = 'Toggle inlay hint',
                     mode = { 'n', 'i' },
+                },
+                -- command mode next and previous command
+                {
+                    '<C-k>',
+                    '<C-p>',
+                    description = 'Previous command',
+                    mode = { 'c' },
+                },
+                {
+                    '<C-j>',
+                    '<C-n>',
+                    description = 'Next command',
+                    mode = { 'c' },
                 },
                 { '<S-h>',    '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer' },
                 { '<S-l>',    '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer' },

@@ -41,7 +41,9 @@ local config = {
 
             local tsc = safe_require("treesitter-context")
             if not tsc then return end
-            tsc.setup {}
+            tsc.setup {
+                max_lines = 5,
+            }
         end,
         dependencies = {
             'nvim-treesitter/nvim-treesitter-context',
