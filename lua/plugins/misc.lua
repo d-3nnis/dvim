@@ -3,14 +3,9 @@ local config = {
         'p00f/clangd_extensions.nvim',
         config = function()
             safe_require('clangd_extensions').setup {
-                server = {
-                    -- init_options = {
-                    --     compilationDatabaseDirectory = "/home/dvidovic/co/*/hlos/build/"
-                    -- }
-                },
+                server = {},
                 extensions = {
                     autoSetHints = false,
-
                     inlay_hints = {
                         -- inline = vim.fn.has("nvim-0.10") == 1,
                         parameter_hints_prefix = "  ",
