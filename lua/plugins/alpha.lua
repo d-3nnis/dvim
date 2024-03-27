@@ -3,6 +3,7 @@ local config = {
         'goolord/alpha-nvim',
         config = function()
             local alpha = safe_require('alpha')
+            if not alpha then return end
 
             local dashboard = safe_require("alpha.themes.dashboard")
             if not dashboard then return end
@@ -16,12 +17,10 @@ local config = {
                 [[  \/__,_ /  \/__/     \/_/ \/_/\/_/\/_/ ]],
             }
             dashboard.section.buttons.val = {
-                dashboard.button("f", " Find file", ":Telescope find_files <CR>"),
-                -- dashboard.button("a", "  Sessions list", ":lua safe_require('nvim-possession').list()<CR>"),
-                dashboard.button("e", " Find project", ":Telescope projects <CR>"),
-                dashboard.button("r", "󱫤 Recently used files", ":Telescope oldfiles <CR>"),
-                dashboard.button("v", " Edit dvim", ":e ~/.config/nvim/init.lua <CR>"),
-                dashboard.button("q", " Quit Neovim", ":qa<CR>"),
+                dashboard.button("f", "  Find file", ":Telescope find_files <CR>"),
+                dashboard.button("e", "  Find project", ":Telescope projects <CR>"),
+                dashboard.button("r", "󱫤  Recently used files", ":Telescope oldfiles <CR>"),
+                dashboard.button("v", "  Edit dvim", ":e ~/.config/nvim/init.lua <CR>"),
             }
 
             local function footer()
@@ -35,7 +34,6 @@ local config = {
             dashboard.section.buttons.opts.hl = "Keyword"
 
             dashboard.opts.opts.noautocmd = true
-            -- vim.cmd([[autocmd User AlphaReady echo 'ready']])
             alpha.setup(dashboard.opts)
         end,
         priority = 3
