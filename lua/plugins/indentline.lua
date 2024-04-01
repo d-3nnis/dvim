@@ -1,7 +1,7 @@
 local config = {
     {
         'lukas-reineke/indent-blankline.nvim',
-        main = "ibl",
+        name = "ibl",
         opts = {},
         config = function()
             local ts = safe_require('nvim-treesitter')
