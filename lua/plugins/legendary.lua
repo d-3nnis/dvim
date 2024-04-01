@@ -237,18 +237,12 @@ local config = {
                         vim.api.nvim_create_autocmd("InsertEnter", {
                             buffer = bufnr,
                             callback = function()
-                                if hasLspInlaySupport() then
-                                    vim.lsp.inlay_hint(bufnr, true)
-                                end
                             end,
                             group = augroup_name,
                         })
                         vim.api.nvim_create_autocmd("InsertLeave", {
                             buffer = bufnr,
                             callback = function()
-                                if hasLspInlaySupport() then
-                                    vim.lsp.inlay_hint(bufnr, false)
-                                end
                             end,
                             group = augroup_name,
                         })
