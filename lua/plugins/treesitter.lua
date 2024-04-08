@@ -14,10 +14,6 @@ local config = {
                     additional_vim_regex_highlighting = false,
                 },
                 indent = { enable = true, },
-                context_commentstring = {
-                    enable = true,
-                    enable_autocmd = false,
-                },
                 textobjects = {
                     select = {
                         enable = true,
@@ -43,6 +39,7 @@ local config = {
             if not tsc then return end
             tsc.setup {
                 max_lines = 5,
+                min_window_height = 35,
             }
         end,
         dependencies = {
@@ -54,6 +51,13 @@ local config = {
         "nvim-treesitter/nvim-treesitter-textobjects",
         dependencies = { "nvim-treesitter" },
     },
-    'JoosepAlviste/nvim-ts-context-commentstring',
+    {
+        'JoosepAlviste/nvim-ts-context-commentstring',
+        config = function()
+            require('ts_context_commentstring').setup({
+                enable_autocmd = false,
+            })
+        end,
+    },
 }
 return config

@@ -61,9 +61,7 @@ local config = {
         local legendary = safe_require('legendary')
         if not legendary then return end
         legendary.setup({
-            extensions = {
-                nvim_tree = true,
-            },
+            extensions = {},
             keymaps = {
                 {
                     '<C-s>',
@@ -354,11 +352,6 @@ local config = {
                 },
             }
         })
-
-
-        -- local li = safe_require('legendary.integrations.which-key')
-        -- if not li then return end
-        -- li.bind_whichkey(wk.whichkey_binds, wk.whichkey_opts, false)
     end,
 }
 

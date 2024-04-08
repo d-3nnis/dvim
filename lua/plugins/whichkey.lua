@@ -69,7 +69,8 @@ local config = {
                     name = "Misc",
                     q = { "gq", "Reformat line widths" },
                     h = { "<cmd>nohls<cr>", "Hide search highlight" },
-                    x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' }
+                    x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' },
+                    t = { "<CMD>TSContextToggle<CR>", "Toggle Treesitter context highlighting" },
                 },
                 h = {
                     name = "Gitsigns",
