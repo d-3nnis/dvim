@@ -71,6 +71,7 @@ local config = {
                     h = { "<cmd>nohls<cr>", "Hide search highlight" },
                     x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' },
                     t = { "<CMD>TSContextToggle<CR>", "Toggle Treesitter context highlighting" },
+                    w = { "ciW\"\"<ESC>P", "Wrap WORD in quotes" },
                 },
                 h = {
                     name = "Gitsigns",
@@ -120,6 +121,13 @@ local config = {
                         d = { gs.toggle_deleted, "Toggle showing deleted hunks" }
                     },
                     e = { "<cmd>Telescope git_status<cr>", "Git status files" },
+                },
+                t = {
+                    name = 'CopilotChat',
+                    e = { "<CMD>CopilotChatExplain<CR>", "CopilotChat - Explain the selected text" },
+                    f = { "<CMD>CopilotChatFix<CR>", "CopilotChat - Provide a fix for the selected text" },
+                    d = { "<CMD>CopilotChatFixDiagnostic<CR>", "CopilotChat - Provide a fix for the selected diagnostic error" },
+                    mode = "v",
                 },
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
                 ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },

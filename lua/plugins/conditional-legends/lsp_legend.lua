@@ -63,21 +63,24 @@ M.lsp_legend = {
             '<cmd>lua vim.diagnostic.goto_next()<cr>',
             description = 'Go to next LSP diagnostic',
             opts = {
-                buffer = true },
+                buffer = true
+            },
         },
         {
             '<F2>',
             '<cmd>lua vim.lsp.buf.rename()<cr>',
             description = 'Buffer rename',
             opts = {
-                buffer = true },
+                buffer = true 
+            },
         },
         {
             '<F4>',
             '<cmd>lua vim.lsp.buf.code_action()<cr>',
             description = 'Code action',
             opts = {
-                buffer = true },
+                buffer = true 
+            },
         },
         {
             '<F4>',

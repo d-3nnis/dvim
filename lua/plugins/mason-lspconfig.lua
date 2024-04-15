@@ -28,10 +28,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
                     "<cmd>Telescope diagnostics<cr>",
                     "Document Diagnostics",
                 },
-                w = {
-                    "<cmd>Telescope lsp_workspace_diagnostics<cr>",
-                    "Workspace Diagnostics",
-                },
                 f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format", mode = { 'n', 'v' } },
                 F = { function() vim.diagnostic.open_float() end, "Open floating diagnostics window" },
                 i = { "<cmd>LspInfo<cr>", "Info" },

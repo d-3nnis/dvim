@@ -44,5 +44,6 @@ local config = {
         lazy = false,
     },
     { 'projekt0n/caret.nvim' },
+    { 'aktersnurra/no-clown-fiesta.nvim' }
 }
 return config
