@@ -282,52 +282,6 @@ local config = {
                     description = 'Save buffer when exiting or focus lost',
                 },
                 {
-                    { 'DirChanged' },
-                    function()
-                        local projects = {
-                            {
-                                search_string = 'spyglass',
-                                name = 'spyglass',
-                                icon = '',
-                            },
-                            {
-                                search_string = 'odin',
-                                name = 'odin',
-                                icon = '',
-                            },
-                            {
-                                search_string = 'rigelvii',
-                                name = 'rigelvii',
-                                icon = '',
-                            },
-                            {
-                                search_string = 'nvim',
-                                name = 'nvim',
-                                icon = '',
-                            },
-                            {
-                                search_string = 'chickenwizard',
-                                name = 'chickenwizard',
-                                icon = '',
-                            },
-                        }
-                        local cwd = vim.fn.getcwd()
-                        local current_project_name = ''
-                        -- local current_project_color = ''
-                        for _, project in pairs(projects) do
-                            local search = project.search_string
-                            if string.find(cwd, search) then
-                                local project_name = project.name
-                                local project_icon = project.icon
-                                current_project_name = project_icon .. ' ' .. project_name
-                                break
-                            end
-                        end
-                        vim.g.project_config = current_project_name
-                    end,
-                    description = 'Updated Lualine when directory changes'
-                },
-                {
                     { "TextYankPost" },
                     function()
                         -- TODO the register is empty, not '+', and I'm not sure why
