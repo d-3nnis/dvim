@@ -72,6 +72,7 @@ local config = {
                     x = { '<cmd>!chmod +x %<CR>', 'chmod this file for execution' },
                     t = { "<CMD>TSContextToggle<CR>", "Toggle Treesitter context highlighting" },
                     w = { "ciW\"\"<ESC>P", "Wrap WORD in quotes" },
+                    p = { function() require('precognition').toggle() end, "Toggle Precognition" },
                 },
                 h = {
                     name = "Gitsigns",
