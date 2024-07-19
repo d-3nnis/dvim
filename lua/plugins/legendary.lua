@@ -94,8 +94,8 @@ local config = {
                 },
                 { '<S-h>',    '<CMD>BufferLineCyclePrev<CR>', description = 'Previous buffer' },
                 { '<S-l>',    '<CMD>BufferLineCycleNext<CR>', description = 'Next buffer' },
-                { '<C-[>',    '<CMD>BufferLineMovePrev<CR>',  description = 'Move tab left' },
-                { '<C-]>',    '<CMD>BufferLineMoveNext<CR>',  description = 'Move tab right' },
+                { '<C-(>',    '<CMD>BufferLineMovePrev<CR>',  description = 'Move tab left' },
+                { '<C-)>',    '<CMD>BufferLineMoveNext<CR>',  description = 'Move tab right' },
                 { '<C-Up>',   '<CMD>resize +2<CR>',           description = 'Resize +2' },
                 { '<C-Down>', '<CMD>resize -2<CR>',           description = 'Resize -2' },
                 {
