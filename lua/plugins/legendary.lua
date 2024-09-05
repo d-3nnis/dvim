@@ -188,9 +188,14 @@ local config = {
                     mode = {
                         'n', 'x', 'o' }
                 },
-                { 'n', 'nzzzv', description = 'Centered forward search',   mode = { 'n' } },
-                { 'N', 'Nzzzv', description = 'Centered backwards search', mode = { 'n' } },
-                { 'Q', '<nop>', description = 'Delete me',                 mode = { 'n' } },
+                { 'n',    'nzzzv',          description = 'Centered forward search',   mode = { 'n' } },
+                { 'N',    'Nzzzv',          description = 'Centered backwards search', mode = { 'n' } },
+                { 'Q',    '<nop>',          description = 'Delete me',                 mode = { 'n' } },
+                { '<F5>', '<CMD>lprev<CR>', description = 'Previous localist entry',   mode = { 'n' } },
+                { '<F6>', '<CMD>lnext<CR>', description = 'Next loclist entry',        mode = { 'n' } },
+                { '<F7>', '<CMD>cprev<CR>', description = 'Previous QFList entry',     mode = { 'n' } },
+                { '<F8>', '<CMD>cnext<CR>', description = 'Next QFList entry',         mode = { 'n' } },
+                { 'c',    '"_c',             description = "Don't pollute unnamed register when ciw", mode = { 'n' } },
             },
             commands = {
                 {
