@@ -2,7 +2,7 @@ local config = {
     {
         'nvim-telescope/telescope.nvim',
         lazy = false,
-        version = '0.1.5',
+        version = '0.1.8',
         dependencies = {
             'nvim-lua/plenary.nvim',
             'nvim-telescope/telescope-fzf-native.nvim',
@@ -57,9 +57,8 @@ local config = {
 
             t.load_extension('ui-select')
             t.load_extension('notify')
-            t.load_extension('projects')
+            t.load_extension('project')
             t.load_extension('fzf')
-            t.load_extension("persisted")
             t.load_extension("termfinder")
 
             local noice = safe_require('noice')

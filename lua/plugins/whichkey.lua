@@ -1,5 +1,5 @@
 local function search_buffers()
-    require('telescope.builtin').buffers({ sort_mru = true, ignore_current_buffer = true, })
+    require('fzf-lua').buffers()
 end
 
 local config = {
@@ -18,48 +18,50 @@ local config = {
                     v = { '<cmd>Twilight<CR>', 'Toggle focus' },
                 },
                 s = {
-                    name = "Telescope",
+                    name = "Search everything!",
                     t = {
                         function()
                             vim.cmd('normal! zt')
-                            require('telescope.builtin').live_grep(require('telescope.themes').get_ivy { theme = 'ivy', })
+                            -- require('telescope.builtin').live_grep(require('telescope.themes').get_ivy { theme = 'ivy', })
+                            require('fzf-lua').grep_project()
                         end,
-                        "Grep files" },
-                    c = { "<cmd>Telescope persisted theme=dropdown<cr>", "Session Manager" },
-                    z = { "<cmd>Telescope grep_string<cr>", "Grep for string under cursor" },
-                    g = { "<cmd>Telescope git_status<cr>", "Git status files" },
+                        "Grep files in project" },
+                    z = { function() require('fzf-lua').grep_cword() end, "Grep for string under cursor" },
+                    g = { function() require('fzf-lua').git_status() end, "Git status files" },
                     s = { function()
                         vim.cmd('normal! zt')
-                        require('telescope.builtin').grep_string(require('telescope.themes').get_ivy {
-                            shorten_path = true, word_match = "-w",
-                            only_sort_text = true, search = '', prompt_title = 'Fuzzy grep', theme = 'ivy',
-                        })
-                    end, "Fuzzy grep" },
+                        -- require('telescope.builtin').grep_string(require('telescope.themes').get_ivy {
+                        --     shorten_path = true, word_match = "-w",
+                        --     only_sort_text = true, search = '', prompt_title = 'Fuzzy grep', theme = 'ivy',
+                        -- })
+                        require('fzf-lua').grep()
+                    end, "Non-live grep" },
                     f = {
                         name = 'Fine tuned file search',
-                        a = {
+                        f = {
                             function()
-                                require 'telescope.builtin'.find_files({
-                                    find_command = { 'fd', '--hidden', '--no-ignore' } })
+                                require('fzf-lua').files()
+                                -- require 'telescope.builtin'.find_files({
+                                --     find_command = { 'fd', '--no-ignore', '-E', '.git' } })
                             end,
-                            "Search ALL files" },
-                        d = {
-                            function()
-                                require 'telescope.builtin'.find_files({
-                                    find_command = { 'fd', '--no-ignore', '-E', '.git' } })
-                            end,
-                            "Search files including gitignore" },
-                        f = { "<cmd>Telescope find_files<cr>", "Find file" },
+                            "Find file" },
                     },
-                    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
-                    a = { "<cmd>Telescope frecency<cr>", "Frecency search" },
-                    k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
-                    h = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "List of themes" },
-                    n = { "<cmd>Telescope notify<cr>", "Notify messages" },
-                    b = { function() search_buffers() end, "Open Buffers" },
+                    r = { function()
+                        require('fzf-lua').oldfiles()
+                    end, "Recent files" },
+                    k = { function()
+                        require('fzf-lua').keymaps()
+                    end, "Keymaps list" },
+                    h = { function()
+                        require('fzf-lua').colorschemes()
+                    end, "List of themes" },
+                    b = { function()
+                        search_buffers()
+                    end, "Open Buffers" },
                     e = { "<cmd>Telescope projects<cr>", "Projects list" },
-                    q = { "<cmd>Telescope resume<cr>", "Resume previous Telescope session" },
-                    j = { "<cmd>Telescope termfinder<cr>", "List toggleterm terminals" },
+                    q = { function()
+                        require('fzf-lua').resume()
+                    end, "Resume previous search session" },
                 },
                 e = {
                     name = "Tree explorer",
@@ -122,7 +124,6 @@ local config = {
                         end, "Toggle Line Highlighting" },
                         d = { gs.toggle_deleted, "Toggle showing deleted hunks" }
                     },
-                    e = { "<cmd>Telescope git_status<cr>", "Git status files" },
                 },
                 t = {
                     name = 'CopilotChat',
@@ -134,7 +135,7 @@ local config = {
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
                 ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
-                ["u"] = { function () require('undotree').toggle() end, "Toggle undo tree" },
+                ["u"] = { function() require('undotree').toggle() end, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
                 ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
                     'Search and replace with text under cursor' },
@@ -157,6 +158,7 @@ local config = {
             }
 
             wk.register(whichkey_binds, whichkey_opts)
+
         end,
         dependencies = {
             'lewis6991/gitsigns.nvim',
