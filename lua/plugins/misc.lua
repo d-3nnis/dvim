@@ -25,7 +25,8 @@ local config = {
         end
     },
     'famiu/bufdelete.nvim',
-    'https://gitlab.com/madyanov/svart.nvim',
+    --'https://gitlab.com/madyanov/svart.nvim',
+    'm6vrm/svart.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',

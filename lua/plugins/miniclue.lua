@@ -2,6 +2,7 @@ local config = {
     {
         'echasnovski/mini.clue',
         version = '*',
+        enabled = false,
         config = function()
             local miniclue = safe_require('mini.clue')
             if not miniclue then return end
