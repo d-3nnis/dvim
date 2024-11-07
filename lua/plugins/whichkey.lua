@@ -51,7 +51,28 @@ local config = {
                             "Search files including gitignore" },
                         f = { "<cmd>Telescope find_files<cr>", "Find file" },
                     },
-                    r = { "<cmd>Telescope oldfiles<cr>", "Recent files" },
+                    r = {
+                        name = "Recent file options",
+                        r = { function()
+                            require("telescope.builtin").oldfiles({
+                                tiebreak = function(current_entry, existing_entry, _)
+                                    -- This ensures that when you are filtering, it's also sorted by last opened time.
+                                    -- https://github.com/nvim-telescope/telescope.nvim/issues/2539#issuecomment-1562510095
+                                    return current_entry.index < existing_entry.index
+                                end,
+                            })
+                        end, "Recent files" },
+                        f = { function()
+                            require("telescope.builtin").oldfiles({
+                                cwd_only = true,
+                                tiebreak = function(current_entry, existing_entry, _)
+                                    -- This ensures that when you are filtering, it's also sorted by last opened time.
+                                    -- https://github.com/nvim-telescope/telescope.nvim/issues/2539#issuecomment-1562510095
+                                    return current_entry.index < existing_entry.index
+                                end,
+                            })
+                        end, "Recent files filtered by cwd" },
+                    },
                     a = { "<cmd>Telescope frecency<cr>", "Frecency search" },
                     k = { "<cmd>Telescope keymaps<cr>", "Keymaps list" },
                     h = { "<cmd>Telescope colorscheme theme=dropdown<cr>", "List of themes" },
@@ -134,7 +155,7 @@ local config = {
                 ["c"] = { function() require('bufdelete').bufdelete(0) end, "Close Buffer" },
                 ["n"] = { "<CMD>Navbuddy<CR>", "Open Navbuddy" },
                 ["f"] = { "<CMD>Legendary<CR>", "Open command legend" },
-                ["u"] = { function () require('undotree').toggle() end, "Toggle undo tree" },
+                ["u"] = { function() require('undotree').toggle() end, "Toggle undo tree" },
                 ["p"] = { '"_dP', "Paste without overwrite", mode = "x" },
                 ["x"] = { ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>',
                     'Search and replace with text under cursor' },
