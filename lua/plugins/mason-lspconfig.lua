@@ -1,54 +1,31 @@
 vim.api.nvim_create_autocmd('LspAttach', {
-  group = vim.api.nvim_create_augroup('UserLspConfig', {}),
-  callback = function(ev)
-    local opts = { buffer = ev.buf, remap = false }
+    group = vim.api.nvim_create_augroup('UserLspConfig', {}),
+    callback = function(ev)
+        local opts = { buffer = ev.buf, remap = false }
 
-    vim.keymap.set("n", "gd", require("definition-or-references").definition_or_references, opts)
-    vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-    -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-    -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-    vim.keymap.set("n", "gh", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "gl", function() vim.diagnostic.goto_prev() end, opts)
-    vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    local wk = safe_require("which-key")
-    local whichkey_opts = {
-        mode = "n",
-        prefix = "<leader>",
-        buffer = ev.buf,
-        silent = true,
-        noremap = true,
-        nowait = true,
-    }
-    -- wk.register(
-    --     {
-    --         l = {
-    --             name = "LSP",
-    --             a = { "<cmd>lua vim.lsp.buf.code_action()<cr>", "Code Action" },
-    --             d = {
-    --                 "<cmd>Telescope diagnostics<cr>",
-    --                 "Document Diagnostics",
-    --             },
-    --             f = { "<cmd>lua vim.lsp.buf.format{async = true}<cr>", "Format", mode = { 'n', 'v' } },
-    --             F = { function() vim.diagnostic.open_float() end, "Open floating diagnostics window" },
-    --             i = { "<cmd>LspInfo<cr>", "Info" },
-    --             j = {
-    --                 "<cmd>lua vim.diagnostic.goto_next()<CR>",
-    --                 "Next Diagnostic",
-    --             },
-    --             k = {
-    --                 "<cmd>lua vim.diagnostic.goto_prev()<cr>",
-    --                 "Prev Diagnostic",
-    --             },
-    --             r = { "<cmd>lua vim.lsp.buf.references()<cr>", "References" },
-    --             R = { "<cmd>lua vim.lsp.buf.rename()<cr>", "Rename" },
-    --             s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    --             S = {
-    --                 "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>",
-    --                 "Workspace Symbols",
-    --             },
-    --         }
-    --     }, whichkey_opts)
-  end,
+        vim.keymap.set("n", "gd", require("definition-or-references").definition_or_references, opts)
+        vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+        -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+        -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+        vim.keymap.set("n", "gh", function() vim.diagnostic.goto_next() end, opts)
+        vim.keymap.set("n", "gl", function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
+        require('which-key').add(
+            {
+                { '<leader>l',  group = 'LSP' },
+                { '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',           desc = 'Code Action', },
+                { '<leader>ld', '<cmd>Telescope diagnostics<cr>',                   desc = 'Document Diagnostics', },
+                { '<leader>lf', '<cmd>lua vim.lsp.buf.format{async = true}<cr>',    desc = 'Format',                           mode = { 'n', 'v' }, },
+                { '<leader>lF', function() vim.diagnostic.open_float() end,         desc = 'Open floating diagnostics window', },
+                { '<leader>li', '<cmd>LspInfo<cr>',                                 desc = 'Info', },
+                { '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>',          desc = 'Next Diagnostic', },
+                { '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',          desc = 'Prev Diagnostic', },
+                { '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>',            desc = 'References', },
+                { '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>',                desc = 'Rename', },
+                { '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>',          desc = 'Document Symbols', },
+                { '<leader>lS', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = 'Workspace Symbols', },
+            })
+    end,
 })
 
 local config = {
