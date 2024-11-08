@@ -12,6 +12,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         require('which-key').add(
             {
+                buffer = ev.buf,
                 { '<leader>l',  group = 'LSP' },
                 { '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',                       desc = 'Code Action', },
                 { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,       desc = 'Document Diagnostics', },
