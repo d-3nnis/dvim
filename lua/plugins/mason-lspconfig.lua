@@ -13,17 +13,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
         require('which-key').add(
             {
                 { '<leader>l',  group = 'LSP' },
-                { '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',           desc = 'Code Action', },
-                { '<leader>ld', '<cmd>Telescope diagnostics<cr>',                   desc = 'Document Diagnostics', },
-                { '<leader>lf', '<cmd>lua vim.lsp.buf.format{async = true}<cr>',    desc = 'Format',                           mode = { 'n', 'v' }, },
-                { '<leader>lF', function() vim.diagnostic.open_float() end,         desc = 'Open floating diagnostics window', },
-                { '<leader>li', '<cmd>LspInfo<cr>',                                 desc = 'Info', },
-                { '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>',          desc = 'Next Diagnostic', },
-                { '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',          desc = 'Prev Diagnostic', },
-                { '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>',            desc = 'References', },
-                { '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>',                desc = 'Rename', },
-                { '<leader>ls', '<cmd>Telescope lsp_document_symbols<cr>',          desc = 'Document Symbols', },
-                { '<leader>lS', '<cmd>Telescope lsp_dynamic_workspace_symbols<cr>', desc = 'Workspace Symbols', },
+                { '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',                       desc = 'Code Action', },
+                { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,       desc = 'Document Diagnostics', },
+                { '<leader>lf', function() vim.lsp.buf.format { async = true } end,             desc = 'Format',                           mode = { 'n', 'v' }, },
+                { '<leader>lF', function() vim.diagnostic.open_float() end,                     desc = 'Open floating diagnostics window', },
+                { '<leader>li', '<cmd>LspInfo<cr>',                                             desc = 'Info', },
+                { '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>',                      desc = 'Next Diagnostic', },
+                { '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',                      desc = 'Prev Diagnostic', },
+                { '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>',                        desc = 'References', },
+                { '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>',                            desc = 'Rename', },
+                { '<leader>ls', function() require('fzf-lua').lsp_document_symbols() end,       desc = 'Document Symbols', },
+                { '<leader>lS', function() require('fzf-lua').lsp_live_workspace_symbols() end, desc = 'Workspace Symbols', },
             })
     end,
 })
