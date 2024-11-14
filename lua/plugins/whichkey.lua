@@ -84,7 +84,25 @@ local config = {
                 },
                 {
                     '<leader>se',
-                    '<cmd>Telescope projects<cr>',
+                    function()
+                        local projects_list = require('project_nvim').get_recent_projects()
+                        local fzf_lua = require('fzf-lua')
+                        fzf_lua.fzf_exec(projects_list,
+                            {
+                                actions = {
+                                    ['default'] = function(selected, opts)
+                                        local picked = selected[1]
+                                        if vim.fn.isdirectory(picked) == 1 then
+                                            vim.fn.chdir(picked)
+                                            fzf_lua.files()
+                                        else
+                                            print('Project path does not exist: ' .. picked)
+                                        end
+                                    end,
+                                }
+                            }
+                        )
+                    end,
                     desc = "Search projects",
                 },
                 {

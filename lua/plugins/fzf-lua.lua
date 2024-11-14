@@ -8,6 +8,8 @@ local config = {
                 keymap = {
                     builtin = {
                     },
+                },
+                defaults = {
                 }
             })
         end
