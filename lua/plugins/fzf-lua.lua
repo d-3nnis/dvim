@@ -10,7 +10,15 @@ local config = {
                     },
                 },
                 defaults = {
-                }
+                    formatter = "path.filename_first",
+                },
+                winopts = {
+                    preview = {
+                        wrap = 'wrap',
+                        layout = 'vertical',
+                        title_pos = 'left',
+                    },
+                },
             })
         end
     }

@@ -90,11 +90,10 @@ local config = {
                         fzf_lua.fzf_exec(projects_list,
                             {
                                 actions = {
-                                    ['default'] = function(selected, opts)
+                                    ['default'] = function(selected, _)
                                         local picked = selected[1]
                                         if vim.fn.isdirectory(picked) == 1 then
-                                            vim.fn.chdir(picked)
-                                            fzf_lua.files()
+                                            fzf_lua.files({ cwd = picked })
                                         else
                                             print('Project path does not exist: ' .. picked)
                                         end
