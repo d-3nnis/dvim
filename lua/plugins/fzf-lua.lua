@@ -5,10 +5,10 @@ local config = {
         config = function()
             local actions = require('fzf-lua.actions')
             require("fzf-lua").setup({
-                keymap = {
-                    builtin = {
-                    },
-                },
+                -- keymap = {
+                --     builtin = {
+                --     },
+                -- },
                 defaults = {
                     formatter = "path.filename_first",
                 },
