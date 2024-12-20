@@ -98,28 +98,28 @@ local config = {
     -- },
     {
         'neovim/nvim-lspconfig',
-        -- opts = {
-        --     servers = {
-        --         lua_ls = {
-        --             settings = {
-        --                 Lua = {
-        --                     completion = {
-        --                         callSnippet = "Replace"
-        --                     },
-        --                     workspace = {
-        --                         checkThirdParty = false,
-        --                     },
-        --                     hint = {
-        --                         enable = true,
-        --                         arrayIndex = "Disable",
-        --                     },
-        --                 }
-        --             }
-        --         }
-        --     },
-        -- },
-        config = function()
-            --[[ local lspconfig = safe_require('lspconfig')
+        opts = {
+            servers = {
+                lua_ls = {
+                    settings = {
+                        Lua = {
+                            completion = {
+                                callSnippet = "Replace"
+                            },
+                            workspace = {
+                                checkThirdParty = false,
+                            },
+                            hint = {
+                                enable = true,
+                                arrayIndex = "Disable",
+                            },
+                        }
+                    }
+                }
+            },
+        },
+        config = function(_, opts)
+            local lspconfig = safe_require('lspconfig')
             if not lspconfig then return end
             -- local capabilities = vim.lsp.protocol.make_client_capabilities()
             for server, config in pairs(opts.servers) do
@@ -127,7 +127,7 @@ local config = {
                 -- `opts[server].capabilities, if you've defined it
                 config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
                 lspconfig[server].setup(config)
-            end ]]
+            end
         end,
         dependencies = {
             'saghen/blink.cmp',

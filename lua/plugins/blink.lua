@@ -22,7 +22,22 @@ local config = {
         -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
         -- see the "default configuration" section below for full documentation on how to define
         -- your own keymap.
-        keymap = { preset = 'default' },
+        keymap = {
+            preset = 'default',
+            ['<C-k>'] = { 'select_prev', 'fallback' },
+            ['<C-j>'] = { 'select_next', 'fallback' },
+            ['<CR>'] = { 'accept', 'fallback' },
+            ['<Tab>'] = { 'select_next', 'fallback' },
+            ['<S-Tab>'] = { 'select_prev', 'fallback' },
+        },
+        completion = {
+            documentation = {
+                auto_show = true,
+            },
+            ghost_text = {
+                enabled = true,
+            },
+        },
 
         appearance = {
             -- Sets the fallback highlight groups to nvim-cmp's highlight groups
@@ -49,7 +64,7 @@ local config = {
             },
 
             -- optionally disable cmdline completions
-            -- cmdline = {},
+            cmdline = {},
         },
 
         -- experimental signature help support
