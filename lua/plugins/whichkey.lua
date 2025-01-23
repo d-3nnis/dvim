@@ -29,7 +29,14 @@ local config = {
                     function()
                         require('fzf-lua').grep_cword()
                     end,
-                    desc = "Grep for string under cursor",
+                    desc = "Grep for the word under cursor",
+                },
+                {
+                    '<leader>sZ',
+                    function()
+                        require('fzf-lua').grep_cWORD()
+                    end,
+                    desc = "Grep for the WORD under cursor",
                 },
                 {
                     '<leader>sg',
