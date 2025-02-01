@@ -37,6 +37,7 @@ o.sidescrolloff = 8
 o.textwidth = 120
 o.formatoptions = "cq"
 o.list = true
+o.signcolumn = "auto:1-2"
 
 -- Misc Options --
 o.clipboard = "unnamedplus"

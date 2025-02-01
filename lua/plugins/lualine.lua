@@ -93,9 +93,10 @@ local config = {
                 extensions = { 'fzf', 'neo-tree', 'toggleterm' },
                 sections = {
                     lualine_a = { 'mode', trailing_space, 'branch' },
-                    lualine_b = { 'diagnostics', },
+                    lualine_b = { 'location', 'diagnostics' },
                     lualine_c = {
                         mixed_indents,
+                        'filename',
                     },
                     lualine_x = line_x,
                     -- lualine_y = { 'encoding', 'fileformat', 'filetype', },

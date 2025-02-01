@@ -12,7 +12,7 @@ local config = { {
                 indicator = {
                     style = 'underline',
                 },
-                diagnostics = 'nvim_lsp',
+                -- diagnostics = 'nvim_lsp',
                 offsets = {
                     {
                         filetype = 'neo-tree',

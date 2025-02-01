@@ -31,7 +31,7 @@ local config = {
                             col = "50%",
                         },
                         size = {
-                            width = 60,
+                            width = "auto",
                             height = "auto",
                         },
                     },

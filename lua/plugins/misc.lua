@@ -16,6 +16,23 @@ local config = {
         end,
     },
     {
+        "kawre/leetcode.nvim",
+        build = ":TSUpdate html",
+        dependencies = {
+            "nvim-telescope/telescope.nvim",
+            "nvim-lua/plenary.nvim", -- required by telescope
+            "MunifTanjim/nui.nvim",
+
+            -- optional
+            "nvim-treesitter/nvim-treesitter",
+            "rcarriga/nvim-notify",
+            "nvim-tree/nvim-web-devicons",
+        },
+        opts = {
+            -- configuration goes here
+        },
+    },
+    {
         'Badhi/nvim-treesitter-cpp-tools',
         dependencies = {
             'nvim-treesitter/nvim-treesitter'
@@ -25,7 +42,8 @@ local config = {
         end
     },
     'famiu/bufdelete.nvim',
-    'https://gitlab.com/madyanov/svart.nvim',
+    --'https://gitlab.com/madyanov/svart.nvim',
+    'm6vrm/svart.nvim',
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',
@@ -96,6 +114,8 @@ local config = {
         "zbirenbaum/copilot.lua",
         cmd = "Copilot",
         event = "InsertEnter",
+        -- Because the dev server nodejs is too old
+        commit = "1a8032a",
 
         config = function()
             require("copilot").setup({
@@ -109,6 +129,11 @@ local config = {
         config = function()
             require("copilot_cmp").setup()
         end
+    },
+    {
+        "NStefan002/screenkey.nvim",
+        lazy = false,
+        version = "*", -- or branch = "dev", to use the latest commit
     },
 }
 return config
