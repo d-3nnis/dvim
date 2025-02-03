@@ -65,7 +65,7 @@ local config = {
                     -- passing config.capabilities to blink.cmp merges with the capabilities in your
                     -- `opts[server].capabilities, if you've defined it
                     extended_config.capabilities = require('blink.cmp').get_lsp_capabilities(extended_config
-                    .capabilities)
+                        .capabilities)
 
                     lspconfig[server_name].setup(extended_config)
                 end

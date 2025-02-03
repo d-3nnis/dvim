@@ -5,10 +5,9 @@ local config = {
         'rafamadriz/friendly-snippets',
         -- { 'L3MON4D3/LuaSnip', version = 'v2.*'},
     },
-    lazy = false,
 
     -- use a release tag to download pre-built binaries
-    version = 'v0.*',
+    version = '*',
 
     opts = {
         keymap = {
