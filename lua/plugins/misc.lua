@@ -75,15 +75,9 @@ local config = {
     },
     {
         'karb94/neoscroll.nvim',
-        config = function()
-            local ns = safe_require("neoscroll")
-            if ns then
-                ns.setup({
-                    easing_function = "sine",
-                    hide_cursor = false,
-                })
-            end
-        end
+        opts = {
+            duration_multipler = 0.2,
+        },
     },
     {
         'folke/twilight.nvim',
@@ -122,12 +116,6 @@ local config = {
                 suggestion = { enabled = false },
                 panel = { enabled = false },
             })
-        end
-    },
-    {
-        "zbirenbaum/copilot-cmp",
-        config = function()
-            require("copilot_cmp").setup()
         end
     },
     {

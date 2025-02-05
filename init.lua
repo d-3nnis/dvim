@@ -7,8 +7,6 @@ if not local_config_loaded then
     print('No local configuration file found at ' .. config_path)
 end
 
-require('keymaps')
-
 -- If opening from inside neovim terminal then do not load all the other plugins
 if os.getenv("NVIM") ~= nil then
     require('lazy').setup {
