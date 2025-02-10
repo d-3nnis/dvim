@@ -9,9 +9,6 @@ local config = {
     -- https://github.com/Saghen/blink.cmp/issues/160#issuecomment-2645998283
     -- use a release tag to download pre-built binaries
     version = '*',
-    cond = function()
-        return vim.fn.filereadable(vim.fn.stdpath("data") .. "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1
-    end,
 
     opts = {
         fuzzy = {
