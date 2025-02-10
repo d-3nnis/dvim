@@ -24,6 +24,5 @@ local config = {
             vim.cmd('autocmd! TermOpen term://*toggleterm#* lua set_terminal_keymaps()')
         end
     },
-    { 'tknightz/telescope-termfinder.nvim' },
 }
 return config

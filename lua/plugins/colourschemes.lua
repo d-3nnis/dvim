@@ -4,10 +4,9 @@ local config = {
     'sainnhe/everforest',
     {
         'navarasu/onedark.nvim',
-        config = function()
-            local onedark = safe_require('onedark')
-            onedark.setup({ style = 'deep' })
-        end,
+        opts = {
+            style = 'deep',
+        }
     },
     {
         "catppuccin/nvim",
