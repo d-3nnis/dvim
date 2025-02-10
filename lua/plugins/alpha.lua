@@ -1,6 +1,7 @@
 local config = {
     {
         'goolord/alpha-nvim',
+        enabled = false,
         config = function()
             local alpha = safe_require('alpha')
             if not alpha then return end
