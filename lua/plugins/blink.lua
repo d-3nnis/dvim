@@ -3,13 +3,22 @@ local config = {
     dependencies = {
         "giuxtaposition/blink-cmp-copilot",
         'rafamadriz/friendly-snippets',
-        -- { 'L3MON4D3/LuaSnip', version = 'v2.*'},
     },
 
+    -- doesn't work on glibc 2.27
+    -- https://github.com/Saghen/blink.cmp/issues/160#issuecomment-2645998283
     -- use a release tag to download pre-built binaries
     version = '*',
+    cond = function()
+        return vim.fn.filereadable(vim.fn.stdpath("data") .. "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1
+    end,
 
     opts = {
+        fuzzy = {
+            prebuilt_binaries = {
+                download = not vim.fn.filereadable(vim.fn.stdpath("data") .. "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
+            },
+        },
         keymap = {
             preset = 'default',
             ['<C-k>'] = { 'select_prev', 'fallback' },
