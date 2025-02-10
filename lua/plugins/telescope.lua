@@ -47,10 +47,6 @@ local config = {
                         }
                     },
                     fzf = {},
-                    frecency = {
-                        show_scores = true,
-                        auto_validate = false,
-                    }
                 },
             }
 
@@ -71,12 +67,6 @@ local config = {
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     'nvim-telescope/telescope-ui-select.nvim',
-    {
-        "nvim-telescope/telescope-frecency.nvim",
-        config = function()
-            require("telescope").load_extension("frecency")
-        end,
-    },
 }
 
 

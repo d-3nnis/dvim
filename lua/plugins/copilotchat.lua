@@ -5,6 +5,7 @@ local config = {
             { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
             { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
         },
+        build = "make tiktoken",
         config = function()
             local copilotchat = safe_require('CopilotChat')
             local select = safe_require('CopilotChat.select')
