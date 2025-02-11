@@ -5,26 +5,25 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
         vim.keymap.set("n", "gd", require("definition-or-references").definition_or_references, opts)
         vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-        -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-        -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-        vim.keymap.set("n", "gh", function() vim.diagnostic.goto_next() end, opts)
-        vim.keymap.set("n", "gl", function() vim.diagnostic.goto_prev() end, opts)
+        vim.keymap.set("n", "gh", function() vim.diagnostic.jump({ count = 1, float = true }) end, opts)
+        vim.keymap.set("n", "gl", function() vim.diagnostic.jump({ count = -1, float = true }) end, opts)
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         require('which-key').add(
             {
                 buffer = ev.buf,
                 { '<leader>l',  group = 'LSP' },
-                { '<leader>la', '<cmd>lua vim.lsp.buf.code_action()<cr>',                       desc = 'Code Action', },
-                { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,       desc = 'Document Diagnostics', },
-                { '<leader>lf', function() vim.lsp.buf.format { async = true } end,             desc = 'Format',                           mode = { 'n', 'v' }, },
-                { '<leader>lF', function() vim.diagnostic.open_float() end,                     desc = 'Open floating diagnostics window', },
-                { '<leader>li', '<cmd>LspInfo<cr>',                                             desc = 'Info', },
-                { '<leader>lj', '<cmd>lua vim.diagnostic.goto_next()<CR>',                      desc = 'Next Diagnostic', },
-                { '<leader>lk', '<cmd>lua vim.diagnostic.goto_prev()<cr>',                      desc = 'Prev Diagnostic', },
-                { '<leader>lr', '<cmd>lua vim.lsp.buf.references()<cr>',                        desc = 'References', },
-                { '<leader>lR', '<cmd>lua vim.lsp.buf.rename()<cr>',                            desc = 'Rename', },
-                { '<leader>ls', function() require('fzf-lua').lsp_document_symbols() end,       desc = 'Document Symbols', },
-                { '<leader>lS', function() require('fzf-lua').lsp_live_workspace_symbols() end, desc = 'Workspace Symbols', },
+                { '<leader>la', function() vim.lsp.buf.code_action {} end,                       desc = 'Code Action', },
+                { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,        desc = 'Document Diagnostics', },
+                { '<leader>lD', function() require('fzf-lua').diagnostics_workspace() end,        desc = 'Workspace Diagnostics', },
+                { '<leader>lf', function() vim.lsp.buf.format { async = true } end,              desc = 'Format',                           mode = { 'n', 'v' }, },
+                { '<leader>ls', function() vim.diagnostic.open_float() end,                      desc = 'Open floating diagnostics window', },
+                { '<leader>li', '<cmd>LspInfo<cr>',                                              desc = 'Info', },
+                { '<leader>lj', function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = 'Next Diagnostic', },
+                { '<leader>lk', function() vim.diagnostic.jump({ count = 1, float = true }) end, desc = 'Prev Diagnostic', },
+                { '<leader>lr', function() vim.lsp.buf.references() end,                         desc = 'References', },
+                { '<leader>lR', function() vim.lsp.buf.rename() end,                             desc = 'Rename', },
+                { '<leader>lp', function() require('fzf-lua').lsp_document_symbols() end,        desc = 'Document Symbols', },
+                { '<leader>lP', function() require('fzf-lua').lsp_live_workspace_symbols() end,  desc = 'Workspace Symbols', },
             })
     end,
 })

@@ -23,6 +23,7 @@ local config = {
             ['<CR>'] = { 'accept', 'fallback' },
             ['<Tab>'] = { 'select_next', 'fallback' },
             ['<S-Tab>'] = { 'select_prev', 'fallback' },
+            ['<C-e>'] = { 'hide' },
         },
         completion = {
             documentation = {
@@ -85,7 +86,7 @@ local config = {
                 copilot = {
                     name = "copilot",
                     module = "blink-cmp-copilot",
-                    score_offset = 100,
+                    -- score_offset = 100,
                     async = true,
                     transform_items = function(_, items)
                         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
