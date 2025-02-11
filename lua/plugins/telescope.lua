@@ -41,17 +41,11 @@ local config = {
                     },
                 },
                 extensions = {
-                    ["ui-select"] = {
-                        require("telescope.themes").get_dropdown {
-                            -- even more opts
-                        }
-                    },
                     fzf = {},
                 },
             }
 
 
-            t.load_extension('ui-select')
             t.load_extension('notify')
             t.load_extension('projects')
             t.load_extension('fzf')
@@ -65,7 +59,6 @@ local config = {
         end
     },
     { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
-    'nvim-telescope/telescope-ui-select.nvim',
 }
 
 
