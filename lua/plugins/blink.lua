@@ -13,7 +13,8 @@ local config = {
     opts = {
         fuzzy = {
             prebuilt_binaries = {
-                download = not vim.fn.filereadable(vim.fn.stdpath("data") .. "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
+                download = not vim.fn.filereadable(vim.fn.stdpath("data") ..
+                    "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
             },
         },
         keymap = {
@@ -21,9 +22,7 @@ local config = {
             ['<C-k>'] = { 'select_prev', 'fallback' },
             ['<C-j>'] = { 'select_next', 'fallback' },
             ['<CR>'] = { 'accept', 'fallback' },
-            ['<Tab>'] = { 'select_next', 'fallback' },
-            ['<S-Tab>'] = { 'select_prev', 'fallback' },
-            ['<C-e>'] = { 'hide' },
+            ['<C-e>'] = { 'cancel' },
         },
         completion = {
             documentation = {
@@ -32,6 +31,9 @@ local config = {
             ghost_text = {
                 enabled = true,
             },
+            list = {
+                selection = { preselect = false },
+            }
         },
 
         appearance = {
@@ -86,7 +88,7 @@ local config = {
                 copilot = {
                     name = "copilot",
                     module = "blink-cmp-copilot",
-                    -- score_offset = 100,
+                    score_offset = 100,
                     async = true,
                     transform_items = function(_, items)
                         local CompletionItemKind = require("blink.cmp.types").CompletionItemKind

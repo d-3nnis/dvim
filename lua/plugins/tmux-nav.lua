@@ -22,13 +22,10 @@ local config = {
                 end
             end
 
-            -- TODO add these autocmds to legendary?
-            -- Set the variable when Neovim starts
             vim.api.nvim_create_autocmd("FocusGained", {
                 callback = set_tmux_vim
             })
 
-            -- Unset the variable when Neovim exits
             vim.api.nvim_create_autocmd(
                 { "FocusLost", "VimLeave" },
                 {

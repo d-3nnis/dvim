@@ -49,10 +49,10 @@ local config = {
     'MunifTanjim/nui.nvim',
     {
         'tzachar/local-highlight.nvim',
-        config = function()
-            safe_require('local-highlight').setup()
-            -- file_types = { 'python', 'cpp', 'lua' }
-        end,
+        config = true,
+        opts = {
+            hlgroup = 'Cursor',
+        },
     },
     {
         'numToStr/Comment.nvim',

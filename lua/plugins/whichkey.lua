@@ -187,7 +187,8 @@ local config = {
                 { '<leader>c', function() require('bufdelete').bufdelete(0) end, desc = 'Close Buffer', },
                 { '<leader>u', function() require('undotree').toggle() end, desc = 'Open buffers', },
                 { '<leader>b', function() search_buffers() end, desc = 'Toggle undo tree', },
-                { '<leader>x', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', desc = 'Search and replace with text under cursor', },
+                { '<leader>x', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', desc = 'Search and replace with word under cursor', },
+                { '<leader>X', ':%s/<C-r><C-a>/<C-r><C-a>/gI<Left><Left><Left>', desc = 'Search and replace with WORD under cursor', },
             }
         },
     },
