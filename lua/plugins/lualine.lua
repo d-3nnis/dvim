@@ -35,6 +35,14 @@ local config = {
                 end
             end
 
+            local project_root = {
+                function()
+                    return vim.fn.fnamemodify(vim.fn.getcwd(), ':t')
+                end,
+                icon = "",
+                separator = '',
+            }
+
             local function mixed_indents()
                 local space_pat = [[\v^ +]]
                 local tab_pat = [[\v^\t+]]
@@ -97,6 +105,7 @@ local config = {
                     lualine_c = {
                         mixed_indents,
                         'filename',
+                        project_root,
                     },
                     lualine_x = line_x,
                     -- lualine_y = { 'encoding', 'fileformat', 'filetype', },

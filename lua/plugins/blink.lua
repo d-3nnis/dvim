@@ -32,7 +32,7 @@ local config = {
                 enabled = true,
             },
             list = {
-                selection = { preselect = false },
+                selection = 'manual',
             }
         },
 
