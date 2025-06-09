@@ -12,10 +12,11 @@ local config = {
 
     opts = {
         fuzzy = {
-            prebuilt_binaries = {
-                download = not vim.fn.filereadable(vim.fn.stdpath("data") ..
-                    "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
-            },
+            -- prebuilt_binaries = {
+            --     download = not vim.fn.filereadable(vim.fn.stdpath("data") ..
+            --         "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
+            -- },
+            implementation = 'lua',
         },
         keymap = {
             preset = 'default',
@@ -102,9 +103,9 @@ local config = {
                 },
             },
 
-            -- optionally disable cmdline completions
-            cmdline = {},
         },
+        -- optionally disable cmdline completions
+        -- cmdline = {},
 
         -- experimental signature help support
         -- signature = { enabled = true }
