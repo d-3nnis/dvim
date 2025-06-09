@@ -129,9 +129,9 @@ local config = {
                 },
                 { '<leader>h', group = 'Gitsigns', icon = "" },
                 { '<leader>hj', function() require('gitsigns').preview_hunk() end, desc = 'Preview Hunk', },
+                { '<leader>hJ', function() require('gitsigns').preview_hunk_inline() end, desc = 'Preview Hunk Inline', },
                 { '<leader>hb', function() require('gitsigns').blame_line { full = true } end, desc = 'Blame Line', },
                 { '<leader>hS', function() require('gitsigns').stage_buffer() end, desc = 'Stage Buffer', },
-                { '<leader>hu', function() require('gitsigns').undo_stage_hunk() end, desc = 'Undo Stage Hunk', },
                 {
                     '<leader>hs',
                     function()
@@ -163,6 +163,7 @@ local config = {
                 { '<leader>hc', '<CMD>diffoff<CR>', desc = 'Cancel diff', },
                 { '<leader>ht', group = 'Gitsigns toggles', icon = "" },
                 { '<leader>htb', function() require('gitsigns').toggle_current_line_blame() end, desc = 'Toggle Line Blame', },
+                { '<leader>htB', function() require('gitsigns').blame() end, desc = 'Toggle Buffer Blame', },
                 {
                     '<leader>hti',
                     function()
@@ -172,7 +173,6 @@ local config = {
                     end,
                     desc = 'Toggle Line Highlighting',
                 },
-                { '<leader>htd', function() require('gitsigns').toggle_deleted() end, desc = 'Toggle showing deleted hunks', },
                 { '<leader>o', group = 'Misc', icon = "" },
                 { '<leader>oq', 'gq', desc = 'Reformat line widths', },
                 { '<leader>oh', '<cmd>nohls<cr>', desc = 'Hide search highlight', },

@@ -36,6 +36,18 @@ local config = {
             elseif direction == 'vertical' then
                 size = vim.o.columns * 0.4
             end
+
+            -- If no count provided, generate one based on project path
+            if count == 0 then
+                local cwd = vim.fn.getcwd()
+                -- Create a simple hash from the project path
+                local hash = 0
+                for i = 1, #cwd do
+                    hash = hash + string.byte(cwd, i)
+                end
+                count = (hash % 99) + 1
+            end
+
             return count .. 'ToggleTerm size=' .. size .. ' dir=git_dir direction=' .. direction
         end
 
