@@ -14,7 +14,7 @@ vim.api.nvim_create_autocmd('LspAttach', {
                 { '<leader>l',  group = 'LSP' },
                 { '<leader>la', function() vim.lsp.buf.code_action {} end,                       desc = 'Code Action', },
                 { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,        desc = 'Document Diagnostics', },
-                { '<leader>lD', function() require('fzf-lua').diagnostics_workspace() end,        desc = 'Workspace Diagnostics', },
+                { '<leader>lD', function() require('fzf-lua').diagnostics_workspace() end,       desc = 'Workspace Diagnostics', },
                 { '<leader>lf', function() vim.lsp.buf.format { async = true } end,              desc = 'Format',                           mode = { 'n', 'v' }, },
                 { '<leader>ls', function() vim.diagnostic.open_float() end,                      desc = 'Open floating diagnostics window', },
                 { '<leader>li', '<cmd>LspInfo<cr>',                                              desc = 'Info', },
@@ -43,32 +43,26 @@ local config = {
             local lspconfig = require('lspconfig')
             if not lspconfig then return end
 
+            local capabilities = vim.lsp.protocol.make_client_capabilities()
+            capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
+
             mlconfig.setup {
                 ensure_installed = { 'lua_ls', 'clangd', 'bashls' },
                 automatic_installation = true,
-            }
-
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-            mlconfig.setup_handlers({
-                function(server_name)
-                    local server_config = opts.servers[server_name]
-                    if not server_config then
-                        -- vim.notify("No custom server configuration for " .. server_name)
-                        server_config = {}
+                handlers = {
+                    ["*"] = function(server_name)
+                        local server_specific_opts = opts.servers[server_name] or {}
+                        local final_config = vim.tbl_deep_extend("force", {
+                            capabilities = capabilities,
+                            -- Add any other common settings here if needed
+                            -- on_attach = function(client, bufnr)
+                            --     -- Your on_attach logic
+                            -- end,
+                        }, server_specific_opts)
+                        lspconfig[server_name].setup(final_config)
                     end
-
-                    local default_config = { capabilities = capabilities }
-                    local extended_config = vim.tbl_extend("error", server_config, default_config)
-
-                    -- passing config.capabilities to blink.cmp merges with the capabilities in your
-                    -- `opts[server].capabilities, if you've defined it
-                    extended_config.capabilities = require('blink.cmp').get_lsp_capabilities(extended_config
-                        .capabilities)
-
-                    lspconfig[server_name].setup(extended_config)
-                end
-            })
+                }
+            }
         end,
         opts = {
             servers = {
