@@ -31,62 +31,17 @@ vim.api.nvim_create_autocmd('LspAttach', {
 local config = {
     {
         'williamboman/mason.nvim',
-        lazy = false,
         config = true,
     },
     {
         'williamboman/mason-lspconfig.nvim',
-        lazy = false,
-        config = function(_, opts)
-            local mlconfig = safe_require('mason-lspconfig')
-            if not mlconfig then return end
-            local lspconfig = require('lspconfig')
-            if not lspconfig then return end
-
-            local capabilities = vim.lsp.protocol.make_client_capabilities()
-            capabilities = require('blink.cmp').get_lsp_capabilities(capabilities)
-
-            mlconfig.setup {
-                ensure_installed = { 'lua_ls', 'clangd', 'bashls' },
-                automatic_installation = true,
-                handlers = {
-                    ["*"] = function(server_name)
-                        local server_specific_opts = opts.servers[server_name] or {}
-                        local final_config = vim.tbl_deep_extend("force", {
-                            capabilities = capabilities,
-                            -- Add any other common settings here if needed
-                            -- on_attach = function(client, bufnr)
-                            --     -- Your on_attach logic
-                            -- end,
-                        }, server_specific_opts)
-                        lspconfig[server_name].setup(final_config)
-                    end
-                }
-            }
-        end,
         opts = {
-            servers = {
-                lua_ls = {
-                    settings = {
-                        Lua = {
-                            completion = {
-                                callSnippet = "Replace"
-                            },
-                            workspace = {
-                                checkThirdParty = false,
-                            },
-                            hint = {
-                                enable = true,
-                                arrayIndex = "Disable",
-                            },
-                        }
-                    }
-                },
-            },
+            ensure_installed = { 'lua_ls', 'clangd', 'bashls' },
         },
 
         dependencies = {
             'williamboman/mason.nvim',
+            "neovim/nvim-lspconfig",
         },
     },
     {
