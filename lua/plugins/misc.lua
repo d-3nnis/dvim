@@ -105,20 +105,6 @@ local config = {
     },
     { "KostkaBrukowa/definition-or-references.nvim" },
     {
-        "zbirenbaum/copilot.lua",
-        cmd = "Copilot",
-        event = "InsertEnter",
-        -- Because the dev server nodejs is too old
-        commit = "1a8032a",
-
-        config = function()
-            require("copilot").setup({
-                suggestion = { enabled = false },
-                panel = { enabled = false },
-            })
-        end
-    },
-    {
         "NStefan002/screenkey.nvim",
         lazy = false,
         version = "*", -- or branch = "dev", to use the latest commit

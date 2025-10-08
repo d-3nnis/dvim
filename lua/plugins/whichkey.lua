@@ -148,9 +148,10 @@ local config = {
                 {
                     '<leader>hr',
                     function()
-                        if (vim.fn.visualmode() == '') then
+                        if (string.sub(vim.fn.mode(), 1, 1) == 'n') then
                             require('gitsigns').reset_hunk()
-                        else
+                        elseif (string.sub(vim.fn.mode(), 1, 1) == 'v' or
+                                string.sub(vim.fn.mode(), 1, 1) == 'V') then
                             require('gitsigns').reset_hunk({ vim.fn.line('.'), vim.fn.line('v') })
                         end
                     end,
@@ -189,30 +190,28 @@ local config = {
                 { '<leader>b', function() search_buffers() end, desc = 'Toggle undo tree', },
                 { '<leader>x', ':%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>', desc = 'Search and replace with word under cursor', },
                 { '<leader>X', ':%s/<C-r><C-a>/<C-r><C-a>/gI<Left><Left><Left>', desc = 'Search and replace with WORD under cursor', },
+                { '<leader>r', group = 'Copilot', icon = '' },
+                {
+                    '<leader>rd',
+                    function()
+                        require('CopilotChat').ask(
+                            "@copilot #buffer #selection Write documentation for the function(s) under cursor.")
+                    end,
+                    desc = 'Ask Copilot to write documentation for the function(s) under cursor',
+                    mode = 'nv'
+                },
+                {
+                    '<leader>od',
+                    function()
+                        require('CopilotChat').ask(
+                        '@copilot #buffer #selection Provide documentation for any diagnostic error(s)')
+                    end,
+                    desc = 'CopilotChat - Provide a fix for any diagnostic errors',
+                    mode = 'nv'
+                },
             }
         },
     },
 }
---[[
-        config = function()
-            local whichkey_binds = {
-                t = {
-                    name = 'CopilotChat',
-                    {'<leader>oe', '<CMD>CopilotChatExplain<CR>', desc = 'CopilotChat - Explain the selected text', },
-                    {'<leader>of', '<CMD>CopilotChatFix<CR>', desc = 'CopilotChat - Provide a fix for the selected text', },
-                    {'<leader>od', '<CMD>CopilotChatFixDiagnostic<CR>', desc = 'CopilotChat - Provide a fix for the selected diagnostic error', },
-                    mode = 'v',
-                },
-            }
-
-            local whichkey_opts = {
-                mode = 'n',
-                prefix = '<leader>',
-                buffer = nil,
-                silent = true,
-                noremap = true,
-                nowait = true,
-            }
---]]
 
 return config

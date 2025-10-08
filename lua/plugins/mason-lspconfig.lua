@@ -46,6 +46,16 @@ local config = {
     },
     {
         'neovim/nvim-lspconfig',
+        config = function()
+            vim.lsp.config('clangd', {
+                cmd = {
+                    'clangd',
+                    '--clang-tidy',
+                    '--background-index',
+                    '--offset-encoding=utf-8',
+                },
+            })
+        end,
         dependencies = {
             'saghen/blink.cmp',
             {
