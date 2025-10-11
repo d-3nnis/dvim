@@ -173,14 +173,14 @@ local config = {
                     "<Cmd>SvartRegex<CR>",
                     description = 'Svart regex search',
                     mode = {
-                        'n', 'x', 'o' }
+                        'n', 'x', }
                 },
                 {
                     "gs",
                     "<Cmd>SvartRepeat<CR>",
                     description = 'Svart search repeat',
                     mode = {
-                        'n', 'x', 'o' }
+                        'n', 'x', }
                 },
                 { "J",  ":m '>+1<CR>gv=gv",          description = 'Move visual range down',  mode = { 'v' } },
                 { "K",  ":m '<-2<CR>gv=gv",          description = 'Move visual range up',    mode = { 'v' } },
@@ -198,16 +198,16 @@ local config = {
                     "<Cmd>Svart<CR>",
                     description = 'Svart search',
                     mode = {
-                        'n', 'x', 'o' }
+                        'n', 'x', }
                 },
-                { 'n',    'nzzzv',          description = 'Centered forward search',   mode = { 'n' } },
-                { 'N',    'Nzzzv',          description = 'Centered backwards search', mode = { 'n' } },
-                { 'Q',    '<nop>',          description = 'Delete me',                 mode = { 'n' } },
-                { '<F5>', '<CMD>lprev<CR>', description = 'Previous localist entry',   mode = { 'n' } },
-                { '<F6>', '<CMD>lnext<CR>', description = 'Next loclist entry',        mode = { 'n' } },
-                { '<F7>', '<CMD>cprev<CR>', description = 'Previous QFList entry',     mode = { 'n' } },
-                { '<F8>', '<CMD>cnext<CR>', description = 'Next QFList entry',         mode = { 'n' } },
-                { 'c',    '"_c',             description = "Don't pollute unnamed register when ciw", mode = { 'n' } },
+                { 'n',    'nzzzv',          description = 'Centered forward search',                 mode = { 'n' } },
+                { 'N',    'Nzzzv',          description = 'Centered backwards search',               mode = { 'n' } },
+                { 'Q',    '<nop>',          description = 'Delete me',                               mode = { 'n' } },
+                { '<F5>', '<CMD>lprev<CR>', description = 'Previous localist entry',                 mode = { 'n' } },
+                { '<F6>', '<CMD>lnext<CR>', description = 'Next loclist entry',                      mode = { 'n' } },
+                { '<F7>', '<CMD>cprev<CR>', description = 'Previous QFList entry',                   mode = { 'n' } },
+                { '<F8>', '<CMD>cnext<CR>', description = 'Next QFList entry',                       mode = { 'n' } },
+                { 'c',    '"_c',            description = "Don't pollute unnamed register when ciw", mode = { 'n' } },
             },
             commands = {
                 {
@@ -303,7 +303,7 @@ local config = {
                     function()
                         -- TODO the register is empty, not '+', and I'm not sure why
                         -- if vim.v.event.operator == 'y' and vim.v.event.regname == '+' then
-                        if vim.v.event.operator == 'y' and vim.v.event.regname == '' then
+                        if vim.v.event.operator == 'y' and vim.v.event.regname == '' and vim.fn.has('wsl') == 0 then
                             require('osc52').copy_register('+')
                         end
                     end,
