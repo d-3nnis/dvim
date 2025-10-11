@@ -17,6 +17,9 @@ local config = {
                 end,
                 unpack(stages, 2),
             },
+            on_open = function(win)
+                vim.api.nvim_win_set_config(win, { focusable = false })
+            end,
         }
 
         vim.notify = notify

@@ -15,15 +15,6 @@ local config = {
                 },
                 cmdline = {
                 },
-                -- routes = {
-                --     {
-                --         view = 'mini',
-                --         opts = {
-                --             timeout = 10000,
-                --         },
-                --         filter = { event = 'msg_showmode' }
-                --     },
-                -- },
                 views = {
                     cmdline_popup = {
                         position = {
