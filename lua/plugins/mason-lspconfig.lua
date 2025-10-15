@@ -12,7 +12,27 @@ vim.api.nvim_create_autocmd('LspAttach', {
             {
                 buffer = ev.buf,
                 { '<leader>l',  group = 'LSP' },
-                { '<leader>la', function() vim.lsp.buf.code_action() end,                         desc = 'Code Action',                      mode = { 'n', 'v' } },
+                { '<leader>la', function() vim.lsp.buf.code_action() end, desc = 'Code Action', mode = { 'n', 'v' } },
+                {
+                    '<leader>lc',
+                    function()
+                        require('fzf-lua').diagnostics_document({
+                            severity_limit = vim.diagnostic
+                                .severity.ERROR
+                        })
+                    end,
+                    desc = 'Document Diagnostics, ERROR or more severe',
+                },
+                {
+                    '<leader>lC',
+                    function()
+                        require('fzf-lua').diagnostics_workspace({
+                            severity_limit = vim.diagnostic
+                                .severity.ERROR
+                        })
+                    end,
+                    desc = 'Workspace Diagnostics, ERROR or more severe',
+                },
                 { '<leader>ld', function() require('fzf-lua').diagnostics_document() end,         desc = 'Document Diagnostics', },
                 { '<leader>lD', function() require('fzf-lua').diagnostics_workspace() end,        desc = 'Workspace Diagnostics', },
                 { '<leader>lf', function() vim.lsp.buf.format { async = true } end,               desc = 'Format',                           mode = { 'n', 'v' }, },
