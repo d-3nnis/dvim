@@ -1,7 +1,8 @@
+local use_copilot = vim.g.enable_copilot or false
 local config = {
     'saghen/blink.cmp',
     dependencies = {
-        "giuxtaposition/blink-cmp-copilot",
+        -- "giuxtaposition/blink-cmp-copilot",
         'rafamadriz/friendly-snippets',
     },
 
@@ -11,13 +12,13 @@ local config = {
     version = '*',
 
     opts = {
-        fuzzy = {
-            -- prebuilt_binaries = {
-            --     download = not vim.fn.filereadable(vim.fn.stdpath("data") ..
-            --         "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
-            -- },
-            implementation = 'lua',
-        },
+        -- fuzzy = {
+        -- prebuilt_binaries = {
+        --     download = not vim.fn.filereadable(vim.fn.stdpath("data") ..
+        --         "/lazy/blink.cmp/target/release/libblink_cmp_fuzzy.so") == 1,
+        -- },
+        --     implementation = 'lua',
+        -- },
         keymap = {
             preset = 'default',
             ['<C-k>'] = { 'select_prev', 'fallback' },
@@ -48,7 +49,45 @@ local config = {
             -- Set to 'mono' for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
             -- Adjusts spacing to ensure icons are aligned
             nerd_font_variant = 'mono',
-            -- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
+        },
+
+        -- default list of enabled providers defined so that you can extend it
+        -- elsewhere in your config, without redefining it, due to `opts_extend`
+        sources = {
+            default = { 'lsp', 'path', 'snippets', 'buffer' },
+            providers = {
+                cmdline = {
+                    -- ignores cmdline completions when executing shell commands
+                    enabled = function()
+                        return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
+                    end
+                },
+                copilot = {
+                    name = "copilot",
+                    module = "blink-cmp-copilot",
+                    score_offset = 100,
+                    async = true,
+                    transform_items = function(_, items)
+                        local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
+                        local kind_idx = #CompletionItemKind + 1
+                        CompletionItemKind[kind_idx] = "Copilot"
+                        for _, item in ipairs(items) do
+                            item.kind = kind_idx
+                        end
+                        return items
+                    end,
+                },
+            },
+        },
+    },
+    opts_extend = { "sources.default" }
+}
+
+if use_copilot then
+    table.insert(config.dependencies, "giuxtaposition/blink-cmp-copilot")
+    table.insert(config.opts.sources.default, "copilot")
+    table.insert(config.opts.appearance,
+        {
             kind_icons = {
                 Copilot = "",
                 Text = '󰉿',
@@ -81,38 +120,9 @@ local config = {
                 Event = '󱐋',
                 Operator = '󰪚',
                 TypeParameter = '󰬛',
-            },
-        },
+            }
+        })
+end
 
-        -- default list of enabled providers defined so that you can extend it
-        -- elsewhere in your config, without redefining it, due to `opts_extend`
-        sources = {
-            default = { 'lsp', 'path', 'snippets', 'buffer', 'copilot', },
-            providers = {
-                cmdline = {
-                    -- ignores cmdline completions when executing shell commands
-                    enabled = function()
-                        return vim.fn.getcmdtype() ~= ':' or not vim.fn.getcmdline():match("^[%%0-9,'<>%-]*!")
-                    end
-                },
-                copilot = {
-                    name = "copilot",
-                    module = "blink-cmp-copilot",
-                    score_offset = 100,
-                    async = true,
-                    transform_items = function(_, items)
-                        local CompletionItemKind = require("blink.cmp.types").CompletionItemKind
-                        local kind_idx = #CompletionItemKind + 1
-                        CompletionItemKind[kind_idx] = "Copilot"
-                        for _, item in ipairs(items) do
-                            item.kind = kind_idx
-                        end
-                        return items
-                    end,
-                },
-            },
-        },
-    },
-    opts_extend = { "sources.default" }
-}
+-- Blink does not expose its default kind icons so you must copy them all (or set your custom ones) and add Copilot
 return config

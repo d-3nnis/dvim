@@ -1,6 +1,10 @@
 DATA_PATH = vim.fn.stdpath('data')
 CACHE_PATH = vim.fn.stdpath('cache')
 
+if vim.g.enable_copilot == nil then
+    vim.g.enable_copilot = vim.env.NVIM_ENABLE_COPILOT == '1'
+end
+
 -- Functions --
 
 -- @USAGE:

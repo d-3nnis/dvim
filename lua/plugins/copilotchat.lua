@@ -1,6 +1,7 @@
 local config = {
     {
         "CopilotC-Nvim/CopilotChat.nvim",
+        enabled = vim.g.enable_copilot or false,
         dependencies = {
             { "zbirenbaum/copilot.lua" }, -- or github/copilot.vim
             { "nvim-lua/plenary.nvim" },  -- for curl, log wrapper
