@@ -2,8 +2,8 @@ local o = vim.opt
 
 -- LEADER --
 vim.g.mapleader = " "
-o.timeoutlen = 300
-o.updatetime = 300
+o.timeoutlen = 30
+o.updatetime = 30
 
 -- File Management --
 o.fileencoding = "utf-8"

@@ -37,9 +37,6 @@ local config = {
         dependencies = {
             'nvim-treesitter/nvim-treesitter'
         },
-        config = function()
-            safe_require('nt-cpp-tools').setup({})
-        end
     },
     'famiu/bufdelete.nvim',
     'm6vrm/svart.nvim',

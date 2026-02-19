@@ -119,6 +119,13 @@ local config = {
                     desc = "Resume previous search session",
                 },
                 {
+                    '<leader>sB',
+                    function()
+                        require('fzf-lua').git_branches()
+                    end,
+                    desc = "Resume previous search session",
+                },
+                {
                     '<leader>e',
                     group = 'File Explorer',
                 },

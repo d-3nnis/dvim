@@ -77,11 +77,16 @@ local config = {
                     '--offset-encoding=utf-8',
                 },
             })
+            vim.lsp.config('rust_analyzer', {
+                settings = {
+                    ['rust-analyzer'] = {},
+                }
+            })
         end,
         dependencies = {
             'saghen/blink.cmp',
             {
-                "SmiteshP/nvim-navbuddy",
+                "hasansujon786/nvim-navbuddy",
                 dependencies = {
                     "SmiteshP/nvim-navic",
                     "MunifTanjim/nui.nvim"
