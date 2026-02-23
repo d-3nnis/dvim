@@ -292,9 +292,20 @@ local config = {
                 {
                     { "BufLeave", "FocusLost" },
                     function()
-                        if not vim.bo.readonly and vim.fn.expand("%") ~= "" and vim.bo.buftype == "" then
-                            vim.api.nvim_command('silent update')
+                        if vim.bo.readonly or vim.bo.buftype ~= "" then
+                            return
                         end
+
+                        local path = vim.api.nvim_buf_get_name(0)
+                        if path == "" then
+                            return
+                        end
+
+                        if vim.uv.fs_stat(path) == nil then
+                            return
+                        end
+
+                        vim.cmd('silent update')
                     end,
                     description = 'Save buffer when exiting or focus lost',
                 },
