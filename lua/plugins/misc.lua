@@ -39,7 +39,18 @@ local config = {
         },
     },
     'famiu/bufdelete.nvim',
-    'm6vrm/svart.nvim',
+    {
+        'm6vrm/svart.nvim',
+        config = function()
+            local function map(mode, lhs, rhs, desc)
+                vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+            end
+
+            map({ 'n', 'x' }, 's', '<Cmd>Svart<CR>', 'Svart search')
+            map({ 'n', 'x' }, 'S', '<Cmd>SvartRegex<CR>', 'Svart regex search')
+            map({ 'n', 'x' }, 'gs', '<Cmd>SvartRepeat<CR>', 'Svart search repeat')
+        end,
+    },
     'nvim-lua/plenary.nvim',
     'nvim-tree/nvim-web-devicons',
     'MunifTanjim/nui.nvim',

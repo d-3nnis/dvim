@@ -28,6 +28,15 @@ local config = { {
                 end
             }
         }
+
+        local function map(mode, lhs, rhs, desc)
+            vim.keymap.set(mode, lhs, rhs, { noremap = true, silent = true, desc = desc })
+        end
+
+        map('n', '<S-h>', '<CMD>BufferLineCyclePrev<CR>', 'Previous buffer')
+        map('n', '<S-l>', '<CMD>BufferLineCycleNext<CR>', 'Next buffer')
+        map('n', '<C-(>', '<CMD>BufferLineMovePrev<CR>', 'Move tab left')
+        map('n', '<C-)>', '<CMD>BufferLineMoveNext<CR>', 'Move tab right')
     end,
     dependencies = 'nvim-tree/nvim-web-devicons',
 },

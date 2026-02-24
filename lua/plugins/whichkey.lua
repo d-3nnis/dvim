@@ -215,6 +215,13 @@ local config = {
                     end,
                     desc = "Git status files",
                 },
+                {
+                    '<leader>sw',
+                    function()
+                        require('fzf-lua').git_worktrees()
+                    end,
+                    desc = "Git worktrees",
+                },
                 { '<leader>sn', git_branches_dv, desc = "Git branches matching dv." },
                 {
                     '<leader>ss',
@@ -365,7 +372,6 @@ local config = {
                 { '<leader>or', '<CMD>set rnu!<CR>', desc = 'Toggle relative line numbers', },
                 { '<leader>op', function() require('precognition').toggle() end, desc = 'Toggle Precognition', },
                 { '<leader>n', '<CMD>Navbuddy<CR>', desc = 'Open Navbuddy', },
-                { '<leader>f', '<CMD>Legendary<CR>', desc = 'Open command legend', },
                 { '<leader>p', '_dP', desc = 'Paste without overwrite', mode = 'x', },
                 { '<leader>c', function() require('bufdelete').bufdelete(0) end, desc = 'Close Buffer', },
                 { '<leader>b', function() search_buffers() end, desc = 'Toggle undo tree', },
