@@ -10,11 +10,11 @@ o.fileencoding = "utf-8"
 o.encoding = "utf-8"
 o.undofile = true
 o.swapfile = false
+o.autoread = true
 
 -- Buffer Options --
 o.splitbelow = true
 o.splitright = true
--- TODO add autocmd for buffer reload update
 
 -- Indentation --
 o.smartcase = true

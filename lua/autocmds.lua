@@ -4,6 +4,7 @@ local ag = vim.api.nvim_create_augroup
 local lsp_augroup = ag('lsp_augroup', { clear = true })
 local tmux_zoom_augroup = ag('tmux_zoom_status', {})
 local autosave_augroup = ag('autosave', {})
+local file_reload_augroup = ag('file_reload', { clear = true })
 local osc52_augroup = ag('osc52_yank', {})
 local yank_highlight_augroup = ag('yank_highlight', {})
 
@@ -71,7 +72,17 @@ au({ 'BufLeave', 'FocusLost' }, {
 
         vim.cmd('silent update')
     end,
-    desc = 'Save buffer when exiting or focus lost',
+    desc = 'Save buffer when switching buffers, losing focus, or exiting',
+})
+
+au({ 'BufEnter', 'FocusGained', 'CursorHold', 'CursorHoldI' }, {
+    group = file_reload_augroup,
+    callback = function()
+        if vim.fn.mode() ~= 'c' and vim.bo.buftype == '' then
+            vim.cmd('checktime')
+        end
+    end,
+    desc = 'Reload files changed outside Neovim',
 })
 
 au('TextYankPost', {
